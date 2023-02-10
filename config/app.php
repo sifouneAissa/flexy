@@ -214,4 +214,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'locales' => [
+        'ar',
+        'en',
+        'fr'
+    ]
 ];

@@ -33,7 +33,7 @@
     <!-- style css for this template -->
     <link href="/assets/css/style.css" rel="stylesheet" id="style">
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 
     @livewireStyles
 </head>
