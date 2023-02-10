@@ -15,11 +15,16 @@ class Applogo extends Component
         $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
     }
 
+    public function setMode($mode){
+        Session::put('mode' , $mode);
+        $this->dispatchBrowserEvent('setMode', ['mode' => $mode]);
+    }
+
 
     public function render()
     {
         return view('livewire.partials.applogo',[
-            'lang' => Session::get('lang') ? Session::get('lang') : \app()->getLocale()
+            'lang' => Session::get('lang') ? Session::get('lang') : \app()->getLocale(),
         ]);
     }
 }

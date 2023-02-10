@@ -23,6 +23,13 @@
             <label for="select">Language</label>
         </div>
 
+        <div class="form-floating col-auto">
+            <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>
+        </div>
+        <div  class="form-floating col-auto">
+            <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
+        </div>
+
         <div class="col-auto">
             <a href="profile.html" target="_self" class="btn btn-light btn-44">
                 <i class="bi bi-person-circle"></i>
@@ -74,6 +81,10 @@
         this.select();
     });
 
+    window.addEventListener('setMode', (e) => {
+        this.mode(e.detail.mode);
+    });
+
     function select() {
         let langs = {
             'ar' : 'rtl',
@@ -91,5 +102,11 @@
         setCookie(storageKey, cookie, 1);
         body.addClass(cookie);
         body.removeClass(cookie === 'rtl' ? 'ltr' : 'rtl');
+    }
+
+    function mode(mode){
+                var html = $('html');
+                setCookie('fwalayoutmode', mode, 1)
+                html.attr('class', getCookie("fwalayoutmode"));
     }
 </script>
