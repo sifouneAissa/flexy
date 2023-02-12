@@ -44,7 +44,7 @@ Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
 Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
 Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
 
-Route::get('/test',\App\Http\Livewire\Test::class);
+Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
 
 
 

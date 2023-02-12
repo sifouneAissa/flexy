@@ -1,4 +1,7 @@
 <!-- Sidebar main menu -->
+@php
+    $items = \App\Models\SNavitem::where('parent_id',null)->orderBy('order')->where('is_active',true)->get();
+@endphp
 <div class="sidebar-wrap  sidebar-overlay">
     <!-- Add pushcontent or fullmenu instead overlay -->
     <div class="closemenu text-muted">Close Menu</div>
@@ -117,6 +120,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="chat.html" tabindex="-1">
                             <div class="avatar avatar-40 icon"><i class="bi bi-chat-text"></i></div>
@@ -156,17 +160,25 @@
                             <div class="arrow"><i class="bi bi-chevron-right"></i></div>
                         </a>
                     </li>
-                    <li class="nav-item">
 
-                        <form id="logform" method="POST" action="{{ route('logout') }}" >
-                        @csrf
-                            <a class="nav-link" href="javascript: void(0)"  onclick="document.getElementById('logform').submit()" tabindex="-1">
-                                <div class="avatar avatar-40 icon"><i class="bi bi-box-arrow-right"></i></div>
-                                <div class="col">Logout</div>
-                                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                            </a>
-                        </form>
-                    </li>
+                    @foreach($items as $item)
+                        <livewire:partials.sidebar.nav-item :item="$item" />
+                    @endforeach
+
+
+                    @if(auth()->user())
+                        <li class="nav-item">
+
+                            <form id="logform" method="POST" action="{{ route('logout') }}" >
+                                @csrf
+                                <a class="nav-link" href="javascript: void(0)"  onclick="document.getElementById('logform').submit()" tabindex="-1">
+                                    <div class="avatar avatar-40 icon"><i class="bi bi-box-arrow-right"></i></div>
+                                    <div class="col">Logout</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </form>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
