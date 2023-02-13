@@ -11,8 +11,10 @@
         tabindex="-1">
         <div class="avatar avatar-40 icon"><i class="bi {{$item->icon}}"></i></div>
         <div class="col">{{$item->name}} @if($item->isNew) <span class="badge bg-info fw-light">new</span> @endif</div>
-        @if($item->is_drop_down()) <div class="arrow"><i class="bi bi-chevron-right"></i></div>@endif
-{{--            <i class="bi bi-chevron-up minus"></i>--}}
+        @if($item->is_drop_down()) <div class="arrow"><i class="bi bi-chevron-down plus"></i> <i
+                class="bi bi-chevron-up minus"></i>
+        </div>
+        @endif
 
     </a>
 

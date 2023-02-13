@@ -30,6 +30,7 @@ class LoginForm extends Component
         $this->validateOnly($propertyName);
     }
 
+
     public function login()
     {
         $validatedData = $this->validate();
