@@ -40,15 +40,16 @@ Route::middleware([
 //    abort(404);
 //});
 
-Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
-Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index');
+Route::middleware(['set.user.attrs'])->group(function (){
 
-Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
-Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
+    Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
+    Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index');
 
-Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
+    Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
+    Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
 
-Route::view('/powergrid', 'powergrid-demo');
+    Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
+});
 
 
 
