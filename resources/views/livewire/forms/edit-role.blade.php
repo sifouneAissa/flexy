@@ -1,4 +1,4 @@
-<div>
+<div wire:key="edit-livewire-roles">
     <button type="button" class="text-warning" wire:click="showU({{$item->id}})"><i class="bi bi-pencil-square"></i>
     </button>
 

@@ -1,7 +1,10 @@
-<div wire:key="livewire-roles">
+<div  wire:key="livewire-roles">
     <livewire:datatables.role-table />
 </div>
 
+<style >
+        @import "../../resources/css/app.css";
+</style>
 <script>
     window.addEventListener('showUpdate', (e) => {
         $('.modal-backdrop').remove();

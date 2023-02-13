@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="form-floating col-auto">
-            <select wire:model="lang"  class="form-select form-control" id="select">
+            <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                 <option  disabled>Language</option>
                 @foreach(config('app.locales') as $key =>  $value)
                     <option value="{{$value}}">{{__('lang.'.$value)}}</option>

@@ -15,11 +15,19 @@ class Applogo extends Component
         $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
     }
 
+    public function setLang(){
+        Session::put('lang' , $this->lang);
+        $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
+    }
+
     public function setMode($mode){
         Session::put('mode' , $mode);
         $this->dispatchBrowserEvent('setMode', ['mode' => $mode]);
     }
 
+    public function mount(){
+        $this->lang = Session::get('lang') ? Session::get('lang') : \app()->getLocale();
+    }
 
     public function render()
     {

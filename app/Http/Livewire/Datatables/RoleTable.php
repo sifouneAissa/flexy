@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Role;
 class RoleTable extends LivewireDatatable
 {
     public $hideable = 'inline';
-    public $exportable = true;
+    public $exportable = false;
     public $item =null;
 
 
@@ -29,10 +29,10 @@ class RoleTable extends LivewireDatatable
     {
         //
         return [
+            Column::checkbox(),
             NumberColumn::name('id')
                 ->label('ID')->filterable(),
             Column::name('name')
-                ->defaultSort('asc')
                 ->searchable(),
             DateColumn::name('created_at')->filterable(),
             Column::callback(['id'], function ($id) {
