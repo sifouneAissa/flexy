@@ -1,5 +1,5 @@
 <div  wire:key="{{$item->id}}delete-livewire-roles">
-    <button type="button" class="text-danger" onclick="setShowDeleteModal({{$item->id}},true)"><i class="bi bi-trash"></i>
+    <button type="button" class="text-danger h5" onclick="setShowDeleteModal({{$item->id}},true)"><i class="bi bi-trash"></i>
     </button>
 
     <div  class="modal fade " id="deleteModal-{{$item->id}}" tabindex="-1" role="dialog"

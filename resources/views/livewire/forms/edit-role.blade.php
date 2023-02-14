@@ -1,5 +1,5 @@
 <div  wire:key="{{$item->id}}edit-livewire-roles">
-    <button type="button" class="text-warning" wire:click="showU({{$item->id}})"><i class="bi bi-pencil-square"></i>
+    <button type="button" class="text-warning  h5" wire:click="showU({{$item->id}})"><i class="bi bi-pencil-square"></i>
     </button>
 
     <div  class="modal fade " id="editModal-{{$item->id}}" tabindex="-1" role="dialog"
