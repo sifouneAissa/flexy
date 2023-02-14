@@ -179,6 +179,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Name',
+        'permissions' => 'Permissions'
+    ],
 
 ];

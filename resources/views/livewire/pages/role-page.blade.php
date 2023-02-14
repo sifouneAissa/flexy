@@ -117,8 +117,10 @@
         });
 
     })
-
-
+    // add modal
+    function setShowDeleteModal(id,state){
+        state ? $('#deleteModal-'+id).modal("show") : $('#deleteModal-'+id).modal("hide");
+    }
 
 </script>
 <style>.select2-selection__rendered {
