@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Forms;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class EditRole extends Component
@@ -13,10 +14,12 @@ class EditRole extends Component
     public $permissions;
     public $iteration = 1;
 
-    protected $rules = [
-        'name' => 'required|min:6',
-        'permissions' => 'required|array'
-    ];
+    protected function rules(){
+            return [
+                'name' => 'required|'. Rule::unique('roles', 'name')->ignore($this->item->id),
+                'permissions' => 'required'
+            ];
+    }
 
 
     public function showU($id){
@@ -33,7 +36,7 @@ class EditRole extends Component
         $validation = Validator::make([
                 'name' => $this->name,
                 'permissions' => $this->permissions
-        ], $this->rules);
+        ], $this->rules());
 
         if($validation->fails()){
             $this->iteration++;
@@ -41,8 +44,17 @@ class EditRole extends Component
             $this->setErrorBag($errors);
             $this->showU($id);
         }else {
-            dd("check");
+            // update the role here
+            $this->item->update([
+                'name' => $this->name
+            ]);
+            $this->item->permissions()->sync($this->permissions);
+            $this->dispatchBrowserEvent('hideModal',['id' => $id]);
+            $this->setMount();
+            // to refresh datatable
+            $this->emit('refreshLivewireDatatable');
         }
+
     }
 
     public function render()
@@ -50,5 +62,11 @@ class EditRole extends Component
         return view('livewire.forms.edit-role',[
             'item' => $this->item
         ]);
+    }
+
+    public function setMount(){
+        $this->item->load('permissions');
+        $this->name = $this->item->name;
+        $this->permissions = $this->item->permissions->map(fn ($item) => $item->id)->toArray();
     }
 }

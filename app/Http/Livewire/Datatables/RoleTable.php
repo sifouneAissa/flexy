@@ -15,6 +15,7 @@ class RoleTable extends LivewireDatatable
     public $hideable = 'inline';
     public $exportable = false;
     public $item =null;
+    public $lang;
 
 
 
@@ -23,7 +24,6 @@ class RoleTable extends LivewireDatatable
         //
         return Role::query();
     }
-
 
     public function columns()
     {
