@@ -95,10 +95,11 @@ return [
 
     'default_classes' => [
         'row' => [
-            'even' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-100',
-            'odd' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-50',
-            'selected' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-yellow-100',
+            'even' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-100 bg-white',
+            'odd' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-50 bg-white',
+            'selected' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-yellow-100 bg-white',
         ],
-        'cell' => 'whitespace-no-wrap text-sm text-gray-900 px-6 py-2',
+        'cell' => 'whitespace-no-wrap text-sm text-gray-900 px-6 py-2 bg-white',
+        'input' => 'text-black'
     ],
 ];
