@@ -1,9 +1,11 @@
 <div>
     @includeIf($beforeTableSlot)
     <div class="relative">
-        <button onclick="setShowModal(true,null)" class="btn btn-primary float-end" data-toggle="modal" data-target="#addModal" >
-            Add
-        </button>
+        @if($add)
+            <button onclick="setShowModal(true,null)" class="btn btn-primary float-end" data-toggle="modal" data-target="#addModal" >
+                Add
+            </button>
+        @endif
 
         <div class="flex items-center justify-between mb-1">
             <div class="flex items-center h-10">
