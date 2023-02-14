@@ -44,6 +44,7 @@ class EditRole extends Component
             $this->setErrorBag($errors);
             $this->showU($id);
         }else {
+
             // update the role here
             $this->item->update([
                 'name' => $this->name

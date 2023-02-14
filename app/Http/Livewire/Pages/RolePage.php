@@ -54,7 +54,9 @@ class RolePage extends Component
 
     public function render()
     {
-        return view('livewire.pages.role-page')->layout('livewire.layouts.base-layout');
+        return view('livewire.pages.role-page',[
+            'dir' => isRtl(app()->getLocale())
+        ])->layout('livewire.layouts.base-layout');
     }
 
 }

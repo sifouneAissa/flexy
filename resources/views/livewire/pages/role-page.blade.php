@@ -59,7 +59,8 @@
             multiple : true,
             allowClear: true,
             dropdownParent: $('#editModal-'+e.detail.id),
-            width: 'resolve'
+            width: 'resolve',
+            dir : {{$dir}}
         });
 
         if(e.detail.selected){
@@ -99,7 +100,8 @@
             multiple : true,
             allowClear: true,
             dropdownParent: $('#addModal'),
-            width: 'resolve'
+            width: 'resolve',
+            dir : {{$dir}}
         });
 
 
@@ -111,8 +113,6 @@
     document.addEventListener('livewire:load', function () {
         $('#selectAdd').on('change', function (e1) {
             var data = $('#selectAdd').select2("val");
-            console.log('data');
-            console.log(data);
             @this.set('permissions', data);
         });
 
