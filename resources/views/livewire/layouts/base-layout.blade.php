@@ -14,7 +14,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json" />
 
-
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/assets/imgwebp/favicon180.webp" sizes="180x180">
     <link rel="icon" href="/assets/imgwebp/favicon32.webp" sizes="32x32" type="image/png">
@@ -29,25 +28,18 @@
     <!-- swiper carousel css -->
     <link rel="stylesheet" href="/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.css">
 
+{{--    select2--}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+
+
+
     <!-- style css for this template -->
     <link href="/assets/css/style.css" rel="stylesheet" id="style">
     <!-- Scripts -->
 
-{{--    <script src="https://cdn.tailwindcss.com"></script>--}}
+    <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
-    <style>
-        /*.rounded-lg, .rounded-b-none*/
-        /*{*/
-        /*    width: 1140px;*/
-        /*}*/
-
-        /*.form-input*/
-        /*{*/
-        /*    width: 450px;*/
-        /*    height: 30px;*/
-        /*}*/
-    </style>
 </head>
 <body>
 
@@ -157,11 +149,15 @@
 <!-- Footer ends-->
 <livewire:partials.pwabtn />
 @livewireScripts
-
+<!--@stack('scripts')-->
 <!-- Required jquery and libraries -->
-<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<!--select2-->
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- Customized jquery file  -->
 <script src="/assets/js/main.js"></script>

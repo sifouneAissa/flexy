@@ -52,4 +52,4 @@ Route::middleware(['set.user.attrs'])->group(function (){
 });
 
 
-
+Route::get('/select2', \App\Http\Livewire\Common\Select2::class);
