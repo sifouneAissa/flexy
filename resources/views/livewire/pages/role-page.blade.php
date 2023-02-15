@@ -60,7 +60,7 @@
             allowClear: true,
             dropdownParent: $('#editModal-'+e.detail.id),
             width: 'resolve',
-            dir : @this.get("dir")
+            dir : '{{$dir}}'
         });
 
         if(e.detail.selected){
@@ -101,7 +101,7 @@
             allowClear: true,
             dropdownParent: $('#addModal'),
             width: 'resolve',
-            dir : @this.get("dir")
+            dir : '{{$dir}}'
         });
 
 
