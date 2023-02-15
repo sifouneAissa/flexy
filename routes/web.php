@@ -32,6 +32,7 @@ Route::middleware([
     // users
     Route::get('/users',\App\Http\Livewire\Pages\UserPage::class)->name('user.index');
     Route::get('/users/create',\App\Http\Livewire\Pages\Users\UserAdd::class)->name('user.create');
+    Route::get('/users/edit/{user}',\App\Http\Livewire\Pages\Users\UserEdit::class)->name('user.edit');
 
 });
 

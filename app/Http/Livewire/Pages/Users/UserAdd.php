@@ -8,11 +8,9 @@ use Spatie\Permission\Models\Role;
 
 class UserAdd extends Component
 {
-    public $apermissions ;
     public $aroles ;
 
     public function mount(){
-        $this->apermissions = Permission::get(['name','id']);
         $this->aroles = Role::get(['name','id']);
     }
 

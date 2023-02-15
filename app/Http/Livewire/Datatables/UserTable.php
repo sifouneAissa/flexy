@@ -39,9 +39,9 @@ class UserTable extends LivewireDatatable
                 return User::query()->find($id)->roles->first()->name;
             })->label('Role'),
             DateColumn::name('created_at')->filterable(),
-//            Column::callback(['id'], function ($id) {
-//                return view('livewire.table-actions.role-table-actions', ['id' => $id,'item' => $this->builder()->where('id',$id)->first()]);
-//            })->unsortable()
+            Column::callback(['id','name'], function ($id,$name) {
+                return view('livewire.table-actions.user-table-actions', ['id' => $id,'item' => $this->builder()->where('id',$id)->first()]);
+            })->unsortable()
         ];
     }
 }

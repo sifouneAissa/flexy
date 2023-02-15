@@ -4,12 +4,12 @@ namespace App\Http\Livewire\Forms;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Livewire\Component;
+use Illuminate\Validation\Rule;
 use Laravel\Fortify\Rules\Password;
+use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
-class AddUserForm extends Component
+class EditUserForm extends Component
 {
 
     public $password;
@@ -17,19 +17,23 @@ class AddUserForm extends Component
     public $email;
     public $name;
     public $role;
+    public $user;
 
     protected function rules(){
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required',  new Password, 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($this->user->id)],
+            'password' => ['confirmed'],
             'role' => ['required']
         ];
     }
 
 
     public function mount(){
-        $this->role = Role::first()?->id;
+        // init user info
+        $this->role = $this->user->roles->first()?->id;
+        $this->email = $this->user->email;
+        $this->name = $this->user->name;
     }
 
 
@@ -39,25 +43,25 @@ class AddUserForm extends Component
     }
 
 
-
     public function save(){
+
         $state = $this->validate();
 
         $inputs = filterRequest($this->all(),User::class);
 
+        if(key_exists('password',$inputs))
         $inputs['password'] = Hash::make($this->password);
 
-        $user = User::query()->create($inputs);
+        $this->user->update($inputs);
 
-        $user->assignRole(Role::find($this->role));
+        $this->user->assignRole(Role::find($this->role));
 
         return redirect()->to(route('user.index'));
     }
 
+
     public function render()
     {
-        return view('livewire.forms.add-user-form');
+        return view('livewire.forms.edit-user-form');
     }
 }
-
-
