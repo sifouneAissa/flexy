@@ -10,6 +10,7 @@ class Applogo extends Component
 {
     public $lang;
     public $mode;
+    public $isBase = true;
 
     public function updatedLang(){
         Session::put('lang' , $this->lang);
@@ -31,12 +32,14 @@ class Applogo extends Component
 
     }
 
-    public function mount(){
+    public function mount($isBase=true){
         $this->lang = Session::get('lang') ? Session::get('lang') : \app()->getLocale();
         $this->mode = Session::get('mode') ? Session::get('mode') : config("app.mode");
 
         $this->setLang();
         $this->setMode($this->mode);
+
+        $this->isBase = $isBase;
     }
 
     public function render()

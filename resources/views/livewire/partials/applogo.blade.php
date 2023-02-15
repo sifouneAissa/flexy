@@ -1,18 +1,67 @@
 
 <!-- Header -->
 <header class="header position-fixed">
+    @if($isBase)
+        <div class="row">
+            <div class="col-auto">
+                <a href="javascript:void(0)" target="_self" class="btn btn-light btn-44 menu-btn">
+                    <i class="bi bi-list"></i>
+                </a>
+            </div>
+            <div class="col text-center">
+                <div class="logo-small">
+                    <img src="/assets/imgwebp/logo.webp" alt="" />
+                    <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
+                </div>
+            </div>
+            <div class="form-floating col-auto">
+                <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
+                    <option  disabled>Language</option>
+                    @foreach(config('app.locales') as $key =>  $value)
+                        <option value="{{$value}}">{{__('lang.'.$value)}}</option>
+                    @endforeach
+                </select>
+                <label for="select">Language</label>
+            </div>
+
+            <div class="form-floating col-auto">
+                <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>
+            </div>
+            <div  class="form-floating col-auto">
+                <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
+            </div>
+
+            <div class="col-auto">
+                <a href="profile.html" target="_self" class="btn btn-light btn-44">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="count-indicator"></span>
+                </a>
+            </div>
+            {{--        <div class="row mb-4">--}}
+            {{--            <div class="col-6 d-grid">--}}
+            {{--                <input type="radio" class="btn-check" name="layout-mode" checked id="btn-ltr">--}}
+            {{--                <label class="btn btn-outline-primary shadow-sm" for="btn-ltr">Left to Right</label>--}}
+            {{--            </div>--}}
+            {{--            <div class="col-6 d-grid">--}}
+            {{--                <input type="radio" class="btn-check" name="layout-mode" id="btn-rtl">--}}
+            {{--                <label class="btn btn-outline-primary shadow-sm" for="btn-rtl">Right to Left</label>--}}
+            {{--            </div>--}}
+            {{--        </div>--}}
+        </div>
+    @else
     <div class="row">
         <div class="col-auto">
-            <a href="javascript:void(0)" target="_self" class="btn btn-light btn-44 menu-btn">
-                <i class="bi bi-list"></i>
-            </a>
+            <button type="button" class="btn btn-light btn-44 back-btn">
+                <i class="bi bi-arrow-left"></i>
+            </button>
         </div>
         <div class="col text-center">
             <div class="logo-small">
-                <img src="assets/imgwebp/logo.webp" alt="" />
+                <img src="/assets/img/logo.png" alt="" />
                 <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
             </div>
         </div>
+
         <div class="form-floating col-auto">
             <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                 <option  disabled>Language</option>
@@ -22,7 +71,6 @@
             </select>
             <label for="select">Language</label>
         </div>
-
         <div class="form-floating col-auto">
             <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>
         </div>
@@ -36,17 +84,8 @@
                 <span class="count-indicator"></span>
             </a>
         </div>
-{{--        <div class="row mb-4">--}}
-{{--            <div class="col-6 d-grid">--}}
-{{--                <input type="radio" class="btn-check" name="layout-mode" checked id="btn-ltr">--}}
-{{--                <label class="btn btn-outline-primary shadow-sm" for="btn-ltr">Left to Right</label>--}}
-{{--            </div>--}}
-{{--            <div class="col-6 d-grid">--}}
-{{--                <input type="radio" class="btn-check" name="layout-mode" id="btn-rtl">--}}
-{{--                <label class="btn btn-outline-primary shadow-sm" for="btn-rtl">Right to Left</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
+    @endif
 </header>
 <!-- Header ends -->
 <script>

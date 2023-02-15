@@ -7,7 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>finwallapp V2.0 - Mobile HTML template</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('page-title')  - {{ config('app.name', 'Laravel') }}</title>
 
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -60,29 +62,8 @@
 <!-- Begin page -->
 <main class="h-100">
 
-    <!-- Header -->
-    <header class="header position-fixed">
-        <div class="row">
-            <div class="col-auto">
-                <button type="button" class="btn btn-light btn-44 back-btn">
-                    <i class="bi bi-arrow-left"></i>
-                </button>
-            </div>
-            <div class="col text-center">
-                <div class="logo-small">
-                    <img src="/assets/img/logo.png" alt="" />
-                    <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
-                </div>
-            </div>
-            <div class="col-auto">
-                <a href="profile.html" target="_self" class="btn btn-light btn-44">
-                    <i class="bi bi-person-circle"></i>
-                    <span class="count-indicator"></span>
-                </a>
-            </div>
-        </div>
-    </header>
-    <!-- Header ends -->
+
+    <livewire:partials.applogo :isBase="false" />
 
     <!-- main page content -->
     <div class="main-container container">
@@ -93,6 +74,7 @@
 </main>
 <!-- Page ends-->
 @livewireScripts
+<script> window.addEventListener('langChanged', (e) => { window.location.reload();});</script>
 <!-- Required jquery and libraries -->
 <script src="/assets/js/jquery-3.3.1.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>
