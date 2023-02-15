@@ -33,14 +33,14 @@ Route::middleware([
 });
 
 
-//Route::get('/{name}', function ($name) {
-//
-//    $html = str_contains($name,'html');
-//    if($html)
-//        return view('app.'.str_replace('.html','',$name));
-//
-//    abort(404);
-//});
+Route::get('/{name}', function ($name) {
+
+    $html = str_contains($name,'html');
+    if($html)
+        return view('app.'.str_replace('.html','',$name));
+
+    abort(404);
+});
 
 Route::middleware(['set.user.attrs'])->group(function (){
 
