@@ -162,7 +162,13 @@
                     </li>
 
                     @foreach($items as $item)
-                        <livewire:partials.sidebar.nav-item :item="$item" />
+                        @if($item->need_login && auth()->user())
+                            @can($item->permission)
+                                <livewire:partials.sidebar.nav-item :item="$item" />
+                            @endcan
+                        @elseif(!$item->need_login)
+                            <livewire:partials.sidebar.nav-item :item="$item" />
+                        @endif
                     @endforeach
 
 

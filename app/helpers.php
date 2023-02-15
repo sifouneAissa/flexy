@@ -341,6 +341,33 @@ if (!function_exists('getMac')) {
 
 
 
+if (!function_exists('crudPermissions')) {
+
+    function crudPermissions($name,$only=[])
+    {
+
+        $crud = [
+            'view',
+            'add',
+            'update',
+            'delete'
+        ];
+
+        if($only) $crud = $only;
+
+        $permissions = [];
+
+        foreach ($crud as $c){
+            $permissions[] = $c.' '.$name;
+        }
+
+        return $permissions;
+    }
+}
+
+
+
+
 
 
 //if (!function_exists('getReviews')) {

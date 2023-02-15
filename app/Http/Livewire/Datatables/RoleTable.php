@@ -16,6 +16,9 @@ class RoleTable extends LivewireDatatable
     public $exportable = false;
     public $item =null;
     public $lang;
+    public $add = true;
+    public $permission = 'add role';
+
 
 
 

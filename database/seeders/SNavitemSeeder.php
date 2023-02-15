@@ -15,21 +15,24 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-gear',
             'isNew' => true,
-            'route' => 'test',
+            'route' => null,
+            'permission' => 'view setting',
             'children' => [
                 [
                     'name' => 'Roles',
                     'parent_id' => null,
                     'icon' => 'bi-person-gear',
                     'isNew' => true,
-                    'route' => 'test'
+                    'route' => 'role.index',
+                    'permission' => 'view role',
                 ],
                 [
                     'name' => 'Permissions',
                     'parent_id' => null,
                     'icon' => 'bi-person-lock',
                     'isNew' => true,
-                    'route' => 'test'
+                    'route' => 'permission.index',
+                    'permission' => 'view permission'
                 ]
             ]
         ]

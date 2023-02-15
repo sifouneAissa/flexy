@@ -12,10 +12,12 @@ class RolePage extends Component
     public $name;
     public $permissions = [];
     public $iteration = 1;
+
     public $rules = [
         'name' => 'required|unique:roles',
         'permissions' => 'required'
     ];
+
 
 
     public function save(){

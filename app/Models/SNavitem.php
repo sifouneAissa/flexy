@@ -16,7 +16,13 @@ class SNavitem extends Model
         'isNew',
         'route',
         'is_active',
-        'order'
+        'order',
+        'permission',
+        'need_login'
+    ];
+
+    protected $casts = [
+        'need_login' => 'boolean'
     ];
 
     public function children() {

@@ -26,6 +26,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index')->middleware(['permission:view role']);
+    Route::get('/permissions',\App\Http\Livewire\Pages\PermissionPage::class)->name('permission.index')->middleware(['permission:view permission']);
 
 
 });
@@ -43,9 +45,6 @@ Route::middleware([
 Route::middleware(['set.user.attrs'])->group(function (){
 
     Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
-    Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index');
-    Route::get('/permissions',\App\Http\Livewire\Pages\PermissionPage::class)->name('permission.index');
-
     Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
     Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
 
