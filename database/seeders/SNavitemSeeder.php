@@ -33,7 +33,17 @@ class SNavitemSeeder extends Seeder
                     'isNew' => true,
                     'route' => 'permission.index',
                     'permission' => 'view permission'
-                ]
+                ],
+                [
+                    'name' => 'Users',
+                    'parent_id' => null,
+                    'icon' => 'bi-person-fill-gear',
+                    'isNew' => true,
+                    'route' => 'user.index',
+//                    'permission' => 'view permission',
+                    'need_login' => false
+                ],
+
             ]
         ]
     ];
