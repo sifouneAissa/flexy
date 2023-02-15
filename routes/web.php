@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'set.user.attrs'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -41,6 +42,8 @@ Route::get('/{name}', function ($name) {
 
     abort(404);
 });
+
+
 
 Route::middleware(['set.user.attrs'])->group(function (){
 

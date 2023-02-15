@@ -24,7 +24,7 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                            <div class="form-group form-floating mb-3 {{$errors->has('permissions') ? 'is-invalid' : 'is-valid'}}" >
+                        <div class="form-group form-floating mb-3 {{$errors->has('permissions') ? 'is-invalid' : 'is-valid'}}" >
                                 <select wire:model.defer="permissions" style="width: 100%"   class="form-control" id="select{{$item->id}}">
                                         @foreach(\Spatie\Permission\Models\Permission::get(['id','name']) as $p)
                                             <option  value="{{ $p->id }}">{{ $p->name }}</option>
@@ -33,11 +33,10 @@
 
                                 <label class="form-control-label h3" for="select{{$item->id}}">Permissions</label>
                                 @error('permissions')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="text-danger row m-1">{{ $message }}</span>
                                 @enderror
                             </div>
-{{--                        </div>--}}
-                    </div>
+                        </div>
                     <div class="modal-footer">
                         <button type="button" onclick="DModal({{$item->id}})" class="btn btn-outline-warning"
                                 data-dismiss="modal">Close
@@ -56,6 +55,7 @@
     document.addEventListener('livewire:load', function () {
         $('#select{{$item->id}}').on('change', function (e1) {
             var data = $('#select{{$item->id}}').select2("val");
+            console.log(data);
             @this.set('permissions', data);
         });
 

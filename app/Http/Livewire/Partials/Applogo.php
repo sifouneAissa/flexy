@@ -20,6 +20,8 @@ class Applogo extends Component
         Session::put('lang' , $this->lang);
         $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
         $this->emit('langChanged');
+        $this->dispatchBrowserEvent('langChanged');
+
     }
 
     public function setMode($mode){
