@@ -7,7 +7,8 @@ return [
         'admin' => array_merge(
             crudPermissions('role'),
             crudPermissions('setting',['view']),
-            crudPermissions('permission',['view'])
+            crudPermissions('permission',['view']),
+            crudPermissions('user')
         ),
 //        'publisher' => array_merge([
 //        ]

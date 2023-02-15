@@ -15,7 +15,7 @@ class UserTable extends LivewireDatatable
     public $hideable = 'inline';
     public $exportable = false;
     public $add = true;
-    public $permission = 'add role';
+    public $permission = 'add user';
     public $add_link = 'user.create';
 
     public function builder()

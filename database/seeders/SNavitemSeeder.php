@@ -40,8 +40,8 @@ class SNavitemSeeder extends Seeder
                     'icon' => 'bi-person-fill-gear',
                     'isNew' => true,
                     'route' => 'user.index',
-//                    'permission' => 'view permission',
-                    'need_login' => false
+                    'permission' => 'view user',
+                    'need_login' => true
                 ],
 
             ]
