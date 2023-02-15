@@ -16,6 +16,7 @@ class UserTable extends LivewireDatatable
     public $exportable = false;
     public $add = true;
     public $permission = 'add role';
+    public $add_link = 'user.create';
 
     public function builder()
     {

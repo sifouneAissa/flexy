@@ -29,7 +29,9 @@ Route::middleware([
 
     Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index')->middleware(['permission:view role']);
     Route::get('/permissions',\App\Http\Livewire\Pages\PermissionPage::class)->name('permission.index')->middleware(['permission:view permission']);
+    // users
     Route::get('/users',\App\Http\Livewire\Pages\UserPage::class)->name('user.index');
+    Route::get('/users/create',\App\Http\Livewire\Pages\Users\UserAdd::class)->name('user.create');
 
 });
 

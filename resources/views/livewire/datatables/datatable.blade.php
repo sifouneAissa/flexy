@@ -3,9 +3,15 @@
     <div class="relative">
         @if($add)
             @can($permission)
+                @if(!isset($add_link))
                 <button  onclick="setShowModal(true,null)" class="btn btn-primary float-end" data-toggle="modal" data-target="#addModal" >
                     Add
                 </button>
+                @else
+                    <a href="{{route($add_link)}}"  class="btn btn-primary float-end" >
+                        Add
+                    </a>
+                @endif
             @endcan
         @endif
 
