@@ -38,7 +38,9 @@
     <!-- Scripts -->
 
 {{--    <script src="https://cdn.tailwindcss.com"></script>--}}
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+{{--    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">--}}
+    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
+
     @vite(['resources/js/app.js'])
     @livewireStyles
 </head>

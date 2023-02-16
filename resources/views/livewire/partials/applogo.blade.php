@@ -31,12 +31,14 @@
                 <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
             </div>
 
-            <div class="col-auto">
-                <a href="profile.html" target="_self" class="btn btn-light btn-44">
-                    <i class="bi bi-person-circle"></i>
-                    <span class="count-indicator"></span>
-                </a>
-            </div>
+            @if(!(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile'))
+                <div  class="col-auto">
+                    <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
+                        <i class="bi bi-person-circle"></i>
+                        <span class="count-indicator"></span>
+                    </a>
+                </div>
+            @endif
             {{--        <div class="row mb-4">--}}
             {{--            <div class="col-6 d-grid">--}}
             {{--                <input type="radio" class="btn-check" name="layout-mode" checked id="btn-ltr">--}}
@@ -78,12 +80,14 @@
             <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
         </div>
 
-        <div class="col-auto">
-            <a href="profile.html" target="_self" class="btn btn-light btn-44">
-                <i class="bi bi-person-circle"></i>
-                <span class="count-indicator"></span>
-            </a>
-        </div>
+        @if(!(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile'))
+            <div  class="col-auto">
+                <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="count-indicator"></span>
+                </a>
+            </div>
+        @endif
     </div>
     @endif
 </header>

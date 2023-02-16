@@ -34,6 +34,8 @@ Route::middleware([
     Route::get('/users/create',\App\Http\Livewire\Pages\Users\UserAdd::class)->name('user.create')->middleware(['permission:add user']);
     Route::get('/users/edit/{user}',\App\Http\Livewire\Pages\Users\UserEdit::class)->name('user.edit')->middleware(['permission:update user']);
 
+    // profile
+    Route::get('/profile',\App\Http\Livewire\Pages\Profile::class)->name('user.profile');
 });
 
 
@@ -59,3 +61,6 @@ Route::middleware(['set.user.attrs'])->group(function (){
 
 
 Route::get('/select2', \App\Http\Livewire\Common\Select2::class);
+
+// referral login
+Route::get('/referral',\App\Http\Livewire\Test::class)->name('referral.register')->middleware('referral');
