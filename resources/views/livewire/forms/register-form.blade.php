@@ -1,7 +1,10 @@
 <form wire:submit.prevent="register">
 <div class="col-11 col-sm-11 col-md-6 col-lg-5 col-xl-3 mx-auto align-self-center py-4">
     <h1 class="mb-4"><span class="text-secondary fw-light">Create</span><br/>new account</h1>
-{{--    <div class="form-floating is-valid mb-3">--}}
+    @if($referBy)
+        <h5 class="mb-4">Your account will be linked with {{$referBy->name}}</h5>
+    @endif
+    {{--    <div class="form-floating is-valid mb-3">--}}
 {{--        <select class="form-control" id="country">--}}
 {{--            <option selected>United States (+1)</option>--}}
 {{--            <option>United Kingdoms (+44)</option>--}}

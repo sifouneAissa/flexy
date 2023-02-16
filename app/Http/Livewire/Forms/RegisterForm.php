@@ -16,6 +16,8 @@ class RegisterForm extends Component
     public $password_confirmation;
     public $email;
     public $name;
+    public $referBy = null;
+    public $referred_by = null;
 
 
     protected function rules(){
@@ -37,7 +39,12 @@ class RegisterForm extends Component
         $validatedData = $this->validate();
         //
         $request = new Request();
+
+        if($this->referBy)
+            $this->referred_by = $this->referBy?->id;
+
         $request->merge($this->all());
+
 
         app(RegisteredUserController::class)->store($request,(new CreateNewUser()));
 

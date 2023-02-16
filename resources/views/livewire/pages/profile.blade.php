@@ -1,5 +1,4 @@
 <div>
-
     <div class="row mb-3">
         <div class="col align-self-center">
             <div class="card">

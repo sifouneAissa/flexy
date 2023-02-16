@@ -39,7 +39,7 @@ Route::middleware([
 });
 
 // referral login
-Route::get('/referral',\App\Http\Livewire\Test::class)->name('referral.register')->middleware('referral');
+Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware('referral');
 
 
 Route::get('/{name}', function ($name) {
@@ -58,7 +58,7 @@ Route::middleware(['set.user.attrs'])->group(function (){
     Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
     Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
     Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
-
+    Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware(['guest:'.config('fortify.guard'),'referral']);
     Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
 });
 

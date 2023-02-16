@@ -1,8 +1,8 @@
 
 <!-- Header -->
-<header class="header position-fixed">
+<header wire:key="header-app-logo" class="header position-fixed" >
     @if($isBase)
-        <div class="row">
+        <div class="row" wire:key="header-app-logo-base">
             <div class="col-auto">
                 <a href="javascript:void(0)" target="_self" class="btn btn-light btn-44 menu-btn">
                     <i class="bi bi-list"></i>
@@ -31,7 +31,7 @@
                 <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
             </div>
 
-            @if(!(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile'))
+            @if($showP)
                 <div  class="col-auto">
                     <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
                         <i class="bi bi-person-circle"></i>
@@ -51,7 +51,7 @@
             {{--        </div>--}}
         </div>
     @else
-    <div class="row">
+    <div  class="row"  wire:key="header-app-logo-crud">
         <div class="col-auto">
             <button type="button" class="btn btn-light btn-44 back-btn">
                 <i class="bi bi-arrow-left"></i>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="form-floating col-auto">
+        <div class="form-floating col-auto" >
             <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                 <option  disabled>Language</option>
                 @foreach(config('app.locales') as $key =>  $value)
@@ -80,7 +80,7 @@
             <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
         </div>
 
-        @if(!(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile'))
+        @if($showP)
             <div  class="col-auto">
                 <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
                     <i class="bi bi-person-circle"></i>

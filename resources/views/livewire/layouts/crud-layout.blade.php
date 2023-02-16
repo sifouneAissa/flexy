@@ -76,7 +76,7 @@
 </main>
 <!-- Page ends-->
 @livewireScripts
-<script> window.addEventListener('langChanged', (e) => { window.location.reload();});</script>
+<script> window.addEventListener('langChanged', (e) => { console.log('langChanged');window.location.reload();});</script>
 <!-- Required jquery and libraries -->
 <script src="/assets/js/jquery-3.3.1.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>

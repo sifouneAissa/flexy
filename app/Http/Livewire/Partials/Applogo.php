@@ -11,6 +11,7 @@ class Applogo extends Component
     public $lang;
     public $mode;
     public $isBase = true;
+    public $showP = true;
 
     public function updatedLang(){
         Session::put('lang' , $this->lang);
@@ -35,18 +36,19 @@ class Applogo extends Component
     public function mount($isBase=true){
         $this->lang = Session::get('lang') ? Session::get('lang') : \app()->getLocale();
         $this->mode = Session::get('mode') ? Session::get('mode') : config("app.mode");
+        $this->isBase = $isBase;
 
         $this->setLang();
         $this->setMode($this->mode);
+        $this->showP = auth()->user() && !(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile');
 
-        $this->isBase = $isBase;
     }
 
     public function render()
     {
         return view('livewire.partials.applogo',[
             'lang' => Session::get('lang') ? Session::get('lang') : \app()->getLocale(),
-            'mode' => Session::get('mode') ? Session::get('mode') : config("app.mode"),
+            'mode' => Session::get('mode') ? Session::get('mode') : config("app.mode")
         ]);
     }
 }

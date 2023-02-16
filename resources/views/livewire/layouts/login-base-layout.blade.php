@@ -14,9 +14,9 @@
     <link rel="manifest" href="manifest.json" />
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="assets/img/favicon180.png" sizes="180x180">
-    <link rel="icon" href="assets/img/favicon32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="assets/img/favicon16.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/img/favicon180.png" sizes="180x180">
+    <link rel="icon" href="/assets/img/favicon32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/img/favicon16.png" sizes="16x16" type="image/png">
 
     <!-- Google fonts-->
 
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- style css for this template -->
-    <link href="assets/css/style.css" rel="stylesheet" id="style">
+    <link href="/assets/css/style.css" rel="stylesheet" id="style">
     <!-- Scripts -->
 {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 
@@ -61,20 +61,21 @@
 
 
 <!--@livewireScripts-->
+@livewireScripts
 <!-- Required jquery and libraries -->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
 
 <!-- Customized jquery file  -->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/color-scheme.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/color-scheme.js"></script>
 
 <!-- PWA app service registration and works -->
-<script src="assets/js/pwa-services.js"></script>
+<script src="/assets/js/pwa-services.js"></script>
 
 <!-- page level custom script -->
-<script src="assets/js/app.js"></script>
+<script src="/assets/js/app.js"></script>
 
 </body>
 
