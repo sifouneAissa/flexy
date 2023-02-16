@@ -38,6 +38,9 @@ Route::middleware([
     Route::get('/profile',\App\Http\Livewire\Pages\Profile::class)->name('user.profile');
 });
 
+// referral login
+Route::get('/referral',\App\Http\Livewire\Test::class)->name('referral.register')->middleware('referral');
+
 
 Route::get('/{name}', function ($name) {
 
@@ -61,6 +64,3 @@ Route::middleware(['set.user.attrs'])->group(function (){
 
 
 Route::get('/select2', \App\Http\Livewire\Common\Select2::class);
-
-// referral login
-Route::get('/referral',\App\Http\Livewire\Test::class)->name('referral.register')->middleware('referral');

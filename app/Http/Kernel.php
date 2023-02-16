@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckReferral;
 use App\Http\Middleware\setUserAttrs;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -68,6 +69,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'set.user.attrs' => setUserAttrs::class,
-    'referral' => \Questocat\Referral\Http\Middleware\CheckReferral::class,
+    'referral' => CheckReferral::class,
     ];
 }
