@@ -1,8 +1,8 @@
 <div  wire:key="{{$item->id}}edit-livewire-roles">
-    <button type="button" class="text-warning  h5" wire:click="showU({{$item->id}})"><i class="bi bi-pencil-square"></i>
+    <button  type="button" class="text-warning  h5" wire:click="showU({{$item->id}})"><i class="bi bi-pencil-square"></i>
     </button>
 
-    <div  class="modal fade " id="editModal-{{$item->id}}" tabindex="-1" role="dialog"
+    <div wire:key="edit-modal{{$item->id}}" class="modal fade " id="editModal-{{$item->id}}" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true" wire:key="{{$iteration}}{{$item->id}}modal-edit" wire:ignore>
 
         <div class="modal-dialog modal-lg" role="document">
@@ -25,18 +25,18 @@
                             @enderror
                         </div>
                         <div class="form-group form-floating mb-3 {{$errors->has('permissions') ? 'is-invalid' : 'is-valid'}}" >
-                                <select wire:model.defer="permissions" style="width: 100%"   class="form-control" id="select{{$item->id}}">
-                                        @foreach(\Spatie\Permission\Models\Permission::get(['id','name']) as $p)
-                                            <option  value="{{ $p->id }}">{{ $p->name }}</option>
-                                        @endforeach
-                                </select>
+                            <select wire:model.defer="permissions" style="width: 100%"   class="form-control" id="select{{$item->id}}">
+                                @foreach(\Spatie\Permission\Models\Permission::get(['id','name']) as $p)
+                                    <option  value="{{ $p->id }}">{{ $p->name }}</option>
+                                @endforeach
+                            </select>
 
-                                <label class="form-control-label h3" for="select{{$item->id}}">Permissions</label>
-                                @error('permissions')
-                                <span class="text-danger row m-1">{{ $message }}</span>
-                                @enderror
-                            </div>
+                            <label class="form-control-label h3" for="select{{$item->id}}">Permissions</label>
+                            @error('permissions')
+                            <span class="text-danger row m-1">{{ $message }}</span>
+                            @enderror
                         </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" onclick="DModal({{$item->id}})" class="btn btn-outline-warning"
                                 data-dismiss="modal">Close
@@ -50,6 +50,7 @@
     </div>
 
 </div>
+
 <script>
 
     document.addEventListener('livewire:load', function () {

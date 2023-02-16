@@ -6,8 +6,8 @@
             <div class="modal-content">
 
                 <form wire:submit.prevent="save">
-                    <div class="modal-header bg-primary">
-                        <h3 class="modal-title" id="exampleModalLongTitle">Add Role</h3>
+                    <div class="modal-header {{$to_update ? 'bg-warning' : 'bg-primary'}}">
+                        <h3 class="modal-title" id="exampleModalLongTitle">{{$to_update ? 'Edit Role' : 'Add Role'}}</h3>
                         <button onclick="setShowModal(false)" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="setShowModal(false)" class="btn btn-outline-primary " data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" onclick="setShowModal(false)" class="btn btn-outline-{{$to_update ? 'warning' : 'primary'}} " data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-{{$to_update ? 'warning' : 'primary'}}">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -46,28 +46,6 @@
 </div>
 
 <script>
-
-
-    window.addEventListener('showUpdate', (e) => {
-
-        $('.modal-backdrop').remove();
-        let select2 = $('#select'+e.detail.id);
-        $('#editModal-'+e.detail.id).modal("show");
-
-        select2.select2({
-            placeholder: 'Select permissions',
-            multiple : true,
-            allowClear: true,
-            dropdownParent: $('#editModal-'+e.detail.id),
-            width: 'resolve',
-            dir : '{{$dir}}'
-        });
-
-        if(e.detail.selected){
-            select2.val(e.detail.selected);
-            select2.trigger('change');
-        }
-    });
 
     window.addEventListener('hideModal', (e) => {
          DModal(e.detail.id);
@@ -86,7 +64,6 @@
         $('.modal-backdrop').remove();
         setShowModal(true,e.detail.selected);
     });
-
 
     // add modal
     function setShowModal(state,selected){
@@ -111,13 +88,22 @@
     }
 
     document.addEventListener('livewire:load', function () {
+
         $('#selectAdd').on('change', function (e1) {
             var data = $('#selectAdd').select2("val");
             @this.set('permissions', data);
         });
 
+
+        $(document).on('hidden.bs.modal','#addModal', function () {
+                @this.set('name',null);
+                @this.set('permissions',[]);
+                @this.set('to_update',false);
+                @this.set("iteration",{{$iteration++}});
+        })
     })
     // add modal
+
     function setShowDeleteModal(id,state){
         state ? $('#deleteModal-'+id).modal("show") : $('#deleteModal-'+id).modal("hide");
     }
@@ -131,5 +117,8 @@
     }
     .select2-selection__arrow {
         height: 31px !important;
+    }
+    .select2-search__field {
+        width: 100% !important;
     }
 </style>

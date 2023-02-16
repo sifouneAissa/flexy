@@ -28,6 +28,12 @@ class RoleTable extends LivewireDatatable
         return Role::query();
     }
 
+
+    public function showU($id){
+        $this->emitTo('pages.role-page','setItem',['id' => $id]);
+    }
+
+
     public function columns()
     {
         //

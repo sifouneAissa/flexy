@@ -21,7 +21,8 @@ class UserTable extends LivewireDatatable
     public function builder()
     {
         //
-        return User::query();
+        // only users has roles
+        return User::query()->whereHas('roles');
     }
 
     public function columns()

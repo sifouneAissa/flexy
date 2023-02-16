@@ -23,7 +23,10 @@ class EditRole extends Component
 
 
     public function showU($id){
-        $this->dispatchBrowserEvent('showUpdate',['id' => $id,'selected' => $this->permissions]);
+
+        $this->emitTo('pages.role-page','setItem',['id' => $id]);
+
+//        $this->dispatchBrowserEvent('showUpdate',['id' => $id,'selected' => $this->permissions]);
     }
 
     public function mount(){
