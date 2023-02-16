@@ -95,6 +95,8 @@
 <script>
     document.addEventListener('livewire:load', function () {
         // Your JS here.
+        select();
+        mode(@this.get('mode'));
     })
 
     /* create cookie */
@@ -139,7 +141,8 @@
 
         let value = document.getElementById('select').value;
         let cookie = langs[value];
-
+        console.log('cookie');
+        console.log(cookie);
         var body = $('body');
 
         setCookie(storageKey, cookie, 1);

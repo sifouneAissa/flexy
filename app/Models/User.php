@@ -31,6 +31,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lang',
+        'mode',
+        'referred_by',
+        'affiliate_id'
     ];
 
     /**

@@ -25,6 +25,12 @@ class setUserAttrs
         if($nlang = Session::get('lang')) $lang = $nlang;
         if($nmode = Session::get('mode')) $mode = $nmode;
 
+        // if user authenticated
+        if($user = auth()->user()){
+            $lang = $user->lang;
+            $mode = $user->mode;
+        }
+
         App::setLocale($lang);
         Carbon::setLocale($lang);
 
