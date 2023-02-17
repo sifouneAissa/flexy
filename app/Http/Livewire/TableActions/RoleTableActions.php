@@ -15,9 +15,4 @@ class RoleTableActions extends Component
         return view('livewire.table-actions.role-table-actions');
     }
 
-
-    public function check(){
-        dd('check');
-    }
-
 }

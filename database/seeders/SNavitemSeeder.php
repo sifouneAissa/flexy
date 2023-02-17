@@ -11,6 +11,13 @@ class SNavitemSeeder extends Seeder
 {
     public $items = [
         [
+            'name' => 'Partners',
+            'parent_id' => null,
+            'icon' => 'bi-person-gear',
+            'isNew' => true,
+            'route' => 'partner.index'
+        ],
+        [
             'name' => 'Settings',
             'parent_id' => null,
             'icon' => 'bi-gear',

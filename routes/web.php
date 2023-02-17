@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+
+Route::middleware(['set.user.attrs'])->group(function (){
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
-    'set.user.attrs'
+    'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
 
     Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index')->middleware(['permission:view role']);
     Route::get('/permissions',\App\Http\Livewire\Pages\PermissionPage::class)->name('permission.index')->middleware(['permission:view permission']);
@@ -35,32 +35,31 @@ Route::middleware([
     Route::get('/users/edit/{user}',\App\Http\Livewire\Pages\Users\UserEdit::class)->name('user.edit')->middleware(['permission:update user']);
 
     // profile
-    Route::get('/profile',\App\Http\Livewire\Pages\Profile::class)->name('user.profile');
+    Route::get('/profile',\App\Http\Livewire\Pages\Profile::class)->name('profile.show');
+
+    // partners list
+    Route::get('/partners',\App\Http\Livewire\Pages\PartnersPage::class)->name('partner.index');
+});
+
+Route::get('/{name}', function ($name) {
+
+        $html = str_contains($name,'html');
+        if($html)
+            return view('app.'.str_replace('.html','',$name));
+
+        abort(404);
 });
 
 // referral login
 Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware('referral');
 
+Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
+Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
+Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
+Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware(['guest:'.config('fortify.guard'),'referral']);
+Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
 
-Route::get('/{name}', function ($name) {
-
-    $html = str_contains($name,'html');
-    if($html)
-        return view('app.'.str_replace('.html','',$name));
-
-    abort(404);
 });
 
 
-
-Route::middleware(['set.user.attrs'])->group(function (){
-
-    Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
-    Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
-    Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
-    Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware(['guest:'.config('fortify.guard'),'referral']);
-    Route::get('/test',\App\Http\Livewire\Test::class)->name('test');
-});
-
-
-Route::get('/select2', \App\Http\Livewire\Common\Select2::class);
+//Route::get('/select2', \App\Http\Livewire\Common\Select2::class);

@@ -72,4 +72,12 @@ class User extends Authenticatable
     {
         return route(config("referral.route_root_name")).'/?ref='.$this->affiliate_id;
     }
+
+    public function parent(){
+            return $this->belongsTo(User::class,'referred_by','affiliate_id');
+    }
+
+    public function children(){
+        return $this->hasMany(User::class,'referred_by','affiliate_id');
+    }
 }

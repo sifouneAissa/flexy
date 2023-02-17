@@ -33,7 +33,7 @@
 
             @if($showP)
                 <div  class="col-auto">
-                    <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
+                    <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">
                         <i class="bi bi-person-circle"></i>
                         <span class="count-indicator"></span>
                     </a>
@@ -82,7 +82,7 @@
 
         @if($showP)
             <div  class="col-auto">
-                <a href="{{route("user.profile")}}" target="_self" class="btn btn-light btn-44">
+                <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">
                     <i class="bi bi-person-circle"></i>
                     <span class="count-indicator"></span>
                 </a>

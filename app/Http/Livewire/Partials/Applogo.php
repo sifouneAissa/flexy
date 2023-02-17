@@ -57,7 +57,7 @@ class Applogo extends Component
         $this->isBase = $isBase;
         $this->setLang();
         $this->setMode($this->mode);
-        $this->showP = auth()->user() && !(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='user.profile');
+        $this->showP = auth()->user() && !(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='profile.show');
 
     }
 
