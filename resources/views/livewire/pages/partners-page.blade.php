@@ -1,4 +1,6 @@
-
+@section('page-title')
+    Partners
+@endsection
 @if($parent)
     <div class="row">
         <livewire:partials.pages.user-card :item="$parent" :withRole="true" />
