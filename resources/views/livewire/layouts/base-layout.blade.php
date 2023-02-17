@@ -150,12 +150,11 @@
     </div>
 </div>
 <!-- Footer ends-->
-<livewire:partials.pwabtn />
-@livewireScripts
-<script> window.addEventListener('langChanged', (e) => {
-    console.log("check");
 
-    window.location.reload();});</script>
+<!--<livewire:partials.pwabtn />-->
+
+@livewireScripts
+<script> window.addEventListener('langChanged', (e) => {window.location.reload();});</script>
 <!-- Required jquery and libraries -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="/assets/js/popper.min.js"></script>
