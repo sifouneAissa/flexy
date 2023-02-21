@@ -25,7 +25,27 @@ class ProviderAdd extends Component
         return array_merge($rules);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     * get the builder according to the authenticated user
+     */
+    public function builder(){
+        // general conditions for all users
+        $wheres = [
+            ['id' ,'!=', auth()->user()->id],
+            ['referred_by' , auth()->user()->affiliate_id],
+        ];
+        // if this one is an admin then do this
+        if(auth()->user()->hasRole('admin'))
+            return User::query()->whereIn('referred_by',[
+                null,auth()->user()->affiliate_id
+            ])->whereNot('id', auth()->user()->id);
+
+        return User::query()->where($wheres);
+
+    }
     public function updatedSearch(){
+        // once the search var updated filter the users array
         $this->fusers = $this->ausers->filter(function ($item) {
             return str_contains($item->name,$this->search);
         });
@@ -42,7 +62,9 @@ class ProviderAdd extends Component
     ];
 
     public function mount(){
-        $this->ausers = User::all();
+        // filter users of the authenticated
+        $this->ausers = $this->builder()->get();
+
         foreach ($this->ausers as $user){
             $this->percentages[$user->id] = [
                 'user_id' => $user->id,
