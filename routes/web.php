@@ -43,6 +43,7 @@ Route::middleware([
     // providers
     Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index');
     Route::get('/providers/create',\App\Http\Livewire\Pages\Providers\ProviderAdd::class)->name('provider.create');
+    Route::get('/providers/edit/{provider}',\App\Http\Livewire\Pages\Providers\ProviderEdit::class)->name('provider.edit');
 
 });
 

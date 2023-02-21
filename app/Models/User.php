@@ -68,7 +68,11 @@ class User extends Authenticatable
     ];
 
     public function providers(){
-        return $this->belongsToMany(Provider::class,'user_providers')->withPivot('percentage');
+        return $this->belongsToMany(Provider::class,'user_providers');
+    }
+
+    public function user_providers(){
+        return $this->hasMany(UserProvider::class,'user_id');
     }
 
     public function getReferralLink()

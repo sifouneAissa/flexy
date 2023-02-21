@@ -37,6 +37,9 @@ class ProviderTable extends LivewireDatatable
             Column::name('percentage')->label('Percentage(%)')
                 ->searchable(),
             DateColumn::name('created_at')->filterable(),
+            Column::callback(['id','name'], function ($id,$name) {
+                return view('livewire.table-actions.provider-table-actions', ['id' => $id,'item' => $this->builder()->where('id',$id)->first()]);
+            })->unsortable()
         ];
     }
 }
