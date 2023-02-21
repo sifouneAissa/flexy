@@ -6,6 +6,9 @@
 {{--        </div>--}}
 {{--    </div>--}}
 {{--</div>--}}
+@section('page-title')
+    Add User
+@endsection
 <div class="row">
     <div class="col-12 col-md-6 col-lg-6">
         <div class="card card-light shadow-sm mb-4">

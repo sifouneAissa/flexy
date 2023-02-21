@@ -172,6 +172,8 @@ return [
         'size'                  => 'الحجم',
         'telephone'             => 'الرقم السلكي',
         'postal_code' => 'الرمز البريدي',
-        'permissions' => 'الصلاحيات'
+        'permissions' => 'الصلاحيات',
+        'code' => 'الرمز',
+        'percentage' => 'النسبة مئوية'
     ],
 ];

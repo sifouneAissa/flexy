@@ -39,6 +39,11 @@ Route::middleware([
 
     // partners list
     Route::get('/partners',\App\Http\Livewire\Pages\PartnersPage::class)->name('partner.index');
+
+    // providers
+    Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index');
+    Route::get('/providers/create',\App\Http\Livewire\Pages\Providers\ProviderAdd::class)->name('provider.create');
+
 });
 
 Route::get('/{name}', function ($name) {

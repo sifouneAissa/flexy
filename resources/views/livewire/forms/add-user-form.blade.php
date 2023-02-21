@@ -48,7 +48,7 @@
             {{--            <span class="error">{{ $message }}</span> --}}
             @enderror
         </div>
-        <div class="form-group form-floating mb-3 {{$errors->has('permissions') ? 'is-invalid' : 'is-valid'}}" >
+        <div class="form-group form-floating mb-3 {{$errors->has('role') ? 'is-invalid' : 'is-valid'}}" >
             <select wire:model="role" style="width: 100%"   class="form-control form-select" >
                 @foreach(\Spatie\Permission\Models\Role::get(['id','name']) as $p)
                     <option  value="{{ $p->id }}">{{ $p->name }}</option>

@@ -67,6 +67,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function providers(){
+        return $this->belongsToMany(Provider::class,'user_providers')->withPivot('percentage');
+    }
 
     public function getReferralLink()
     {
