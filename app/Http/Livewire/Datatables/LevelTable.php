@@ -36,9 +36,9 @@ class LevelTable extends LivewireDatatable
                 ->searchable(),
             Column::name('description'),
             DateColumn::name('created_at')->filterable(),
-//            Column::callback(['id','name'], function ($id,$name) {
-//                return view('livewire.table-actions.provider-table-actions', ['id' => $id,'item' => $this->builder()->where('id',$id)->first()]);
-//            })->unsortable()
+            Column::callback(['id','name'], function ($id,$name) {
+                return view('livewire.table-actions.level-table-actions', ['id' => $id,'item' => $this->builder()->where('id',$id)->first()]);
+            })->unsortable()
         ];
     }
 }

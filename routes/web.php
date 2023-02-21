@@ -48,6 +48,7 @@ Route::middleware([
     // levels
     Route::get('/levels',\App\Http\Livewire\Pages\LevelsPage::class)->name('level.index');
     Route::get('/levels/create',\App\Http\Livewire\Pages\Levels\LevelAdd::class)->name('level.create');
+    Route::get('/levels/edit/{level}',\App\Http\Livewire\Pages\Levels\LevelEdit::class)->name('level.edit');
 
 });
 
