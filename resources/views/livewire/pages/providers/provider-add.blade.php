@@ -27,7 +27,7 @@ Add Provider
                                 <h2 class="accordion-header" id="flush-headingOne-{{$user->id}}">
                                     <div class="form-check">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                               data-bs-target="#flush-collapseOne-{{$user->id}}" aria-expanded="true" aria-controls="flush-collapseOne-{{$user->id}}" class="form-check-label" for="defaultCheck1">
+                                                data-bs-target="#flush-collapseOne-{{$user->id}}" aria-expanded="true" aria-controls="flush-collapseOne-{{$user->id}}" class="form-check-label" for="defaultCheck1">
                                             {{$user->name}}
                                         </button>
                                     </div>
@@ -37,7 +37,7 @@ Add Provider
                                     <div class="accordion-body text-secondary">
 
                                         <div >
-{{--                                            <livewire:datatables.user-table />--}}
+                                            {{--                                            <livewire:datatables.user-table />--}}
                                             <input type="number" class="form-control" placeholder="Percentage"  wire:model="percentages.{{$user->id}}.percentage" >
                                             @error('percentages.'.$user->id.'.percentage')
                                             <div class="text-danger">{{str_replace('percentages.'.$user->id.'.percentage','',$message)}}</div>

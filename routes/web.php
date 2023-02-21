@@ -45,6 +45,10 @@ Route::middleware([
     Route::get('/providers/create',\App\Http\Livewire\Pages\Providers\ProviderAdd::class)->name('provider.create')->middleware(['permission:add provider']);
     Route::get('/providers/edit/{provider}',\App\Http\Livewire\Pages\Providers\ProviderEdit::class)->name('provider.edit')->middleware(['permission:update provider']);
 
+    // levels
+    Route::get('/levels',\App\Http\Livewire\Pages\LevelsPage::class)->name('level.index');
+    Route::get('/levels/create',\App\Http\Livewire\Pages\Levels\LevelAdd::class)->name('level.create');
+
 });
 
 Route::get('/{name}', function ($name) {
