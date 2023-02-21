@@ -8,7 +8,8 @@ return [
             crudPermissions('role'),
             crudPermissions('setting',['view']),
             crudPermissions('permission',['view']),
-            crudPermissions('user')
+            crudPermissions('user'),
+            crudPermissions('provider')
         ),
 //        'publisher' => array_merge([
 //        ]

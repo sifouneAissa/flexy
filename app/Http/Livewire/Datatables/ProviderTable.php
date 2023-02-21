@@ -15,7 +15,7 @@ class ProviderTable extends LivewireDatatable
     public $exportable = false;
     public $add = true;
     public $add_link = 'provider.create';
-    public $permission = 'view role';
+    public $permission = 'view provider';
 
 
     public function builder()

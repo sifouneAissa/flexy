@@ -41,9 +41,9 @@ Route::middleware([
     Route::get('/partners',\App\Http\Livewire\Pages\PartnersPage::class)->name('partner.index');
 
     // providers
-    Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index');
-    Route::get('/providers/create',\App\Http\Livewire\Pages\Providers\ProviderAdd::class)->name('provider.create');
-    Route::get('/providers/edit/{provider}',\App\Http\Livewire\Pages\Providers\ProviderEdit::class)->name('provider.edit');
+    Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index')->middleware(['permission:view provider']);
+    Route::get('/providers/create',\App\Http\Livewire\Pages\Providers\ProviderAdd::class)->name('provider.create')->middleware(['permission:add provider']);
+    Route::get('/providers/edit/{provider}',\App\Http\Livewire\Pages\Providers\ProviderEdit::class)->name('provider.edit')->middleware(['permission:update provider']);
 
 });
 
