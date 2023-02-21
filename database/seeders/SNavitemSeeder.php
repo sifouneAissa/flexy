@@ -11,10 +11,43 @@ class SNavitemSeeder extends Seeder
 {
     public $items = [
         [
+            'name' => 'Bonus',
+            'parent_id' => null,
+            'icon' => 'bi-gift-fill',
+            'isNew' => true,
+            'route' => null,
+            'permission' => 'view bonus',
+            'need_login' => true,
+            'order' => 1,
+            'children' => [
+                [
+                    'name' => 'Levels',
+                    'parent_id' => null,
+                    'icon' => 'bi-water',
+                    'isNew' => true,
+                    'route' => 'level.index',
+                    'permission' => 'view level',
+                    'need_login' => true,
+                    'order' => 1,
+                ],
+                [
+                    'name' => 'Providers',
+                    'parent_id' => null,
+                    'icon' => 'bi-boxes',
+                    'isNew' => true,
+                    'route' => 'provider.index',
+                    'permission' => 'view provider',
+                    'need_login' => true,
+                    'order' => 2
+                ]
+            ]
+        ],
+        [
             'name' => 'Partners',
             'parent_id' => null,
             'icon' => 'bi-person-gear',
             'isNew' => true,
+            'order' => 2,
             'route' => 'partner.index'
         ],
         [
@@ -24,6 +57,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'route' => null,
             'permission' => 'view setting',
+            'order' => 3,
             'children' => [
                 [
                     'name' => 'Roles',
@@ -32,6 +66,7 @@ class SNavitemSeeder extends Seeder
                     'isNew' => true,
                     'route' => 'role.index',
                     'permission' => 'view role',
+                    'order' => 1,
                 ],
                 [
                     'name' => 'Permissions',
@@ -39,7 +74,8 @@ class SNavitemSeeder extends Seeder
                     'icon' => 'bi-person-lock',
                     'isNew' => true,
                     'route' => 'permission.index',
-                    'permission' => 'view permission'
+                    'permission' => 'view permission',
+                    'order' => 2,
                 ],
                 [
                     'name' => 'Users',
@@ -48,7 +84,8 @@ class SNavitemSeeder extends Seeder
                     'isNew' => true,
                     'route' => 'user.index',
                     'permission' => 'view user',
-                    'need_login' => true
+                    'need_login' => true,
+                    'order' => 3,
                 ],
 
             ]

@@ -26,7 +26,7 @@ class SNavitem extends Model
     ];
 
     public function children() {
-        return $this->hasMany(SNavitem::class,'parent_id','id');
+        return $this->hasMany(SNavitem::class,'parent_id','id')->orderBy('order');
     }
 
     public function parent() {
