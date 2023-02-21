@@ -11,8 +11,10 @@ class ProviderAdd extends Component
 {
 
     public $ausers ;
+    public $fusers ;
     public $dpercentage;
     public $percentages = [] ;
+    public $search = '';
 
     protected function rules(){
         $rules = [];
@@ -21,6 +23,12 @@ class ProviderAdd extends Component
         }
 
         return array_merge($rules);
+    }
+
+    public function updatedSearch(){
+        $this->fusers = $this->ausers->filter(function ($item) {
+            return str_contains($item->name,$this->search);
+        });
     }
 
     public function updated($propertyName)
@@ -36,11 +44,13 @@ class ProviderAdd extends Component
     public function mount(){
         $this->ausers = User::all();
         foreach ($this->ausers as $user){
-            $this->percentages[] = [
+            $this->percentages[$user->id] = [
                 'user_id' => $user->id,
                 'percentage' => 0
             ];
         }
+
+        $this->fusers = $this->ausers;
     }
 
     public function setPercentage($value){

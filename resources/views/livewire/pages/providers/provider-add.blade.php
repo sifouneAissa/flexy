@@ -12,11 +12,15 @@ Add Provider
     <div class="col-12 col-md-6 col-lg-6">
         <div class="card card-light shadow-sm mb-4">
             <div class="card-header">
+
                 <h3>Set up percentage for users</h3>
+                <div class="float-end">
+                    <input  class="form-control" placeholder="Search" wire:model="search" >
+                </div>
             </div>
             <div class="card-body">
                 <div class="">
-                    @foreach($ausers as $user)
+                    @foreach($fusers as $user)
 
                         <div wire:key="livewire-users-accordion-{{$user->id}}" class="accordion accordion-flush shadow-sm mb-4" id="{{'accordionFlush'.$user->id}}">
                             <div  class="accordion-item">
@@ -34,9 +38,9 @@ Add Provider
 
                                         <div >
 {{--                                            <livewire:datatables.user-table />--}}
-                                            <input type="number" class="form-control" placeholder="Percentage"  wire:model="percentages.{{$loop->index}}.percentage" >
-                                            @error('percentages.'.$loop->index.'.percentage')
-                                            <div class="text-danger">{{str_replace('percentages.'.$loop->index.'.percentage','',$message)}}</div>
+                                            <input type="number" class="form-control" placeholder="Percentage"  wire:model="percentages.{{$user->id}}.percentage" >
+                                            @error('percentages.'.$user->id.'.percentage')
+                                            <div class="text-danger">{{str_replace('percentages.'.$user->id.'.percentage','',$message)}}</div>
                                             @enderror
                                         </div>
 
