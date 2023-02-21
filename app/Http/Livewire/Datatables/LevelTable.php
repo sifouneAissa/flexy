@@ -15,7 +15,7 @@ class LevelTable extends LivewireDatatable
     public $exportable = false;
     public $add = true;
     public $add_link = 'level.create';
-    public $permission = 'view provider';
+    public $permission = 'add level';
 
 
     public function builder()
