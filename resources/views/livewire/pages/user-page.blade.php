@@ -1,4 +1,6 @@
-
+@section('page-title')
+Users
+@endsection
 <div wire:key="livewire-users-accordion" class="accordion accordion-flush shadow-sm mb-4" id="accordionFlushExample">
 <div  class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
