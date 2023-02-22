@@ -18,7 +18,7 @@ class SNavitemSeeder extends Seeder
             'route' => null,
             'permission' => 'view bonus',
             'need_login' => true,
-            'order' => 1,
+            'order' => 2,
             'children' => [
                 [
                     'name' => 'Levels',
@@ -57,7 +57,7 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-person-gear',
             'isNew' => true,
-            'order' => 2,
+            'order' => 1,
             'route' => 'partner.index'
         ],
         [
