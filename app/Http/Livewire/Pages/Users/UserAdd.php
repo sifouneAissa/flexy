@@ -16,6 +16,8 @@ class UserAdd extends Component
 
     public function render()
     {
-        return view('livewire.pages.users.user-add')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.users.user-add')->layout('livewire.layouts.crud-layout',[
+            'link' => 'user.index'
+        ]);
     }
 }

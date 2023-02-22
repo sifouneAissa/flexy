@@ -122,6 +122,8 @@ class ProviderEdit extends Component
 
     public function render()
     {
-        return view('livewire.pages.providers.provider-edit')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.providers.provider-edit')->layout('livewire.layouts.crud-layout',[
+            'link' => 'provider.index'
+        ]);
     }
 }

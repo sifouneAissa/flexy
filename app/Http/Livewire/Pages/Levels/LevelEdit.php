@@ -52,6 +52,8 @@ class LevelEdit extends Component
 
     public function render()
     {
-        return view('livewire.pages.levels.level-edit')->layout("livewire.layouts.crud-layout");
+        return view('livewire.pages.levels.level-edit')->layout("livewire.layouts.crud-layout",[
+            'link' => 'level.index'
+        ]);
     }
 }

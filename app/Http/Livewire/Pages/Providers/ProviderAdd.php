@@ -110,6 +110,8 @@ class ProviderAdd extends Component
 
     public function render()
     {
-        return view('livewire.pages.providers.provider-add')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.providers.provider-add')->layout('livewire.layouts.crud-layout',[
+            'link' => 'provider.index'
+        ]);
     }
 }

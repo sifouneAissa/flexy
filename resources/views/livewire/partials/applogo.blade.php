@@ -53,9 +53,9 @@
     @else
     <div  class="row"  wire:key="header-app-logo-crud">
         <div class="col-auto">
-            <button type="button" class="btn btn-light btn-44 back-btn">
+            <a type="button" @if($link) href="{{route($link)}}" @else href="#" @endif class="btn btn-light btn-44 {{!$link ? 'back-btn' : ''}}">
                 <i class="bi bi-arrow-left"></i>
-            </button>
+            </a>
         </div>
         <div class="col text-center">
             <div class="logo-small">

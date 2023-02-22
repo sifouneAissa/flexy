@@ -53,6 +53,8 @@ class MemberShipAdd extends Component
 
     public function render()
     {
-        return view('livewire.pages.member-ships.member-ship-add')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.member-ships.member-ship-add')->layout('livewire.layouts.crud-layout',[
+            'link' => 'membership.index'
+        ]);
     }
 }

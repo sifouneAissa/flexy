@@ -12,6 +12,7 @@ class Applogo extends Component
     public $mode;
     public $isBase = true;
     public $showP = true;
+    public $link = null;
 
     public function updatedLang(){
         Session::put('lang' , $this->lang);
