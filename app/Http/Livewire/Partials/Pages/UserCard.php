@@ -8,6 +8,7 @@ class UserCard extends Component
 {
     public $item;
     public $withRole = false;
+    public $col12 = false;
 
 
     public function render()

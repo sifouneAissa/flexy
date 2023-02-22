@@ -18,6 +18,6 @@ class PartnersPage extends Component
     }
     public function render()
     {
-        return view('livewire.pages.partners-page')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.partners-page')->layout('livewire.layouts.base-layout');
     }
 }

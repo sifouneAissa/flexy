@@ -1,6 +1,6 @@
 
 @if($withRole)
-<div class="col-6 col-sm-4 col-md-3">
+<div class="{{$col12 ? 'col-12' : 'col-6 col-sm-4 col-md-3'}}">
     <div class="card mb-4 shadow-sm p-2 bg-theme text-dark">
         <div class="card-body text-center bg-white rounded-15 shadow-sm">
             <div class="row align-items-center ">
@@ -22,7 +22,7 @@
     </div>
 </div>
 @else
-<div class="col-6 col-sm-4 col-md-3">
+<div class="{{$col12 ? 'col-12' : 'col-6 col-sm-4 col-md-3'}}">
     <div class="card mb-4 shadow-sm">
         <div class="card-body text-center">
             <div class="row align-items-center ">

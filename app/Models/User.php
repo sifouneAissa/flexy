@@ -34,7 +34,9 @@ class User extends Authenticatable
         'lang',
         'mode',
         'referred_by',
-        'affiliate_id'
+        'affiliate_id',
+        'level_id',
+        'member_ship_id'
     ];
 
     /**
@@ -86,5 +88,19 @@ class User extends Authenticatable
 
     public function children(){
         return $this->hasMany(User::class,'referred_by','affiliate_id');
+    }
+
+    public function cPer($id){
+        if(auth()->user() && $this->hasRole('admin'))
+            return Provider::find($id);
+
+        return $this->user_providers()->where("user_providers.provider_id",$id)->first();
+    }
+
+    public function membership(){
+        return $this->belongsTo(Membership::class,'member_ship_id');
+    }
+    public function level(){
+        return $this->belongsTo(Level::class,'level_id');
     }
 }
