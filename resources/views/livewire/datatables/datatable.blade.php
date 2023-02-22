@@ -1,6 +1,6 @@
 <div>
     @includeIf($beforeTableSlot)
-    <div class="relative" >
+    <div class="relative mt-5" >
         @if($add)
             @can($permission)
                 @if(!isset($add_link))
