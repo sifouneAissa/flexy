@@ -50,6 +50,11 @@ Route::middleware([
     Route::get('/levels/create',\App\Http\Livewire\Pages\Levels\LevelAdd::class)->name('level.create')->middleware(['permission:add level']);
     Route::get('/levels/edit/{level}',\App\Http\Livewire\Pages\Levels\LevelEdit::class)->name('level.edit')->middleware(['permission:update level']);
 
+    // memberships
+    Route::get('/memberships',\App\Http\Livewire\Pages\MemberShipPage::class)->name('membership.index')->middleware(['permission:view membership']);
+    Route::get('/memberships/create',\App\Http\Livewire\Pages\MemberShips\MemberShipAdd::class)->name('membership.create')->middleware(['permission:add membership']);
+    Route::get('/memberships/edit/{membership}',\App\Http\Livewire\Pages\MemberShips\MemberShipEdit::class)->name('membership.edit')->middleware(['permission:update membership']);
+
 });
 
 Route::get('/{name}', function ($name) {

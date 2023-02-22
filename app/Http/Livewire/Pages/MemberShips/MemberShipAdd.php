@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Pages\Levels;
+namespace App\Http\Livewire\Pages\MemberShips;
 
 use App\Models\Level;
-use App\Models\MemberShip;
+use App\Models\Membership;
 use Livewire\Component;
 
-class LevelAdd extends Component
+class MemberShipAdd extends Component
 {
-
     public $search = '';
     public $fmodels = [];
     public $omodels = [];
@@ -21,7 +20,7 @@ class LevelAdd extends Component
 
 
     public function mount(){
-        $this->omodels = MemberShip::all();
+        $this->omodels = Level::all();
         $this->fmodels = $this->omodels;
     }
 
@@ -37,22 +36,23 @@ class LevelAdd extends Component
 
         // create the provider
         startTransaction(function () use ($data){
-            $model = Level::query()->create(array_merge(
-                filterRequest($data,Level::class),
+            $model = Membership::query()->create(array_merge(
+                filterRequest($data,Membership::class),
                 [
-                    'order' => Level::count()+1
+                    'order' => Membership::count() + 1
                 ]
             ));
+
             // add the percentages
             if(count($this->selected))
-            $model->memberships()->sync($this->selected,true);
+                $model->levels()->sync($this->selected,true);
         });
 
-        return redirect()->route('level.index');
+        return redirect()->route('membership.index');
     }
 
     public function render()
     {
-        return view('livewire.pages.levels.level-add')->layout('livewire.layouts.crud-layout');
+        return view('livewire.pages.member-ships.member-ship-add')->layout('livewire.layouts.crud-layout');
     }
 }

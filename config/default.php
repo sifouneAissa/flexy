@@ -11,7 +11,8 @@ return [
             crudPermissions('user'),
             crudPermissions('provider'),
             crudPermissions('level'),
-            crudPermissions('bonus',['view'])
+            crudPermissions('bonus',['view']),
+            crudPermissions('membership')
         ),
 //        'publisher' => array_merge([
 //        ]

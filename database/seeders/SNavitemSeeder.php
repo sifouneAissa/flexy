@@ -39,6 +39,16 @@ class SNavitemSeeder extends Seeder
                     'permission' => 'view provider',
                     'need_login' => true,
                     'order' => 2
+                ],
+                [
+                    'name' => 'MemberShips',
+                    'parent_id' => null,
+                    'icon' => 'bi-award',
+                    'isNew' => true,
+                    'route' => 'membership.index',
+                    'permission' => 'view membership',
+                    'need_login' => true,
+                    'order' => 3
                 ]
             ]
         ],

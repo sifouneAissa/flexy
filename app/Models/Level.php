@@ -11,7 +11,8 @@ class Level extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'order'
     ];
 
     public function memberships(){
