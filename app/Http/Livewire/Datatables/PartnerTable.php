@@ -45,7 +45,7 @@ class PartnerTable extends LivewireDatatable
             Column::checkbox(),
             NumberColumn::name('id')
                 ->label('ID')->filterable(),
-            Column::name('name')
+            Column::name('name')->link('/partners/edit/{{id}}', '{{name}}')
                 ->searchable(),
             Column::name('email')
                 ->searchable(),

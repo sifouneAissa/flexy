@@ -38,17 +38,17 @@ class PartnerEdit extends Component
         $this->providers = Provider::all();
 
         if(auth()->user()->hasRole('admin')) {
-            $this->levels = Level::all();
-            $this->memberships = Membership::all();
+            $this->levels = Level::orderBy('order')->get();
+            $this->memberships = Membership::orderBy('order')->get();
         }
         else {
             $this->levels = Level::whereHas('memberships',function ($builder){
                 $builder->where('member_ships.id',auth()->user()->member_ship_id);
-            })->get();
+            })->orderBy('order','desc')->get();
 
             $this->memberships = Membership::whereHas('levels',function ($builder){
                 $builder->where('levels.id',auth()->user()->level_id);
-            })->get();
+            })->orderBy('order','desc')->get();
         }
 
 
