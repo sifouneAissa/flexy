@@ -24,15 +24,16 @@ class PartnersPage extends Component
     ];
 
     public function setModal($data){
-
+        // get users selected
         $this->users = User::whereIn('id',$data['items'])->get();
-
+        // dispatch event to the js passing data needed
         $this->dispatchBrowserEvent('setModal',[
             'id' => $data['id'],
             'state' => true
         ]);
     }
 
+    // save the membership_id
     public function saveM(){
         $this->users->map(function ($item){
             $item->member_ship_id = $this->member_ship_id;
@@ -42,7 +43,7 @@ class PartnersPage extends Component
         $this->dispatchBrowserEvent('removeModal');
         $this->emit('refreshLivewireDatatable');
     }
-
+    // save the level_id
     public function saveL(){
         $this->users->map(function ($item){
             $item->level_id = $this->level_id;

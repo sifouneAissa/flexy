@@ -173,9 +173,11 @@
         state ? $('#'+id).modal("show") : $('#'+id).modal("hide");
     }
     window.addEventListener('setModal', (e) => {
+        // show or hide modal
         modal(e.detail.id,e.detail.state);
     });
     window.addEventListener('removeModal', (e) => {
+        // hide modals
         modal('levels-edit',false);
         modal('memberships-edit',false);
         $('.modal-backdrop').remove();
