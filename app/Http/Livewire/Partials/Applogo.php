@@ -29,11 +29,13 @@ class Applogo extends Component
 
     }
 
-    public function setMode($mode){
-        Session::put('mode' , $mode);
-        $this->mode = $mode;
+    public function setMode($first=false){
+        if(!$first)
+        $this->mode =  $this->mode !== 'light-mode' ? 'light-mode' : 'dark-mode';
+        Session::put('mode' , $this->mode);
+        // if the user is authenticated
         $this->loginParms();
-        $this->dispatchBrowserEvent('setMode', ['mode' => $mode]);
+        $this->dispatchBrowserEvent('setMode', ['mode' => $this->mode]);
     }
 
     public function loginParms(){
@@ -41,6 +43,7 @@ class Applogo extends Component
         if($user = auth()->user()){
             $ulang = $this->lang!==$user->lang;
             $umode = $this->mode!==$user->mode;
+
             if($ulang)
             $user->lang = $this->lang;
             if($umode)
@@ -54,10 +57,10 @@ class Applogo extends Component
 
         $this->lang = Session::has('lang') ? Session::get('lang') : \app()->getLocale();
         $this->mode = Session::has('mode') ? Session::get('mode') : config("app.mode");
-
+//        dd($this->mode);
         $this->isBase = $isBase;
         $this->setLang();
-        $this->setMode($this->mode);
+        $this->setMode(true);
         $this->showP = auth()->user() && !(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='profile.show');
 
     }

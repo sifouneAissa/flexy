@@ -14,6 +14,11 @@
                     <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
                 </div>
             </div>
+
+            <div class="form-check form-switch col-auto h2" >
+                <input  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
+            </div>
+
             <div class="form-floating col-auto">
                 <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                     <option  disabled>Language</option>
@@ -24,12 +29,13 @@
                 <label for="select">Language</label>
             </div>
 
-            <div class="form-floating col-auto">
-                <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>
-            </div>
-            <div  class="form-floating col-auto">
-                <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
-            </div>
+{{--            <div class="form-floating col-auto">--}}
+{{--                <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>--}}
+{{--            </div>--}}
+{{--            <div  class="form-floating col-auto">--}}
+{{--                <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>--}}
+{{--            </div>--}}
+
 
             @if($showP)
                 <div  class="col-auto">
@@ -64,6 +70,10 @@
             </div>
         </div>
 
+        <div class="form-check form-switch col-auto h2" >
+            <input  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
+        </div>
+
         <div class="form-floating col-auto" >
             <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                 <option  disabled>Language</option>
@@ -73,12 +83,13 @@
             </select>
             <label for="select">Language</label>
         </div>
-        <div class="form-floating col-auto">
-            <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>
-        </div>
-        <div  class="form-floating col-auto">
-            <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>
-        </div>
+{{--        <div class="form-floating col-auto">--}}
+{{--            <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>--}}
+{{--        </div>--}}
+{{--        <div  class="form-floating col-auto">--}}
+{{--            <i  wire:click="setMode('light-mode')"  class="bi bi-sun fs-4 mb-2 d-block"></i>--}}
+{{--        </div>--}}
+
 
         @if($showP)
             <div  class="col-auto">
@@ -154,5 +165,6 @@
                 var html = $('html');
                 setCookie('fwalayoutmode', mode, 1)
                 html.attr('class', getCookie("fwalayoutmode"));
+                $('#switch-mode').prop('checked', (mode === 'dark-mode'))
     }
 </script>
