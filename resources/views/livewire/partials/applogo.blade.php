@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-check form-switch col-auto h2" >
-                <input  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
+                <input title="Switch theme"  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
             </div>
 
             <div class="form-floating col-auto">

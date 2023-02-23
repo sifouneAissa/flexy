@@ -57,7 +57,6 @@ class Applogo extends Component
 
         $this->lang = Session::has('lang') ? Session::get('lang') : \app()->getLocale();
         $this->mode = Session::has('mode') ? Session::get('mode') : config("app.mode");
-//        dd($this->mode);
         $this->isBase = $isBase;
         $this->setLang();
         $this->setMode(true);
