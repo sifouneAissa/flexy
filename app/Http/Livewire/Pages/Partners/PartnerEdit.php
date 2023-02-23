@@ -20,6 +20,7 @@ class PartnerEdit extends Component
     public $level_id;
 
 
+
     public function rules(){
 
         $rules = [];
@@ -37,18 +38,30 @@ class PartnerEdit extends Component
         $this->item = $user;
         $this->providers = Provider::all();
 
-        if(auth()->user()->hasRole('admin')) {
+        $auth = auth()->user();
+        // if admin get all
+        if($auth->hasRole('admin')) {
             $this->levels = Level::orderBy('order')->get();
             $this->memberships = Membership::orderBy('order')->get();
         }
+        // if not filter
         else {
-            $this->levels = Level::whereHas('memberships',function ($builder){
-                $builder->where('member_ships.id',auth()->user()->member_ship_id);
-            })->orderBy('order','desc')->get();
+            if(!($auth->level && $auth->membership))
+                return abort(404);
 
-            $this->memberships = Membership::whereHas('levels',function ($builder){
-                $builder->where('levels.id',auth()->user()->level_id);
-            })->orderBy('order','desc')->get();
+            $this->levels = $auth->membership->levels()->whereNot('level_id',$auth->level_id)->orderBy('order','desc')->get();
+            $this->memberships = $auth->level->memberships()->whereNot('member_ship_id',$auth->member_ship_id)->orderBy('order','desc')->get();
+
+            // sort by order
+            $this->levels = $this->levels->filter(function ($item) use ($auth){
+                return $auth->level->order < $item->order;
+            });
+
+            $this->memberships = $this->memberships->filter(function ($item) use ($auth){
+                return    $auth->membership->order < $item->order;
+            });
+
+
         }
 
 
@@ -81,7 +94,6 @@ class PartnerEdit extends Component
                             filterRequest($percentage, UserProvider::class))
                     );
                 else {
-//                    dd($percentage);
                     UserProvider::query()->create(filterRequest($percentage, UserProvider::class));
                 }
             }

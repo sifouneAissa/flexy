@@ -1,3 +1,6 @@
+@section('page-title')
+Profile
+@endsection
 <div>
     <div class="row mb-3">
         <div class="col align-self-center">

@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <!-- swiper carousel css -->
     <link rel="stylesheet" href="/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.css">
+{{--    <link--}}
+{{--        rel="stylesheet"--}}
+{{--        href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"--}}
+{{--    />--}}
 
 {{--    select2--}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>

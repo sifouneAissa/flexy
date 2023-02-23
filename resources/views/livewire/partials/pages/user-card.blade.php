@@ -4,7 +4,7 @@
     <div class="card mb-4 shadow-sm p-2 bg-theme text-dark">
         <div class="card-body text-center bg-white rounded-15 shadow-sm">
             <div class="row align-items-center ">
-                <a href="profile.html " class="col-auto mx-auto">
+                <a href="{{route('partner.edit',['user' => $item->id])}}" class="col-auto mx-auto">
                     <div class="card mb-3">
                         <div class="card-body p-1">
                             <figure class="avatar avatar-80 mx-auto rounded-15">
@@ -26,7 +26,7 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body text-center">
             <div class="row align-items-center ">
-                <a href="profile.html " class="col-auto mx-auto">
+                <a href="{{route('partner.edit',['user' => $item->id])}}" class="col-auto mx-auto">
                     <div class="card mb-3">
                         <div class="card-body p-1">
                             <figure class="avatar avatar-80 mx-auto rounded-15">

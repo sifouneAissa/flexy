@@ -19,14 +19,15 @@
                 <input title="Switch theme"  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
             </div>
 
-            <div class="form-floating col-auto">
+            <div class="col-auto mt-1">
                 <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                     <option  disabled>Language</option>
                     @foreach(config('app.locales') as $key =>  $value)
-                        <option value="{{$value}}">{{__('lang.'.$value)}}</option>
+                        <option value="{{$value}}"><div class="row">
+                                {{__('lang.'.$value)}}
+                            </div></option>
                     @endforeach
                 </select>
-                <label for="select">Language</label>
             </div>
 
 {{--            <div class="form-floating col-auto">--}}
@@ -73,15 +74,15 @@
         <div class="form-check form-switch col-auto h2" >
             <input  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
         </div>
-
-        <div class="form-floating col-auto" >
+        <div class="col-auto mt-1" >
             <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                 <option  disabled>Language</option>
                 @foreach(config('app.locales') as $key =>  $value)
-                    <option value="{{$value}}">{{__('lang.'.$value)}}</option>
+                    <option value="{{$value}}">{{__('lang.'.$value)}} </option>
+
+                    <img src="/flags/ar.webp" alt="" />
                 @endforeach
             </select>
-            <label for="select">Language</label>
         </div>
 {{--        <div class="form-floating col-auto">--}}
 {{--            <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>--}}
