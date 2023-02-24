@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        // use this rule to reject any get request to the partner edit route
         Gate::define('update-partner', function (User $user,$partner) {
             $partner = User::find($partner);
             $mine = $partner->referred_by === $user->affiliate_id;
