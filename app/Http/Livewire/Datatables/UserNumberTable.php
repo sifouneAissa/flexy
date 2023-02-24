@@ -41,7 +41,7 @@ class UserNumberTable extends LivewireDatatable
             Column::name('providers.name')->label('Provider')->filterable(Provider::all()->pluck('name')->toArray())->filterOn('providers.name'),
             DateColumn::name('created_at')->filterable(),
             Column::callback('id', function ($id) {
-                return view('livewire.table-actions.user-number-table-actions', ['id' => $id,'item' => UserNumber::find($id)->first()]);
+                return view('livewire.table-actions.user-number-table-actions', ['id' => $id,'item' => UserNumber::find($id)]);
             })->unsortable()
         ];
     }

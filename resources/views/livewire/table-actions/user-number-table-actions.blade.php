@@ -1,6 +1,5 @@
 <div class="d-flex justify-content-around">
     <a href="{{route("number.edit",['number' => $id])}}" type="button" class="text-warning  h5"><i class="bi bi-pencil-square"></i>
         </a>
-
-    <livewire:modals.delete :item="$item"  wire:key="item{{time()}}"  />
+        <livewire:modals.delete :item="$item"  wire:key="item{{time()}}"  />
 </div>
