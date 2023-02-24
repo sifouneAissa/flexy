@@ -39,7 +39,7 @@ Route::middleware([
 
     // partners list
     Route::get('/partners',\App\Http\Livewire\Pages\PartnersPage::class)->name('partner.index');
-    Route::get('/partners/edit/{user}',\App\Http\Livewire\Pages\Partners\PartnerEdit::class)->name('partner.edit');
+    Route::get('/partners/edit/{user}',\App\Http\Livewire\Pages\Partners\PartnerEdit::class)->name('partner.edit')->can('update-partner','user');
 
     // providers
     Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index')->middleware(['permission:view provider']);
