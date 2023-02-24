@@ -71,8 +71,6 @@ class PartnersPage extends Component
         }
         // if not filter
         else {
-            if(!($auth->level && $auth->membership))
-                return abort(404);
 
             $this->levels = $auth->membership->levels()->whereNot('level_id',$auth->level_id)->orderBy('order','desc')->get();
             $this->memberships = $auth->level->memberships()->whereNot('member_ship_id',$auth->member_ship_id)->orderBy('order','desc')->get();

@@ -58,7 +58,8 @@ class SNavitemSeeder extends Seeder
             'icon' => 'bi-person-gear',
             'isNew' => true,
             'order' => 1,
-            'route' => 'partner.index'
+            'route' => 'partner.index',
+            'permission' => 'view-partners'
         ],
         [
             'name' => 'Settings',

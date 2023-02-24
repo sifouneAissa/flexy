@@ -34,7 +34,17 @@ class AuthServiceProvider extends ServiceProvider
             if($user->hasRole('admin'))
                 return !$partner->referred_by  || $mine;
             // if not an admin
+
             return $mine;
+        });
+
+        // this one to reject if the user has no configuration
+        Gate::define('view-partners', function (User $user) {
+            // if admin skip
+            if($user->hasRole('admin'))
+                 return true;
+            // else check the configuration
+            return   $user->level_id && $user->member_ship_id;
         });
     }
 }
