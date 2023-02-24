@@ -6,12 +6,12 @@
                 <div class="row">
                     <div class="col">
                         <div class="logo-small">
-                            <img src="assets/img/logo.png" alt="" />
+                            <img src="/assets/img/logo.png" alt="" />
                             <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
                         </div>
                     </div>
                     <div class="col-auto align-self-center">
-                        <a href="signup.html">Sing up</a>
+                        <a href="{{route("register")}}">Sing up</a>
                     </div>
                 </div>
             </header>

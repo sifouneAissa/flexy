@@ -4,6 +4,51 @@ Partner edit
 <div>
 
     <div class="row">
+        <div class="col-12 profile-page">
+            <div class="clearfix"></div>
+            <div class="circle small one"></div>
+            <div class="circle small two"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282.062"
+                 height="209.359" viewBox="0 0 282.062 209.359" class="menubg">
+                <defs>
+                    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1"
+                                    gradientUnits="objectBoundingBox">
+                        <stop offset="0" stop-color="#09b2fd" />
+                        <stop offset="1" stop-color="#6b00e5" />
+                    </linearGradient>
+                </defs>
+                <path id="profilebg"
+                      d="M751.177,233.459c-28.511,1.567-38.838,7.246-61.77,27.573s-27.623,71.926-65.15,70.883-27.624-21.369-79.744-40.132-47.13-53.005-23.676-84.8,4.009-57.671,33-75.867,83.269,30.223,127.232,21.5,64.157-41.353,82.329-26,5.953,29.138,8.773,46.369,13.786,23.5,13.786,37.91S779.688,231.893,751.177,233.459Z"
+                      transform="translate(-503.892 -122.573)" fill="url(#linear-gradient)" />
+            </svg>
+
+
+            <div class="row my-3 py-4">
+                <div class="col-7 align-self-center">
+                    <h1 class="mb-2"><span class="fw-light text-secondary">User to Edit !</span><br />{{$item->name}}</h1>
+                    <p class="text-muted size-12">{{$item->email}},<br />Algeria</p>
+                </div>
+
+                <div class="col align-self-center">
+                    <figure class="avatar avatar-100 rounded-20 p-1 bg-white shadow-sm">
+                        <img src="{{$item->profile_photo_url}}" alt="" class="rounded-18">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- buttons -->
+    <div class="row mb-4">
+        <div class="col">
+            <a href="" class="btn btn-light btn-lg shadow-sm w-100">Invite</a>
+        </div>
+        <div class="col">
+            <a href="message.html" class="btn btn-default btn-lg shadow-sm w-100">Message</a>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-12 col-md-6 col-lg-6">
             <livewire:partials.pages.user-card :col12="true" :item="$item" :withRole="true" />
         </div>
