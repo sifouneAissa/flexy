@@ -2,7 +2,7 @@
 Numbers
 @endsection
 
-<div wire:key="user-numbers-page">
+<div wire:key="user-numbers-page" >
     <livewire:datatables.user-number-table />
 </div>
 

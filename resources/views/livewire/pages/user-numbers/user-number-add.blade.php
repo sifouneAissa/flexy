@@ -2,7 +2,7 @@
 Add Number
 @endsection
 
-<div class="row">
+<div class="row mt-5">
     <div class="col-12 col-md-6 col-lg-6">
         <div class="card card-light shadow-sm mb-4">
             <div class="card-body">

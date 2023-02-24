@@ -24,14 +24,14 @@
         </div>
 
 
-        <div class="form-group mb-2">
+        <div class="form-group">
             <label>Your wanna use this number as provider ?</label>
             <div class="form-switch col-auto h2">
                 <input wire:model="is_personnel" class="form-check-input" type="checkbox" id="switch-mode">
             </div>
         </div>
 
-        <div class="d-grid">
+        <div class="d-grid mt-5">
             <button  type="submit" class="btn btn-default btn-lg shadow-sm">Create</button>
         </div>
     </form>

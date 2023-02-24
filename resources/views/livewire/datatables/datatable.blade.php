@@ -4,12 +4,12 @@
         @if($add)
             @can($permission)
                 @if(!isset($add_link))
-                <button  onclick="setShowModal(true,null)" class="btn btn-primary float-end" data-toggle="modal" data-target="#addModal" >
-                    Add
+                <button title="Add" onclick="setShowModal(true,null)" class="btn text-primary float-end h5" data-toggle="modal" data-target="#addModal" >
+                    <i class="bi bi-plus-circle"></i>
                 </button>
                 @else
-                    <a href="{{route($add_link)}}"  class="btn btn-primary float-end" >
-                        Add
+                    <a title="Add" href="{{route($add_link)}}"  class="btn text-primary float-end h5" >
+                        <i class="bi bi-plus-circle"></i>
                     </a>
                 @endif
             @endcan

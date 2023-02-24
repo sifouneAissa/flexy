@@ -19,7 +19,7 @@
                 <input title="Switch theme"  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
             </div>
 
-            <div class="col-auto mt-1">
+            <div class=" col-auto mt-1">
                 <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
                     <option  disabled>Language</option>
                     @foreach(config('app.locales') as $key =>  $value)

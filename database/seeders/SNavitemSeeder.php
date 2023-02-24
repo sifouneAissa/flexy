@@ -62,6 +62,15 @@ class SNavitemSeeder extends Seeder
             'permission' => 'view-partners'
         ],
         [
+            'name' => 'Numbers',
+            'parent_id' => null,
+            'icon' => 'bi-telephone',
+            'isNew' => true,
+            'order' => 1,
+            'route' => 'number.index',
+            'need_login' => false
+        ],
+        [
             'name' => 'Settings',
             'parent_id' => null,
             'icon' => 'bi-gear',
