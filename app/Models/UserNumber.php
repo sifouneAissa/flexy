@@ -21,11 +21,19 @@ class UserNumber extends Model
           'is_personnel'
     ];
 
+    protected $appends = [
+        'name'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
 
     public function provider(){
         return $this->belongsTo(Provider::class,'provider_id');
+    }
+
+    public function getNameAttribute(){
+        return $this->number;
     }
 }
