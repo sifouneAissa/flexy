@@ -59,6 +59,12 @@ Route::middleware([
     Route::get('/memberships/create',\App\Http\Livewire\Pages\MemberShips\MemberShipAdd::class)->name('membership.create')->middleware(['permission:add membership']);
     Route::get('/memberships/edit/{membership}',\App\Http\Livewire\Pages\MemberShips\MemberShipEdit::class)->name('membership.edit')->middleware(['permission:update membership']);
 
+    // user numbers
+    Route::get('/numbers',\App\Http\Livewire\Pages\UserNumberPage::class)->name('number.index');
+    Route::get('/numbers/create',\App\Http\Livewire\Pages\UserNumbers\UserNumberAdd::class)->name('number.create')->middleware(['permission:add membership']);
+    Route::get('/numbers/edit/{number}',\App\Http\Livewire\Pages\UserNumbers\UserNumberEdit::class)->name('number.edit')->can('update-number','number');
+
+
 });
 
 Route::get('/{name}', function ($name) {

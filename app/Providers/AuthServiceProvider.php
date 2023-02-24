@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Models\UserNumber;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -28,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // use this rule to reject any get request to the partner edit route
         Gate::define('update-partner', function (User $user,$partner) {
-            $partner = User::find($partner);
+            $partner = User::query()->findOrFail($partner);
             $mine = $partner->referred_by === $user->affiliate_id;
             // if the authenticated user is an admin
             if($user->hasRole('admin'))
@@ -46,5 +47,12 @@ class AuthServiceProvider extends ServiceProvider
             // else check the configuration
             return   $user->level_id && $user->member_ship_id;
         });
+
+        // for numbers
+        Gate::define('update-number', function (User $user,$number) {
+            $number = UserNumber::query()->findOrFail($number);
+            return $user->id === $number?->user_id;
+        });
+
     }
 }
