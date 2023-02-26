@@ -68,7 +68,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'order' => 1,
             'route' => 'number.index',
-            'need_login' => false
+            'need_login' => true
         ],
         [
             'name' => 'Settings',

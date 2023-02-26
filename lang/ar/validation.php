@@ -175,6 +175,7 @@ return [
         'postal_code' => 'الرمز البريدي',
         'permissions' => 'الصلاحيات',
         'code' => 'الرمز',
-        'percentage' => 'النسبة مئوية'
+        'percentage' => 'النسبة مئوية',
+        'photo' => 'الصورة'
     ],
 ];

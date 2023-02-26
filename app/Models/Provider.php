@@ -30,5 +30,12 @@ class Provider extends Model implements HasMedia
     }
 
 
+    public function memberships(){
+        return $this->belongsToMany(Membership::class,'provider_memberships','member_ship_id');
+    }
+
+    public function providerMemberships(){
+        return $this->hasMany(ProviderMembership::class,'provider_id');
+    }
 
 }

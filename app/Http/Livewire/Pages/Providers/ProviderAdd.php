@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages\Providers;
 
 use App\Models\Membership;
 use App\Models\Provider;
+use App\Models\ProviderMembership;
 use App\Models\User;
 use App\Models\UserProvider;
 use Livewire\Component;
@@ -102,9 +103,8 @@ class ProviderAdd extends Component
         }
         foreach ($this->amemberships as $membership){
             $this->mpercentages[$membership->id.'-'.$membership->order] = [
-                'membership_id' => $membership->id,
-                'percentage' => 0,
-                'order' => $membership->order
+                'member_ship_id' => $membership->id,
+                'percentage' => 0
             ];
         }
 
@@ -144,12 +144,18 @@ class ProviderAdd extends Component
                 $photo = imageFromPath($data['purl']);
                 $provider->addMedia($photo)->toMediaCollection();
             }
-            // add the percentages
-//            foreach($this->percentages as $percentage)
-//                UserProvider::query()->create(array_merge(
-//                    filterRequest($percentage,UserProvider::class),
-//                    ['provider_id' => $provider->id]
-//                ));
+            if($this->percentageFix)
+                foreach($this->mpercentages as $percentage)
+                    ProviderMembership::query()->create(array_merge(
+                        filterRequest($percentage,ProviderMembership::class),
+                        ['provider_id' => $provider->id]
+                    ));
+            else
+            foreach($this->percentages as $percentage)
+                UserProvider::query()->create(array_merge(
+                    filterRequest($percentage,UserProvider::class),
+                    ['provider_id' => $provider->id]
+                ));
 
             return $provider;
         });

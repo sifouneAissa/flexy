@@ -11,6 +11,10 @@ trait MediaTrait {
 
 
     public function getWebP(){
-        return $this->media()->first()->getUrl('webp');
+        return $this->media()->first()?->getUrl('webp');
+    }
+
+    public function fimage(){
+        return $this->media()->first()?->getUrl();
     }
 }
