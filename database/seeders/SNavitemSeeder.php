@@ -11,6 +11,16 @@ class SNavitemSeeder extends Seeder
 {
     public $items = [
         [
+            'name' => 'Percentages',
+            'parent_id' => null,
+            'icon' => 'bi-percent',
+            'isNew' => true,
+            'order' => 1,
+            'route' => 'percentage.index',
+            'permission' => 'view-partners',
+            'need_login' => true,
+        ],
+        [
             'name' => 'Bonus',
             'parent_id' => null,
             'icon' => 'bi-gift-fill',
@@ -18,7 +28,7 @@ class SNavitemSeeder extends Seeder
             'route' => null,
             'permission' => 'view bonus',
             'need_login' => true,
-            'order' => 2,
+            'order' => 3,
             'children' => [
                 [
                     'name' => 'Levels',
@@ -57,16 +67,17 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-person-gear',
             'isNew' => true,
-            'order' => 1,
+            'order' => 2,
             'route' => 'partner.index',
-            'permission' => 'view-partners'
+            'permission' => 'view-partners',
+            'need_login' => true,
         ],
         [
             'name' => 'Numbers',
             'parent_id' => null,
             'icon' => 'bi-telephone',
             'isNew' => true,
-            'order' => 1,
+            'order' => 4,
             'route' => 'number.index',
             'need_login' => true
         ],
@@ -77,7 +88,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'route' => null,
             'permission' => 'view setting',
-            'order' => 3,
+            'order' => 5,
             'children' => [
                 [
                     'name' => 'Roles',

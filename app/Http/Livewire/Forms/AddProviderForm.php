@@ -18,8 +18,9 @@ class AddProviderForm extends Component
     public $photo;
     public $is_service_provider = false;
     public $purl = null;
-    public $m_h = 80;
-    public $m_w = 80;
+    public $m_h = 286;
+    public $m_w = 286;
+    public $d_img;
 
     protected function rules(){
         $rules = [
@@ -30,6 +31,10 @@ class AddProviderForm extends Component
         !$this->is_service_provider ? $rules['code'] = 'required|digits_between:2,5' : $rules['photo'] = 'required|image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width='.$this->m_w.',max_height='.$this->m_h;
 
         return $rules;
+    }
+
+    public function mount (){
+        $this->d_img = 'https://placehold.it/'.$this->m_w.'x'.$this->m_h;
     }
 
 

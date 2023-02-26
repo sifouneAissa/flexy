@@ -15,6 +15,6 @@ trait MediaTrait {
     }
 
     public function fimage(){
-        return $this->media()->first()?->getUrl();
+        return $this->media()->first();
     }
 }

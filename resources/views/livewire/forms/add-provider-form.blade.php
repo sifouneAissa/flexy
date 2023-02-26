@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="ml-2 col-lg-6">
-                    <img src="{{$photo?->temporaryUrl() ? $photo->temporaryUrl() : 'https://placehold.it/80x80'}}" id="preview" class="img-thumbnail">
+                    <img src="{{$photo?->temporaryUrl() ? $photo->temporaryUrl() : $d_img}}" id="preview" class="img-thumbnail">
                 </div>
                 @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
             </div>

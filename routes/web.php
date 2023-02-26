@@ -43,6 +43,8 @@ Route::middleware([
         Route::get('/partners',\App\Http\Livewire\Pages\PartnersPage::class)->name('partner.index');
         Route::get('/partners/edit/{user}',\App\Http\Livewire\Pages\Partners\PartnerEdit::class)->name('partner.edit')->can('update-partner','user');
 
+        // operations
+        Route::get('/percentages',\App\Http\Livewire\Pages\OperationPage::class)->name('percentage.index');
     });
     // providers
     Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index')->middleware(['permission:view provider']);
@@ -63,6 +65,8 @@ Route::middleware([
     Route::get('/numbers',\App\Http\Livewire\Pages\UserNumberPage::class)->name('number.index');
     Route::get('/numbers/create',\App\Http\Livewire\Pages\UserNumbers\UserNumberAdd::class)->name('number.create')->middleware(['permission:add membership']);
     Route::get('/numbers/edit/{number}',\App\Http\Livewire\Pages\UserNumbers\UserNumberEdit::class)->name('number.edit')->can('update-number','number');
+
+    Route::get('/settings',\App\Http\Livewire\Pages\SettingPage::class)->name('setting.index')->middleware(['permission:view level']);
 
 
 

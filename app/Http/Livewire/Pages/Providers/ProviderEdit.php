@@ -158,7 +158,7 @@ class ProviderEdit extends Component
             $this->item->update(filterRequest($data,Provider::class));
             if($data['purl']){
                 // delete the old photo
-                if($f = $this->item->fimage()) $f->delete();
+                if($f = $this->item->fimage()) $f?->delete();
                 $photo = imageFromPath($data['purl']);
                 $this->item->addMedia($photo)->toMediaCollection();
             }

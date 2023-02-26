@@ -18,9 +18,9 @@ class EditProviderForm extends Component
     public $photo = null;
     public $is_service_provider = false;
     public $purl = null;
-    public $m_h = 80;
-    public $m_w = 80;
-    public $d_url = 'https://placehold.it/80x80';
+    public $m_h = 286;
+    public $m_w = 286;
+    public $d_url;
     public $himage = false;
 
 
@@ -36,6 +36,8 @@ class EditProviderForm extends Component
     }
 
     public function mount(){
+        $this->d_url = 'https://placehold.it/'.$this->m_w.'x'.$this->m_h;
+
         $this->code = $this->item->code;
         $this->name = $this->item->name;
         $this->percentage = $this->item->percentage;
