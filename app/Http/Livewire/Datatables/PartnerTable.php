@@ -44,7 +44,7 @@ class PartnerTable extends LivewireDatatable
 
     public function mount($model = false, $include = [], $exclude = [], $hide = [], $dates = [], $times = [], $searchable = [], $sort = null, $hideHeader = null, $hidePagination = null, $perPage = null, $exportable = false, $hideable = false, $beforeTableSlot = false, $buttonsSlot = false, $afterTableSlot = false, $params = [])
     {
-        $this->providers = Provider::all();
+        $this->providers = Provider::where('is_service_provider',false)->get();
 
         $auth = auth()->user();
         // if admin get all

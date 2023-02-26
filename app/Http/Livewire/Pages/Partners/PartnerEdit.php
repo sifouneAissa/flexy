@@ -36,7 +36,7 @@ class PartnerEdit extends Component
 
     public function mount(User $user){
         $this->item = $user;
-        $this->providers = Provider::all();
+        $this->providers = Provider::where('is_service_provider',false)->get();
 
         $auth = auth()->user();
         // if admin get all
