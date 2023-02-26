@@ -118,6 +118,16 @@ class SNavitemSeeder extends Seeder
                     'need_login' => true,
                     'order' => 3,
                 ],
+                [
+                    'name' => 'Settings general',
+                    'parent_id' => null,
+                    'icon' => 'bi-gear',
+                    'isNew' => true,
+                    'route' => 'setting.index',
+                    'permission' => 'view setting general',
+                    'need_login' => true,
+                    'order' => 4,
+                ],
 
             ]
         ]

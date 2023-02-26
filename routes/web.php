@@ -66,7 +66,7 @@ Route::middleware([
     Route::get('/numbers/create',\App\Http\Livewire\Pages\UserNumbers\UserNumberAdd::class)->name('number.create')->middleware(['permission:add membership']);
     Route::get('/numbers/edit/{number}',\App\Http\Livewire\Pages\UserNumbers\UserNumberEdit::class)->name('number.edit')->can('update-number','number');
 
-    Route::get('/settings',\App\Http\Livewire\Pages\SettingPage::class)->name('setting.index')->middleware(['permission:view level']);
+    Route::get('/settings',\App\Http\Livewire\Pages\SettingPage::class)->name('setting.index')->middleware(['permission:view setting general']);
 
 
 
