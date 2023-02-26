@@ -65,6 +65,7 @@ Route::middleware([
     Route::get('/numbers/edit/{number}',\App\Http\Livewire\Pages\UserNumbers\UserNumberEdit::class)->name('number.edit')->can('update-number','number');
 
 
+
 });
 
 Route::get('/{name}', function ($name) {

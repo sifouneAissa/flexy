@@ -2,24 +2,41 @@
 
 namespace App\Http\Livewire\Pages\Providers;
 
+use App\Models\Membership;
 use App\Models\Provider;
 use App\Models\User;
 use App\Models\UserProvider;
 use Livewire\Component;
+use Livewire\TemporaryUploadedFile;
 
 class ProviderAdd extends Component
 {
-
+    public $amemberships;
+    public $fmemberships;
     public $ausers ;
     public $fusers ;
     public $dpercentage;
     public $percentages = [] ;
+    public $mpercentages = [] ;
     public $search = '';
+    public $percentageFix = false;
+    public $increment = 0.1;
+
 
     protected function rules(){
         $rules = [];
+        if(!$this->percentageFix)
         foreach($this->percentages as $key => $value){
-            $rules['percentages.'.$key.'.percentage'] = 'required|numeric|min:0.1|max:'.($this->dpercentage-0.1);
+            $rules['percentages.'.$key.'.percentage'] = 'required|numeric|min:'.$this->increment.'|max:'.($this->dpercentage-$this->increment);
+        }
+        else {
+
+            $f = $this->dpercentage - $this->increment;
+
+            foreach ($this->mpercentages as $key => $value) {
+                $rules['mpercentages.' . $key . '.percentage'] = 'required|numeric|min:'.$this->increment.'|max:' . ($f);
+                $f = (float)$value['percentage'] - $this->increment;
+            }
         }
 
         return array_merge($rules);
@@ -45,10 +62,15 @@ class ProviderAdd extends Component
 
     }
     public function updatedSearch(){
+        $callback = function ($item) {
+            $slower = str_contains(strtolower($item->name),$this->search);
+            $sbigger = str_contains($item->name,$this->search);
+            return $slower || $sbigger;
+        };
+        if(!$this->percentageFix)
         // once the search var updated filter the users array
-        $this->fusers = $this->ausers->filter(function ($item) {
-            return str_contains($item->name,$this->search);
-        });
+        $this->fusers = $this->ausers->filter($callback);
+        else $this->fmemberships = $this->amemberships->filter($callback);
     }
 
     public function updated($propertyName)
@@ -58,12 +80,19 @@ class ProviderAdd extends Component
 
     protected $listeners = [
         'setPercentage' => 'setPercentage',
-        'savePercentages' => 'savePercentages'
+        'savePercentages' => 'savePercentages',
+        'setPercentageFix' => 'setPercentageFix'
     ];
+
+    public function setPercentageFix($value){
+        $this->percentageFix = $value;
+    }
 
     public function mount(){
         // filter users of the authenticated
         $this->ausers = $this->builder()->get();
+        $this->amemberships = Membership::orderBy('order','asc')->get();
+
 
         foreach ($this->ausers as $user){
             $this->percentages[$user->id] = [
@@ -71,34 +100,56 @@ class ProviderAdd extends Component
                 'percentage' => 0
             ];
         }
+        foreach ($this->amemberships as $membership){
+            $this->mpercentages[$membership->id.'-'.$membership->order] = [
+                'membership_id' => $membership->id,
+                'percentage' => 0,
+                'order' => $membership->order
+            ];
+        }
 
         $this->fusers = $this->ausers;
+        $this->fmemberships = $this->amemberships;
+
+//        dd($this->mpercentages);
     }
 
     public function setPercentage($value){
 
-        $value = $value['value'];
+        $value = (float)$value['value'];
         $this->dpercentage = $value;
+
 
         foreach ($this->percentages as &$per){
             $per['percentage'] = $this->dpercentage / 2;
         }
+
+        $f = $this->dpercentage - 1;
+
+        foreach ($this->mpercentages as &$per){
+            $per['percentage'] = $f;
+            $f = $f-1;
+        }
+
         $this->rules();
     }
 
     public function savePercentages($data){
 
         $this->validate();
-
         // create the provider
         startTransaction(function () use ($data){
             $provider = Provider::query()->create(filterRequest($data,Provider::class));
+            if($data['purl']){
+                $photo = imageFromPath($data['purl']);
+                $provider->addMedia($photo)->toMediaCollection();
+            }
             // add the percentages
-            foreach($this->percentages as $percentage)
-                UserProvider::query()->create(array_merge(
-                    filterRequest($percentage,UserProvider::class),
-                    ['provider_id' => $provider->id]
-                ));
+//            foreach($this->percentages as $percentage)
+//                UserProvider::query()->create(array_merge(
+//                    filterRequest($percentage,UserProvider::class),
+//                    ['provider_id' => $provider->id]
+//                ));
 
             return $provider;
         });

@@ -3,6 +3,7 @@
 
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Carbon;
+use Livewire\TemporaryUploadedFile;
 
 if (!function_exists('getLocales')) {
 
@@ -407,3 +408,14 @@ if (!function_exists('crudPermissions')) {
 //        );
 //    }
 //}
+
+
+if (!function_exists('imageFromPath')) {
+
+    function imageFromPath($payload)
+    {
+        return new TemporaryUploadedFile($payload,config('filesystems.default'));
+    }
+}
+
+
