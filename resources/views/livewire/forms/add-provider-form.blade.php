@@ -51,6 +51,8 @@
         </div>
 
 
+
+
 {{--        <div class="form-group">--}}
 {{--            <label>Your wanna make this percentage fix ?</label>--}}
 {{--            <div class="form-switch col-auto h2">--}}
@@ -60,6 +62,30 @@
 
 
         @if($is_service_provider)
+            <div class="form-floating mb-3 {{$errors->has('unit') ? 'is-invalid' : 'is-valid'}}">
+                <input wire:model="unit" type="text" class="form-control"  placeholder="Name"
+                       id="unit">
+                <label for="unit">Unit</label>
+                @error('unit')
+                <button type="button" class="text-danger tooltip-btn" data-bs-toggle="tooltip"
+                        data-bs-placement="left" title="{{$message}}" id="nameerror">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+
+                @enderror
+            </div>
+            <div class="form-floating mb-3 {{$errors->has('price_per_unit') ? 'is-invalid' : 'is-valid'}}">
+                <input wire:model="price_per_unit" type="text" class="form-control"  placeholder="Name"
+                       id="price_per_unit">
+                <label for="price_per_unit">Price per unit</label>
+                @error('price_per_unit')
+                <button type="button" class="text-danger tooltip-btn" data-bs-toggle="tooltip"
+                        data-bs-placement="left" title="{{$message}}" id="nameerror">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+
+                @enderror
+            </div>
             <div class="form-group mt-3">
                 <label>Please choose an image that matches the mentioned dimensions ({{$this->m_h .'x'. $this->m_w}}) !</label>
                 <div class="ml-2 col-lg-6">

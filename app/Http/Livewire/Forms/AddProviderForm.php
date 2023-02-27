@@ -14,6 +14,8 @@ class AddProviderForm extends Component
     public $name;
     public $code;
     public $percentage;
+    public $unit= 'dz';
+    public $price_per_unit = 1;
     public $percentage_fix = true;
     public $photo;
     public $is_service_provider = true;
@@ -26,6 +28,8 @@ class AddProviderForm extends Component
         $rules = [
             'name' => 'required|min:1|unique:providers',
             'percentage' => 'required|numeric|between:0.01,99.99',
+            'unit' => "required|string|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/",
+            'price_per_unit' => 'required|numeric'
             ];
 
         !$this->is_service_provider ? $rules['code'] = 'required|digits_between:2,5' : $rules['photo'] = 'required|image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width='.$this->m_w.',max_height='.$this->m_h;

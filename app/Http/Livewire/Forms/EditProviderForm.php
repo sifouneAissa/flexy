@@ -23,6 +23,9 @@ class EditProviderForm extends Component
     public $d_url;
     public $himage = false;
 
+    public $unit= 'dz';
+    public $price_per_unit = 1;
+
 
 
     protected function rules(){
@@ -30,8 +33,15 @@ class EditProviderForm extends Component
             'name' => 'required|min:1|'. Rule::unique('providers', 'name')->ignore($this->item->id),
 //            'code' => 'required|digits_between:2,5',
             'percentage' => 'required|numeric|between:0.01,99.99',
+
         ];
-        !$this->is_service_provider ? $rules['code'] = 'required|digits_between:2,5' : $rules['photo'] = ($this->himage ? 'nullable|' : 'required|').'image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width='.$this->m_w.',max_height='.$this->m_h;
+        if(!$this->is_service_provider) $rules['code'] = 'required|digits_between:2,5';
+        else {
+            $rules['photo'] = ($this->himage ? 'nullable|' : 'required|').'image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width='.$this->m_w.',max_height='.$this->m_h;
+            $rules['unit'] = "required|string|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/";
+            $rules['price_per_unit'] = 'required|numeric';
+        }
+
         return $rules;
     }
 
@@ -43,6 +53,8 @@ class EditProviderForm extends Component
         $this->percentage = $this->item->percentage;
         $this->is_service_provider = $this->item->is_service_provider;
         $this->percentage_fix = $this->item->percentage_fix;
+        $this->unit = $this->item->unit;
+        $this->price_per_unit = $this->item->price_per_unit;
 
         if($url = $this->item->getWebP()) {
             $this->d_url = $url;

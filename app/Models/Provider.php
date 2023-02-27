@@ -21,7 +21,9 @@ class Provider extends Model implements HasMedia
         'code',
         'percentage',
         'percentage_fix',
-        'is_service_provider'
+        'is_service_provider',
+        'unit',
+        'price_per_unit'
     ];
 
     public function registerMediaConversions(Media $media = null): void
