@@ -103,4 +103,21 @@ class User extends Authenticatable
     public function level(){
         return $this->belongsTo(Level::class,'level_id');
     }
+
+    public function mpayments(){
+        return $this->hasMany(Payment::class,'seller_id');
+    }
+
+    public function dpayments(){
+        return $this->hasMany(Payment::class,'buyer_id');
+    }
+
+    public function musers(){
+        return $this->belongsToMany(User::class,'payments','seller_id');
+    }
+
+    public function dusers(){
+        return $this->belongsToMany(User::class,'payments','buyer_id');
+    }
+
 }

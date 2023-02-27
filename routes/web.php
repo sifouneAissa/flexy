@@ -76,6 +76,8 @@ Route::middleware([
     Route::get('/packs/create',\App\Http\Livewire\Pages\ProviderPacks\ProviderPackAdd::class)->name('pack.create')->middleware(['permission:add provider pack']);
     Route::get('/packs/edit/{providerPack}',\App\Http\Livewire\Pages\ProviderPacks\ProviderPackEdit::class)->name('pack.edit')->middleware(['permission:update provider pack']);
 
+    Route::get('/payments',\App\Http\Livewire\Pages\PaymentPage::class)->name('payment.index');
+
 
 
 });

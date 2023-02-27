@@ -1,5 +1,10 @@
 <?php
 return [
+    'payment_status' => [
+        'waiting',
+        'payed',
+        'rejected'
+    ],
     'permissions' => [
         'all' => [
             'view dashboard',
