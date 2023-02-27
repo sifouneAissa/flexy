@@ -1,3 +1,6 @@
+@section('page-title')
+Welcome
+@endsection
 <!-- balance -->
 <div class="row my-4 text-center">
     <div class="col-12">

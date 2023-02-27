@@ -1,3 +1,6 @@
+@section('page-title')
+Login
+@endsection
 <div class="row h-100">
     <div class="col-11 col-sm-11 mx-auto">
         <!-- header -->

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>finwallapp V2.0 - Mobile HTML template</title>
+    <title>@yield('page-title')  - {{ config('app.name', 'Laravel') }}</title>
 
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">

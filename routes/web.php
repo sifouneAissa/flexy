@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::middleware(['set.user.attrs'])->group(function (){
@@ -25,7 +25,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
+//    Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
+
+    Route::get('/dashboard',\App\Http\Livewire\Pages\Index::class)->name('index');
 
     Route::get('/roles',\App\Http\Livewire\Pages\RolePage::class)->name('role.index')->middleware(['permission:view role']);
     Route::get('/permissions',\App\Http\Livewire\Pages\PermissionPage::class)->name('permission.index')->middleware(['permission:view permission']);
@@ -83,8 +85,6 @@ Route::get('/{name}', function ($name) {
 
 // referral login
 Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware('referral');
-
-Route::get('/',\App\Http\Livewire\Pages\Index::class)->name('index');
 Route::get('/login',\App\Http\Livewire\Pages\LoginPage::class)->middleware(['guest:'.config('fortify.guard')])->name('login');
 Route::get('/register',\App\Http\Livewire\Pages\RegisterPage::class)->middleware(['guest:'.config('fortify.guard')])->name('register');
 Route::get('/referral',\App\Http\Livewire\Pages\RegisterReferral::class)->name('referral.register')->middleware(['guest:'.config('fortify.guard'),'referral']);

@@ -11,11 +11,21 @@ class SNavitemSeeder extends Seeder
 {
     public $items = [
         [
+            'name' => 'Dashboard',
+            'parent_id' => null,
+            'icon' => 'bi-house-door',
+            'isNew' => true,
+            'order' => 1,
+            'route' => 'index',
+//            'permission' => 'view-partners',
+            'need_login' => true,
+        ],
+        [
             'name' => 'Percentages',
             'parent_id' => null,
             'icon' => 'bi-percent',
             'isNew' => true,
-            'order' => 1,
+            'order' => 2,
             'route' => 'percentage.index',
             'permission' => 'view-partners',
             'need_login' => true,
@@ -28,7 +38,7 @@ class SNavitemSeeder extends Seeder
             'route' => null,
             'permission' => 'view bonus',
             'need_login' => true,
-            'order' => 3,
+            'order' => 4,
             'children' => [
                 [
                     'name' => 'Levels',
@@ -67,7 +77,7 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-person-gear',
             'isNew' => true,
-            'order' => 2,
+            'order' => 3,
             'route' => 'partner.index',
             'permission' => 'view-partners',
             'need_login' => true,
@@ -77,7 +87,7 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-telephone',
             'isNew' => true,
-            'order' => 4,
+            'order' => 5,
             'route' => 'number.index',
             'need_login' => true
         ],
@@ -88,7 +98,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'route' => null,
             'permission' => 'view setting',
-            'order' => 5,
+            'order' => 6,
             'children' => [
                 [
                     'name' => 'Roles',
