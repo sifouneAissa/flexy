@@ -14,7 +14,8 @@ class ProviderPack extends Model
         'count',
         'price',
         'description',
-        'provider_id'
+        'provider_id',
+        'bonus'
     ];
 
 

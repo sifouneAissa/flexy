@@ -83,11 +83,21 @@ class SNavitemSeeder extends Seeder
             'need_login' => true,
         ],
         [
+            'name' => 'Packs',
+            'parent_id' => null,
+            'icon' => 'bi-box2-heart',
+            'isNew' => true,
+            'order' => 5,
+            'route' => 'pack.index',
+            'permission' => 'view provider pack',
+            'need_login' => true,
+        ],
+        [
             'name' => 'Numbers',
             'parent_id' => null,
             'icon' => 'bi-telephone',
             'isNew' => true,
-            'order' => 5,
+            'order' => 6,
             'route' => 'number.index',
             'need_login' => true
         ],
@@ -98,7 +108,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'route' => null,
             'permission' => 'view setting',
-            'order' => 6,
+            'order' => 7,
             'children' => [
                 [
                     'name' => 'Roles',
