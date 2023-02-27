@@ -32,7 +32,7 @@ class SettingPage extends Component
         ];
 
         if($this->with_photo)
-        $rules['photo'] = ($this->himage ? 'nullable|' : 'required|').'image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width='.$this->m_w.',max_height='.$this->m_h;
+        $rules['photo'] = ($this->himage ? 'nullable|' : 'required|').'image|max:1024|dimensions:min_width='.$this->m_w.',min_height='.$this->m_h.',max_width>='.$this->m_w.',max_height>='.$this->m_h;
 
         return $rules;
     }
@@ -57,12 +57,14 @@ class SettingPage extends Component
         $this->validate();
 
         $this->itemToUpdate->update(filterRequest($this->all(),Setting::class));
+
         if($this->with_photo)
         {
             if($media = $this->itemToUpdate->fimage())
                 $media->delete();
 
             $this->itemToUpdate->addMedia($this->photo)->toMediaCollection();
+
         }
         // to refresh datatable
         $this->reset(['name','content','with_photo','photo']);
@@ -88,7 +90,6 @@ class SettingPage extends Component
             $this->with_photo = true;
             $this->himage = true;
         }
-
         $this->dispatchBrowserEvent('setModal',['state' => true]);
     }
     public function render()

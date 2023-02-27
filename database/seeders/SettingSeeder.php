@@ -65,9 +65,16 @@ class SettingSeeder extends Seeder
             'code' => 'logo',
             'content' => '',
         ],
+        [
+            'name' => 'Flexy Photo',
+            'code' => 'flexy_photo',
+            'content' => ''
+        ]
 
 
     ];
+
+
     /**
      * Run the database seeds.
      *

@@ -14,9 +14,9 @@ class AddProviderForm extends Component
     public $name;
     public $code;
     public $percentage;
-    public $percentage_fix = false;
+    public $percentage_fix = true;
     public $photo;
-    public $is_service_provider = false;
+    public $is_service_provider = true;
     public $purl = null;
     public $m_h = 286;
     public $m_w = 286;

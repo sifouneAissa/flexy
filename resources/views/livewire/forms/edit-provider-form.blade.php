@@ -1,12 +1,12 @@
 <div >
     <form id="add-user-form" wire:submit.prevent="save" >
 
-        <div class="form-group mb-2">
-            <label>You wanna use this as a service provider ?</label>
-            <div class="form-switch col-auto h2">
-                <input wire:model="is_service_provider" class="form-check-input" type="checkbox" id="switch-mode">
-            </div>
-        </div>
+{{--        <div class="form-group mb-2">--}}
+{{--            <label>You wanna use this as a service provider ?</label>--}}
+{{--            <div class="form-switch col-auto h2">--}}
+{{--                <input wire:model="is_service_provider" class="form-check-input" type="checkbox" id="switch-mode">--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
         <div class="form-floating mb-3 {{$errors->has('name') ? 'is-invalid' : 'is-valid'}}">
@@ -23,7 +23,7 @@
         </div>
 
 
-        @if(!$is_service_provider)
+        @if(!$item->is_service_provider)
             <div class="form-floating mb-3 {{$errors->has('code') ? 'is-invalid' : 'is-valid'}}">
                 <input wire:model="code" type="text" class="form-control"  placeholder="Name"
                        id="code">
@@ -52,12 +52,12 @@
         </div>
 
 
-        <div class="form-group">
-            <label>Your wanna make this percentage fix ?</label>
-            <div class="form-switch col-auto h2">
-                <input wire:model="percentage_fix" class="form-check-input" type="checkbox" id="switch-mode">
-            </div>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label>Your wanna make this percentage fix ?</label>--}}
+{{--            <div class="form-switch col-auto h2">--}}
+{{--                <input wire:model="percentage_fix" class="form-check-input" type="checkbox" id="switch-mode">--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         @if($is_service_provider)
             <div class="form-group mt-3">

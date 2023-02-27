@@ -20,7 +20,7 @@ class ProviderAdd extends Component
     public $percentages = [] ;
     public $mpercentages = [] ;
     public $search = '';
-    public $percentageFix = false;
+    public $percentageFix = true;
     public $increment = 0.1;
 
 

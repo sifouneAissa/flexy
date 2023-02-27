@@ -8,7 +8,7 @@
         <livewire:datatables.setting-table />
     </div>
 
-    @can('update setting')
+      @can('update setting general')
 
         <!-- Modal -->
             <div class="modal fade" id="setting-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" wire:key="setting-modal" wire:ignore.self>
@@ -47,7 +47,7 @@
 
                                 @if($with_photo)
                                     <div class="form-group mt-3">
-                                        <label>Please choose an image that matches the mentioned dimensions ({{$this->m_h .'x'. $this->m_w}}) !</label>
+                                        <label>Please choose an image !</label>
                                         <div class="ml-2 col-lg-6">
                                             <div  id="image-form">
                                                 <input type="file" name="img[]" wire:model="photo" class="file" style="visibility: hidden;position: absolute;" accept="image/*">
@@ -89,6 +89,7 @@
     }
 
     window.addEventListener('setModal', (e) => {
+        console.log("check");
         // $('.modal-backdrop').remove();
         setModal(e.detail.state);
     });

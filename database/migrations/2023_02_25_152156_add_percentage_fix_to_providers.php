@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('providers', function (Blueprint $table) {
             //
-            $table->boolean('percentage_fix')->default(false);
-            $table->boolean('is_service_provider')->default(false);
+            $table->boolean('percentage_fix')->default(true);
+            $table->boolean('is_service_provider')->default(true);
         });
     }
 

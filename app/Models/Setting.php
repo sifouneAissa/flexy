@@ -26,6 +26,6 @@ class Setting extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('webp')->format(Manipulations::FORMAT_WEBP);
+        $this->addMediaConversion('webp')->keepOriginalImageFormat()->width(286)->height(286)->format(Manipulations::FORMAT_WEBP);
     }
 }

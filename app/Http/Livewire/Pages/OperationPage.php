@@ -11,8 +11,15 @@ class OperationPage extends Component
     public $providers;
     public $pupercentages;
     public $spupercentages;
+    public $f_img = '/images/flexy.webp';
+    public $m_h = 286;
+    public $m_w = 286;
 
     public function mount(){
+        // get the image from the setting
+        if($media = getSetting('flexy_photo')->fimage())
+            $this->f_img = $media->getUrl("webp");
+
         $this->sproviders = Provider::where('is_service_provider',true)->get();
         $this->providers = Provider::where('is_service_provider',false)->get();
         $user = auth()->user();

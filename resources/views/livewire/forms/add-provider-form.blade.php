@@ -1,12 +1,12 @@
 <div >
     <form id="add-user-form" wire:submit.prevent="save" >
 
-        <div class="form-group mb-2">
-            <label>You wanna use this as a service provider ?</label>
-            <div class="form-switch col-auto h2">
-                <input wire:model="is_service_provider" class="form-check-input" type="checkbox" id="switch-mode">
-            </div>
-        </div>
+{{--        <div class="form-group mb-2">--}}
+{{--            <label>You wanna use this as a service provider ?</label>--}}
+{{--            <div class="form-switch col-auto h2">--}}
+{{--                <input wire:model="is_service_provider" class="form-check-input" type="checkbox" id="switch-mode">--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
         <div class="form-floating  mb-3 {{$errors->has('name') ? 'is-invalid' : 'is-valid'}}">
@@ -22,20 +22,20 @@
             @enderror
         </div>
 
-        @if(!$is_service_provider)
-            <div class="form-floating mb-3 {{$errors->has('code') ? 'is-invalid' : 'is-valid'}}">
-                <input wire:model="code" type="text" class="form-control"  placeholder="Name"
-                       id="code">
-                <label for="code">Code</label>
-                @error('code')
-                <button type="button" class="text-danger tooltip-btn" data-bs-toggle="tooltip"
-                        data-bs-placement="left" title="{{$message}}" id="nameerror">
-                    <i class="bi bi-info-circle"></i>
-                </button>
-                {{--            <span class="error">{{ $message }}</span> --}}
-                @enderror
-            </div>
-        @endif
+{{--        @if(!$is_service_provider)--}}
+{{--            <div class="form-floating mb-3 {{$errors->has('code') ? 'is-invalid' : 'is-valid'}}">--}}
+{{--                <input wire:model="code" type="text" class="form-control"  placeholder="Name"--}}
+{{--                       id="code">--}}
+{{--                <label for="code">Code</label>--}}
+{{--                @error('code')--}}
+{{--                <button type="button" class="text-danger tooltip-btn" data-bs-toggle="tooltip"--}}
+{{--                        data-bs-placement="left" title="{{$message}}" id="nameerror">--}}
+{{--                    <i class="bi bi-info-circle"></i>--}}
+{{--                </button>--}}
+{{--                --}}{{--            <span class="error">{{ $message }}</span> --}}
+{{--                @enderror--}}
+{{--            </div>--}}
+{{--        @endif--}}
 
         <div class="form-floating mb-3 {{$errors->has('percentage') ? 'is-invalid' : 'is-valid'}}">
             <input wire:model="percentage" type="text" class="form-control"  placeholder="Name"
@@ -51,12 +51,12 @@
         </div>
 
 
-        <div class="form-group">
-            <label>Your wanna make this percentage fix ?</label>
-            <div class="form-switch col-auto h2">
-                <input wire:model="percentage_fix" class="form-check-input" type="checkbox" id="switch-mode">
-            </div>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label>Your wanna make this percentage fix ?</label>--}}
+{{--            <div class="form-switch col-auto h2">--}}
+{{--                <input wire:model="percentage_fix" class="form-check-input" type="checkbox" id="switch-mode">--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
         @if($is_service_provider)
