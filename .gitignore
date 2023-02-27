@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /storage/app/public
+/storage/media-library
 /storage/*.key
 /vendor
 .env
