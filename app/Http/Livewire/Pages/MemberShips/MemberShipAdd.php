@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Pages\MemberShips;
 
 use App\Models\Level;
-use App\Models\Membership;
+use App\Models\MemberShip;
 use Livewire\Component;
 
 class MemberShipAdd extends Component

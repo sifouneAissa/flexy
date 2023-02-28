@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Pages\Partners;
 
 use App\Models\Level;
-use App\Models\Membership;
+use App\Models\MemberShip;
 use App\Models\Provider;
 use App\Models\User;
 use App\Models\UserProvider;

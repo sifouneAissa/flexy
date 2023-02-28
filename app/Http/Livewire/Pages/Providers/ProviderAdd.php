@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Pages\Providers;
 
-use App\Models\Membership;
+use App\Models\MemberShip;
 use App\Models\Provider;
 use App\Models\ProviderMembership;
 use App\Models\User;

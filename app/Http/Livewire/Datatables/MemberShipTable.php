@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Datatables;
 
 use App\Models\Level;
-use App\Models\Membership;
+use App\Models\MemberShip;
 use Mediconesystems\LivewireDatatables\Action;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
