@@ -160,7 +160,7 @@
 @livewireScripts
 <script> window.addEventListener('langChanged', (e) => {window.location.reload();});</script>
 <!-- Required jquery and libraries -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
 <!--select2-->
