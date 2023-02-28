@@ -13,6 +13,7 @@
 
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
     <link rel="manifest" href="/manifest.json" />
 
     <!-- Favicons -->
