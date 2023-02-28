@@ -83,6 +83,8 @@ class User extends Authenticatable
     }
 
     public function parent(){
+            if(!$this->hasRole('admin') && !$this->referred_by)
+                return User::query()->whereHas('roles',fn ($builder) => $builder->where('name','admin'))->first();
             return $this->belongsTo(User::class,'referred_by','affiliate_id');
     }
 

@@ -14,7 +14,7 @@ class Payment extends Model
         'buyer_id',
         'method_payment_id',
         'amount',
-        'state'
+        'status'
     ];
 
     public function seller(){

@@ -419,3 +419,20 @@ if (!function_exists('imageFromPath')) {
 }
 
 
+if (!function_exists('getChildren')) {
+
+    function getChildren()
+    {
+        $user = auth()->user();
+
+        if($user->hasRole('admin'))
+            $users = \App\Models\User::query()->whereNot('id',$user->id)->whereNull('referred_by')->orWhere('referred_by',$user->affiliate_id)->get();
+        else
+            $users = $user->children;
+
+        return $users;
+    }
+}
+
+
+
