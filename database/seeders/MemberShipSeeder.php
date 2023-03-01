@@ -18,17 +18,17 @@ class MemberShipSeeder extends Seeder
         //
         DB::table('member_ships')->insert([
             [
-                'level' => 'Client',
+                'nq,e' => 'Client',
                 'description' => 'Description of Client',
                 'order' => 3
             ],
             [
-                'level' => 'Wholesaler',
+                'nq,e' => 'Wholesaler',
                 'description' => 'Description of Wholesaler',
                 'order' => 2
             ],
             [
-                'level' => 'Super wholesaler',
+                'nq,e' => 'Super wholesaler',
                 'description' => 'Description of the super wholesaler',
                 'order' => 1
             ]
