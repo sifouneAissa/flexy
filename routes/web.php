@@ -47,6 +47,11 @@ Route::middleware([
 
         // operations
         Route::get('/percentages',\App\Http\Livewire\Pages\OperationPage::class)->name('percentage.index');
+        Route::get('/percentages/flexy',\App\Http\Livewire\Pages\FlexyMainPage::class)->name('flexy-main.index');
+        Route::get('/percentages/flexy_detail',\App\Http\Livewire\Pages\FlexyDetailPage::class)->name('flexy-detail.index');
+
+        // flexy detail
+
     });
     // providers
     Route::get('/providers',\App\Http\Livewire\Pages\ProvidersPage::class)->name('provider.index')->middleware(['permission:view provider']);

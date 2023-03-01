@@ -14,4 +14,17 @@ class UserProvider extends Model
         'provider_id',
         'percentage'
     ];
+
+    protected $appends = [
+        'name'
+    ];
+
+
+    public function provider(){
+        return $this->belongsTo(Provider::class,'provider_id');
+    }
+
+    public function getNameAttribute(){
+        return $this->provider->name;
+    }
 }

@@ -69,7 +69,18 @@ class SettingSeeder extends Seeder
             'name' => 'Flexy Photo',
             'code' => 'flexy_photo',
             'content' => ''
-        ]
+        ],
+        [
+            'name' => 'Flexy end to end',
+            'code' => 'flexy_end_to_end',
+            'content' => 'Flexy end to end'
+        ],
+        [
+            'name' => 'Flexy wholesaler',
+            'code' => 'flexy_wholesaler',
+            'content' => 'Flexy wholesaler'
+        ],
+
 
 
     ];
