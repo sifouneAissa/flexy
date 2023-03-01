@@ -22,8 +22,7 @@ Percentages
             <div class="card-body pt-2">
                 <div class="row">
                     <div class="col">
-                        <p class="small"><small class="text-muted size-20">Flexy operations</small><br />$ 265.00
-                        </p>
+                        <p class="small"><small class="text-muted size-20">Flexy operations</small>
                     </div>
 {{--                    <div class="col-auto px-0">--}}
 {{--                        <button class="btn btn-sm btn-link text-color-theme">--}}
