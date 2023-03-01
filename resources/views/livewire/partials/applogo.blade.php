@@ -135,7 +135,8 @@
     }
 
     window.addEventListener('setLang', (e) => {
-        this.select();
+        select();
+        @this.dispatch();
     });
 
     window.addEventListener('setMode', (e) => {
@@ -152,14 +153,22 @@
         let storageKey = 'fwadirectionmode';
 
         let value = document.getElementById('select').value;
+        console.log('value');
+        console.log(value);
         let cookie = langs[value];
-        console.log('cookie');
-        console.log(cookie);
         var body = $('body');
 
+        body.removeClass(cookie === 'rtl' ? 'ltr' : 'rtl');
         setCookie(storageKey, cookie, 1);
         body.addClass(cookie);
-        body.removeClass(cookie === 'rtl' ? 'ltr' : 'rtl');
+        if(cookie==='rtl'){
+
+            $('.bi-chevron-right').addClass('bi-chevron-left').removeClass('bi-chevron-right')
+            $('.bi-arrow-right').addClass('bi-arrow-left').removeClass('bi-arrow-right')
+            $('.bi-arrow-left').addClass('bi-arrow-right').removeClass('bi-arrow-left')
+
+        }
+
     }
 
     function mode(mode){

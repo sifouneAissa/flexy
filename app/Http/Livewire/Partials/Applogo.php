@@ -19,13 +19,17 @@ class Applogo extends Component
         $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
     }
 
+    public function dispatch(){
+        $this->dispatchBrowserEvent('langChanged');
+    }
+
     public function setLang(){
 
         Session::put('lang' , $this->lang);
         $this->dispatchBrowserEvent('setLang', ['lang' => $this->lang]);
         $this->emit('langChanged');
         $this->loginParms();
-        $this->dispatchBrowserEvent('langChanged');
+//        $this->dispatchBrowserEvent('langChanged');
 
     }
 
