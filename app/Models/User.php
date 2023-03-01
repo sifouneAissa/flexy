@@ -122,4 +122,7 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class,'payments','buyer_id');
     }
 
+    public function clients(){
+        return $this->hasMany(Client::class,'user_id');
+    }
 }

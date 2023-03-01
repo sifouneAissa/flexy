@@ -158,6 +158,9 @@
 <!--<livewire:partials.pwabtn />-->
 
 @livewireScripts
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<x-livewire-alert::scripts />
+
 <script> window.addEventListener('langChanged', (e) => {window.location.reload();});</script>
 <!-- Required jquery and libraries -->
 <script src="/assets/js/jquery-3.3.1.min.js"></script>
@@ -185,5 +188,6 @@
 
 <!-- page level custom script -->
 <script src="/assets/js/app.js"></script>
+
 </body>
 </html>

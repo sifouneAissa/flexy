@@ -86,7 +86,9 @@
         </div>
 
         <div class="d-grid">
-            <button  type="submit" class="btn btn-default btn-lg shadow-sm">Send</button>
+            <button  type="submit" class="btn btn-default btn-lg shadow-sm">Send
+                <div  wire:loading class="spinner-border float-end" role="status"></div>
+            </button>
         </div>
     </form>
 </div>

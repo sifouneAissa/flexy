@@ -73,11 +73,20 @@ class SNavitemSeeder extends Seeder
             ]
         ],
         [
-            'name' => 'Partners',
+            'name' => 'Clients',
             'parent_id' => null,
             'icon' => 'bi-person-gear',
             'isNew' => true,
             'order' => 3,
+            'route' => 'client.index',
+            'need_login' => true,
+        ],
+        [
+            'name' => 'Partners',
+            'parent_id' => null,
+            'icon' => 'bi-person-gear',
+            'isNew' => true,
+            'order' => 5,
             'route' => 'partner.index',
             'permission' => 'view-partners',
             'need_login' => true,
@@ -87,7 +96,7 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-box2-heart',
             'isNew' => true,
-            'order' => 5,
+            'order' => 6,
             'route' => 'pack.index',
             'permission' => 'view provider pack',
             'need_login' => true,
@@ -97,7 +106,7 @@ class SNavitemSeeder extends Seeder
             'parent_id' => null,
             'icon' => 'bi-telephone',
             'isNew' => true,
-            'order' => 6,
+            'order' => 7,
             'route' => 'number.index',
             'need_login' => true
         ],
@@ -108,7 +117,7 @@ class SNavitemSeeder extends Seeder
             'isNew' => true,
             'route' => null,
             'permission' => 'view setting',
-            'order' => 7,
+            'order' => 8,
             'children' => [
                 [
                     'name' => 'Roles',

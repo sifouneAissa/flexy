@@ -85,6 +85,8 @@ Route::middleware([
     Route::get('/payments/create',\App\Http\Livewire\Pages\Payments\PaymentAdd::class)->name('payment.create');
 
 
+    // clients
+    Route::get('/clients',\App\Http\Livewire\Pages\ClientPage::class)->name('client.index');
 
 });
 

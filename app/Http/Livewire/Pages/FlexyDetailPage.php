@@ -49,7 +49,6 @@ class FlexyDetailPage extends Component
         $this->user = auth()->user();
 
 
-
     }
 
 
