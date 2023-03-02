@@ -112,6 +112,7 @@ return [
     'uploaded'             => "Le fichier du champ :attribute n'a pu être téléversé.",
     'url'                  => "Le format de l'URL de :attribute n'est pas valide.",
     'The number format is invalid.' => 'Le format numérique n\'est pas valide.',
+    'Invalid provider.' => 'Inserte (05,06,07)',
 
     /*
     |--------------------------------------------------------------------------

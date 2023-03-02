@@ -36,7 +36,9 @@ class User extends Authenticatable
         'referred_by',
         'affiliate_id',
         'level_id',
-        'member_ship_id'
+        'member_ship_id',
+        'balance',
+        'credit'
     ];
 
     /**

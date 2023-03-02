@@ -1,13 +1,43 @@
 @section('page-title')
 Welcome
 @endsection
+<div>
+    <style>
+        .input-icons i {
+            position: absolute;
+        }
+
+        .input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            padding: 10px;
+            min-width: 40px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 <!-- balance -->
 <div class="row my-4 text-center">
-    <div class="col-12">
-        <h1 class="fw-light mb-2">$ 1,050.00</h1>
+    <div class="col-6 col-lg-6 col-md-6">
+        <h1 class="fw-light mb-2">{{$user->balance}}</h1>
         <p class="text-secondary">Total Balance</p>
+        <p class="text-secondary"><a href="addmoney.html">+ Add Money</a></p>
+    </div>
+    <div class="col-6 col-lg-6 col-md-6">
+        <h1 class="fw-light mb-2">{{$user->credit}}</h1>
+        <p class="text-secondary">Total credit</p>
+
+        <p class="text-secondary"><a href="receivemoney.html">+ Receive Money</a></p>
     </div>
 </div>
+
 
 <!-- income expense-->
 <div class="row mb-4">
@@ -52,204 +82,96 @@ Welcome
 </div>
 
 <!-- categories list -->
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="card bg-theme text-white">
-            <div class="card-body pb-0">
-                <div class="row justify-content-between gx-0 mx-0 pb-3">
-                    <div class="col-auto text-center">
-                        <a href="pay.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-receipt-cutoff size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Pay</p>
-                    </div>
+{{--<div class="row mb-4">--}}
+{{--    <div class="col-12">--}}
+{{--        <div class="card bg-theme text-white">--}}
+{{--            <div class="card-body pb-0">--}}
+{{--                <div class="row justify-content-between gx-0 mx-0 pb-3">--}}
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="pay.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-receipt-cutoff size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Pay</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="sendmoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-arrow-up-right size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Send</p>
-                    </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="sendmoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-arrow-up-right size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Send</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="receivemoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-arrow-down-left size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Receive</p>
-                    </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="receivemoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-arrow-down-left size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Receive</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="withdraw.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-bank size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Withdraw</p>
-                    </div>
-                </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="withdraw.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-bank size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Withdraw</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="row justify-content-between gx-0 mx-0 collapse" id="collpasemorelink">
-                    <div class="col-auto text-center">
-                        <a href="bills.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-tv size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">TV</p>
-                    </div>
+{{--                <div class="row justify-content-between gx-0 mx-0 collapse" id="collpasemorelink">--}}
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="bills.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-tv size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">TV</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="addmoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-wallet2 size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Add Money</p>
-                    </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="addmoney.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-wallet2 size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Add Money</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="shop.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-cart size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Buy</p>
-                    </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="shop.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-cart size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Buy</p>--}}
+{{--                    </div>--}}
 
-                    <div class="col-auto text-center">
-                        <a href="rewards.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">
-                            <div class="icons bg-success text-white rounded-12 bg-opac">
-                                <i class="bi bi-cash-coin size-22"></i>
-                            </div>
-                        </a>
-                        <p class="size-10">Cashback</p>
-                    </div>
-                </div>
+{{--                    <div class="col-auto text-center">--}}
+{{--                        <a href="rewards.html" class="avatar avatar-60 p-1 shadow-sm rounded-15 bg-opac mb-2">--}}
+{{--                            <div class="icons bg-success text-white rounded-12 bg-opac">--}}
+{{--                                <i class="bi bi-cash-coin size-22"></i>--}}
+{{--                            </div>--}}
+{{--                        </a>--}}
+{{--                        <p class="size-10">Cashback</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <button class="btn btn-link mt-0 py-1 w-100 bar-more collapsed" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#collpasemorelink" aria-expanded="false"
-                        aria-controls="collpasemorelink">
-                    <span class=""></span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- People -->
-<div class="row mb-2">
-    <div class="col">
-        <h6 class="title">People</h6>
-    </div>
-    <div class="col-auto">
-        <a href="userlist.html" class="small">View More</a>
-    </div>
-</div>
-<div class="row mb-3">
-    <div class="col-12 px-0">
-        <!-- swiper users connections -->
-        <div class="swiper-container connectionwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-success z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-18">
-                                <img src="/assets/imgwebp/user4.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-danger z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user2.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-warning z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user3.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-success z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user1.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-success z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user4.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user2.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <div class="position-absolute end-0 top-0 bg-success z-index-1 online-status">
-                            </div>
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user3.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="swiper-slide">
-                    <a href="profile.html" class="card text-center">
-                        <div class="card-body p-1">
-                            <figure class="avatar avatar-80 shadow-sm rounded-20">
-                                <img src="/assets/imgwebp/user1.webp" alt="">
-                            </figure>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--                <button class="btn btn-link mt-0 py-1 w-100 bar-more collapsed" type="button"--}}
+{{--                        data-bs-toggle="collapse" data-bs-target="#collpasemorelink" aria-expanded="false"--}}
+{{--                        aria-controls="collpasemorelink">--}}
+{{--                    <span class=""></span>--}}
+{{--                </button>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+<livewire:pages.index.flexy-detail />
 
 <!-- Companies -->
 <div class="row mb-2">
@@ -652,3 +574,4 @@ Welcome
     </div>
 </div>
 
+</div>

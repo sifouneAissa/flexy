@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('current_cash')->nullable();
+            $table->string('balance')->default(0);
+            $table->string('credit')->default(0);
         });
     }
 

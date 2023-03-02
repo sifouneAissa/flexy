@@ -152,6 +152,7 @@ return [
     'uuid' => 'The :attribute must be a valid UUID.',
     'The number format is invalid.' => 'The number format is invalid.',
 
+    'Invalid provider.' => 'Insert (05,06,07)',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
