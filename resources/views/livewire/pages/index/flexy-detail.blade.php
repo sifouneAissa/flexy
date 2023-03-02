@@ -25,13 +25,13 @@
                     Choose Offer
                 </button>
                 @if(!$nexist)
-                <button   class="btn btn-success h3" onclick="setM(true,'add-to-favorite')">
+                <button   class="btn btn-success h3 " onclick="setM(true,'add-to-favorite')">
                     Add to Favorite
                 </button>
                 @endif
 
                 @if(!$errors->has('amount') && $amount)
-                <button class="h1 text-success" wire:click="save">
+                <button class="h1 text-success col-12" wire:click="save">
                     <i class="bi bi-check-circle "></i>
                 </button>
                 @endif
