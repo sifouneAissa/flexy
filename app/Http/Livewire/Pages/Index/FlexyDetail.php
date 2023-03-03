@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use function Symfony\Component\Finder\size;
 
 class FlexyDetail extends Component
 {
@@ -55,6 +56,7 @@ class FlexyDetail extends Component
         $this->updated('phone_number');
     }
 
+
     public function setOffres(){
 
         $http = Http::withOptions(['verify' => false])->get('https://dummyjson.com/products/1', [
@@ -71,24 +73,20 @@ class FlexyDetail extends Component
 
 
     public function search(){
-
         if($this->phone_number==='') $this->records = $this->clients;
         else $this->records = $this->clients->filter(fn ($item) => str_contains($item->phone,$this->phone_number));
-
     }
 
 
 
     public function updated($propertyName)
     {
+        $this->code = substr($this->phone_number, 0, 2);
+
         if($propertyName==='phone_number')
             $this->vProvider();
 
-        $this->validateOnly($propertyName);
-
-        if($propertyName==='phone_number')
-        $this->dispatchBrowserEvent('btnClick');
-
+        if($this->code!=='info')  $this->validateOnly($propertyName);
 
     }
 
@@ -117,6 +115,7 @@ class FlexyDetail extends Component
 
         });
     }
+
 
     public function mount(){
            $this->codes = Provider::query()->where('is_service_provider',false)->get(['id','name','code']);
@@ -163,23 +162,31 @@ class FlexyDetail extends Component
 
 
     public function updatedPhoneNumber(){
+
         $this->vProvider();
-        $this->setOffres();
-        $this->client_phone = $this->phone_number;
-        $this->nexist = $this->clients->contains(fn ($item) => $item->phone === $this->phone_number);
+
+        if($this->code!=='info') {
+            $this->setOffres();
+            $this->client_phone = $this->phone_number;
+            $this->nexist = $this->clients->contains(fn($item) => $item->phone === $this->phone_number);
+            $this->dispatchBrowserEvent('btnClick');
+        }
     }
 
     public function vProvider(){
 
-        $this->code = substr($this->phone_number, 0, 2);
+//            $this->code = substr($this->phone_number, 0, 2);
 
-        if(!$this->codes->contains(fn ($item) => $item->code===$this->code)){
-            $this->addError('phone_number',__('validation.Invalid provider.'));
-            $this->code = 'info';
-        }
+            if (!$this->codes->contains(fn($item) => $item->code === $this->code)) {
+                $this->addError('phone_number_code', __('validation.Invalid provider.'));
+                $this->code = 'info';
+            }
 
-        $this->cicon = $this->codeIcons[$this->code];
+            $this->cicon = $this->codeIcons[$this->code];
+
     }
+
+
 
 
     public function render()

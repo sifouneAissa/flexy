@@ -25,17 +25,17 @@ Welcome
     </style>
 <!-- balance -->
 <div class="row my-4 text-center">
-    <div class="col-6 col-lg-6 col-md-6">
+    <div class="col-12">
         <h1 class="fw-light mb-2">{{$user->balance}}</h1>
         <p class="text-secondary">Total Balance</p>
-        <p class="text-secondary"><a href="addmoney.html">+ Add Money</a></p>
+        <p class="text-secondary"><a href="addmoney.html">Top up</a></p>
     </div>
-    <div class="col-6 col-lg-6 col-md-6">
-        <h1 class="fw-light mb-2">{{$user->credit}}</h1>
-        <p class="text-secondary">Total credit</p>
+{{--    <div class="col-6 col-lg-6 col-md-6">--}}
+{{--        <h1 class="fw-light mb-2">{{$user->credit}}</h1>--}}
+{{--        <p class="text-secondary">Total credit</p>--}}
 
-        <p class="text-secondary"><a href="receivemoney.html">+ Receive Money</a></p>
-    </div>
+{{--        <p class="text-secondary"><a href="receivemoney.html">+ Receive Money</a></p>--}}
+{{--    </div>--}}
 </div>
 
 
@@ -48,13 +48,13 @@ Welcome
                     <div class="col-auto">
                         <div class="avatar avatar-40 p-1 shadow-sm shadow-success rounded-15">
                             <div class="icons bg-success text-white rounded-12">
-                                <i class="bi bi-arrow-down-left"></i>
+                                <i class="bi bi-arrow-up-right"></i>
                             </div>
                         </div>
                     </div>
                     <div class="col align-self-center ps-0">
                         <p class="size-10 text-secondary mb-0">Income</p>
-                        <p>1542k</p>
+                        <p>0</p>
                     </div>
                 </div>
             </div>
@@ -67,13 +67,13 @@ Welcome
                     <div class="col-auto">
                         <div class="avatar avatar-40 p-1 shadow-sm shadow-danger rounded-15">
                             <div class="icons bg-danger text-white rounded-12">
-                                <i class="bi bi-arrow-up-right"></i>
+                                <i class="bi bi-arrow-down-left"></i>
                             </div>
                         </div>
                     </div>
                     <div class="col align-self-center ps-0">
                         <p class="size-10 text-secondary mb-0">Expense</p>
-                        <p>1212k</p>
+                        <p>{{$user->credit}}</p>
                     </div>
                 </div>
             </div>

@@ -1,37 +1,52 @@
 <div>
 <div class="row mb-4">
-    <div class="col-12 text-center mb-4">
-        <img src="{{$cicon}}" class="rounded"  style="width:50px;height:50px" alt="My Happy SVG"/>
-        <input wire:model="phone_number" wire:keyup="search"  type="text" class="trasparent-input text-center"  placeholder="Enter Phone Number">
-        @error('phone_number')
-            <p class="text-danger">{{$message}}</p>
+    <div class="col-12 text-center mb-4" wire:ignore.self>
+        <div class="d-flex rounded-18" style="border: solid;border-color: #00dfa3" >
+            @if($code && $code!=='info')
+                <div class="col-auto mt-3">
+                    <button class="" type="button" data-bs-toggle="modal" data-bs-target="#attachefiles">
+                        <img src="{{$cicon}}" class="rounded-18" style="width:50px;height:60px" alt="My Happy SVG">
+                    </button>
+                </div>
+            @endif
+            <div class="col">
+                <div class="input-group">
+                    <input oninput="setV(event)"   id="number-col" onkeypress="return isNumber(event)"   maxlength="10" type="text" inputmode="numeric"  wire:keyup="search" class="trasparent-input text-center" placeholder="Enter Phone Number">
+
+                </div>
+            </div>
+        </div>
+        @error('phone_number_code')
+            <p class="text-danger float-start">{{$message}}</p>
         @enderror
 
-        @if(!$errors->has('phone_number') && $phone_number)
-            <div class="row justify-content-between gx-0 mx-0 collapse" id="flexy-extra" wire:ignore.self>
+        @if((!$errors->has('phone_number') && $code!=='info' && $phone_number))
+            <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
                 <input wire:model="amount" type="text" class="trasparent-input text-center"  placeholder="Amount">
                 @error('amount')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
 
-            <button id="btn-collapse" class="btn btn-link mt-0 py-1 w-100 bar-more collapsed " type="button"
+            <button id="btn-collapse" class="btn btn-link mt-0 py-1 w-100 bar-more collapsed mt-2" type="button"
                     data-bs-toggle="collapse" data-bs-target="#flexy-extra" aria-expanded="false"
                     aria-controls="flexy-extra">
                 <span class="text-dark"></span>
             </button>
 
-                <button  class="col-auto btn btn-link mt-0 py-1 w-100 bar-more collapsed" onclick="setM(true)">
-                    Choose Offer
-                </button>
-                @if(!$nexist)
-                <button   class="btn btn-success h3 " onclick="setM(true,'add-to-favorite')">
-                    Add to Favorite
-                </button>
-                @endif
+               <div class="align-content-around">
+                   <button class="btn btn-primary col-auto collapsed mt-2 h3" title="Search for offers" onclick="setM(true)">
+                       <i class="bi bi-search-heart"></i>
+                   </button>
+                   @if(!$nexist)
+                       <button   class="col-auto btn btn-success h3 mt-2" title="add to favorite" onclick="setM(true,'add-to-favorite')">
+                           <i class="bi bi-heart-fill"></i>
+                       </button>
+                   @endif
+               </div>
 
                 @if(!$errors->has('amount') && $amount)
-                <button class="h1 text-success col-12" wire:click="save">
+                <button class=" h1 text-success mt-2" wire:click="save" title="Send">
                     <i class="bi bi-check-circle "></i>
                 </button>
                 @endif
@@ -43,7 +58,7 @@
                     <div class="modal-content">
 
                         <form >
-                            <div class="modal-header bg-success">
+                            <div class="modal-header bg-primary">
                                 <h3 class="modal-title" id="exampleModalLabel">Offers</h3>
                                 <button onclick="setM(false)" type="button" class="close" data-dismiss="modal"
                                         aria-label="Close">
@@ -56,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="setM(false)" class="btn btn-outline-success"
+                                <button type="button" onclick="setM(false)" class="btn btn-outline-primary"
                                         data-dismiss="modal">Close
                                 </button>
                             </div>
@@ -160,6 +175,19 @@
 <script>
 
 
+    window.addEventListener('livewire:load', function () {
+    });
+
+    function setV(){
+        let phone = @this.get('phone_number');
+        if(@this.get('code')==='info' && phone?.length>1) {
+            $('#number-col').val('0');
+            @this.set('phone_number',null);
+        }
+        else
+        @this.set('phone_number',$('#number-col').val());
+    }
+
     window.addEventListener('btnClick', (e) => {
         $('#btn-collapse').click();
     });
@@ -174,5 +202,33 @@
         else
         $('#'+id).modal(state ? 'show' : 'hide');
     }
+    //
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+
+
+        if($('#number-col').val().length===10){
+            // $('#number-col').val($('#number-col').val());
+            setV();
+        }
+
+        return true;
+    }
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
 
 </script>
