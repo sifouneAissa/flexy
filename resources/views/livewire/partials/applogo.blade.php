@@ -19,16 +19,16 @@
                 <input title="Switch theme"  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
             </div>
 
-            <div class=" col-auto mt-1">
-                <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
-                    <option  disabled>Language</option>
-                    @foreach(config('app.locales') as $key =>  $value)
-                        <option value="{{$value}}"><div class="row">
-                                {{__('lang.'.$value)}}
-                            </div></option>
-                    @endforeach
-                </select>
-            </div>
+{{--            <div class=" col-auto mt-1">--}}
+{{--                <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">--}}
+{{--                    <option  disabled>Language</option>--}}
+{{--                    @foreach(config('app.locales') as $key =>  $value)--}}
+{{--                        <option value="{{$value}}"><div class="row">--}}
+{{--                                {{__('lang.'.$value)}}--}}
+{{--                            </div></option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+{{--            </div>--}}
 
 {{--            <div class="form-floating col-auto">--}}
 {{--                <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>--}}
@@ -38,14 +38,14 @@
 {{--            </div>--}}
 
 
-            @if($showP)
-                <div  class="col-auto">
-                    <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">
-                        <i class="bi bi-person-circle"></i>
-                        <span class="count-indicator"></span>
-                    </a>
-                </div>
-            @endif
+{{--            @if($showP)--}}
+{{--                <div  class="col-auto">--}}
+{{--                    <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">--}}
+{{--                        <i class="bi bi-person-circle"></i>--}}
+{{--                        <span class="count-indicator"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            @endif--}}
             {{--        <div class="row mb-4">--}}
             {{--            <div class="col-6 d-grid">--}}
             {{--                <input type="radio" class="btn-check" name="layout-mode" checked id="btn-ltr">--}}
@@ -74,16 +74,16 @@
         <div class="form-check form-switch col-auto h2" >
             <input  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
         </div>
-        <div class="col-auto mt-1" >
-            <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">
-                <option  disabled>Language</option>
-                @foreach(config('app.locales') as $key =>  $value)
-                    <option value="{{$value}}">{{__('lang.'.$value)}} </option>
+{{--        <div class="col-auto mt-1" >--}}
+{{--            <select wire:model.defer="lang" wire:change="setLang"  class="form-select form-control" id="select">--}}
+{{--                <option  disabled>Language</option>--}}
+{{--                @foreach(config('app.locales') as $key =>  $value)--}}
+{{--                    <option value="{{$value}}">{{__('lang.'.$value)}} </option>--}}
 
-                    <img src="/flags/ar.webp" alt="" />
-                @endforeach
-            </select>
-        </div>
+{{--                    <img src="/flags/ar.webp" alt="" />--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--        </div>--}}
 {{--        <div class="form-floating col-auto">--}}
 {{--            <i  wire:click="setMode('dark-mode')"  class="bi bi-moon-stars fs-4 mb-2 d-block"></i>--}}
 {{--        </div>--}}
@@ -92,14 +92,14 @@
 {{--        </div>--}}
 
 
-        @if($showP)
-            <div  class="col-auto">
-                <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">
-                    <i class="bi bi-person-circle"></i>
-                    <span class="count-indicator"></span>
-                </a>
-            </div>
-        @endif
+{{--        @if($showP)--}}
+{{--            <div  class="col-auto">--}}
+{{--                <a href="{{route("profile.show")}}" target="_self" class="btn btn-light btn-44">--}}
+{{--                    <i class="bi bi-person-circle"></i>--}}
+{{--                    <span class="count-indicator"></span>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        @endif--}}
     </div>
     @endif
 </header>

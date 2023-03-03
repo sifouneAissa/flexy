@@ -1,7 +1,7 @@
 
 <!-- PWA app install toast message -->
-<div class="position-fixed bottom-0 start-50 translate-middle-x  z-index-99">
-    <div class="toast mb-3" role="alert" aria-live="assertive" aria-atomic="true" id="toastinstall"
+<div class="position-fixed bottom-0 start-50 translate-middle-x  z-index-10">
+    <div class="toast mb-3 z-index-10" role="alert" aria-live="assertive" aria-atomic="true" id="toastinstall"
          data-bs-animation="true">
         <div class="toast-header">
             <img src="assets/imgwebp/favicon32.webp" class="rounded me-2" alt="...">

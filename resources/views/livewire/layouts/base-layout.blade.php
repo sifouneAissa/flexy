@@ -155,7 +155,7 @@
 </div>
 <!-- Footer ends-->
 
-<!--<livewire:partials.pwabtn />-->
+<!--add here pwa -->
 
 @livewireScripts
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

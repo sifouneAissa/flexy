@@ -2,7 +2,7 @@
 @php
     $items = \App\Models\SNavitem::where('parent_id',null)->orderBy('order')->where('is_active',true)->get();
 @endphp
-<div class="sidebar-wrap  sidebar-overlay">
+<div class="sidebar-wrap  sidebar-overlay z-index-99">
     <!-- Add pushcontent or fullmenu instead overlay -->
     <div class="closemenu text-muted">Close Menu</div>
     <div class="sidebar ">
