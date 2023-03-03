@@ -22,7 +22,7 @@
 
         @if((!$errors->has('phone_number') && $code!=='info' && $phone_number))
             <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
-                <input wire:model="amount" type="text" class="trasparent-input text-center"  placeholder="Amount">
+                <input  onkeypress="return isNumber(event,'amount')"  wire:model="amount" type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">
                 @error('amount')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -203,14 +203,17 @@
         $('#'+id).modal(state ? 'show' : 'hide');
     }
     //
-    function isNumber(evt) {
+    function isNumber(evt,f) {
         evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode > 31 && (charCode < 48 || charCode > 57)) {
             return false;
         }
 
+        if(f==='amount'){
 
+        }
+        else
         if($('#number-col').val().length===10){
             // $('#number-col').val($('#number-col').val());
             setV();
