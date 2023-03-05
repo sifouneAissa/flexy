@@ -1,9 +1,35 @@
 <div>
+    <style>
+        .trasparent-input {
+            font-size: 40px;
+            line-height: 68px;
+            padding: 10px 15px;
+            border: 0;
+            background-color: transparent;
+            display: block;
+            width: 100%;
+            border-radius: var(--finwallapp-rounded);
+        }
+
+        .trasparent-input:focus {
+            background-color : transparent;
+            outline: none;
+        }
+        .card-transparent:focus-within {
+            border: solid;
+            border-color: #00dfa3;
+            background-color: var(--finwallapp-theme-bordercolor);
+        }
+        .card-transparent {
+            background-color: var(--finwallapp-theme-bordercolor);
+        }
+
+    </style>
 <div class="row mb-4">
     <div class="col-12 text-center mb-4" wire:ignore.self>
-        <div class="d-flex rounded-18" style="border: solid;border-color: #00dfa3" >
+        <div class="d-flex rounded-18 card-transparent"  >
             @if($code && $code!=='info')
-                <div class="col-auto mt-3">
+                <div class="col-auto mt-3 ml-3">
                     <button class="" type="button" data-bs-toggle="modal" data-bs-target="#attachefiles">
                         <img src="{{$cicon}}" class="rounded-18" style="width:50px;height:60px" alt="My Happy SVG">
                     </button>
@@ -11,7 +37,7 @@
             @endif
             <div class="col">
                 <div class="input-group">
-                    <input oninput="setV(event)"   id="number-col" onkeypress="return isNumber(event)"   maxlength="10" type="text" inputmode="numeric"  wire:keyup="search" class="trasparent-input text-center" placeholder="Enter Phone Number">
+                    <input onfocus="setV(event)" oninput="setV(event)"   id="number-col" onkeypress="return isNumber(event)"   maxlength="10" type="text" inputmode="numeric"  wire:keyup="search" class="trasparent-input text-center" placeholder="Enter Phone Number">
 
                 </div>
             </div>
@@ -21,10 +47,10 @@
         @enderror
 
         @if((!$errors->has('phone_number') && $code!=='info' && $phone_number))
-            <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
-                <input  onkeypress="return isNumber(event,'amount')"  wire:model="amount" type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">
+            <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18 card-transparent" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
+                <input  oninput="setA(event)"   onkeypress="return isNumber(event,'amount')" id="amoun-col"  type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">
                 @error('amount')
-                <p class="text-danger">{{$message}}</p>
+                <p class="text-danger float-start">{{$message}}</p>
                 @enderror
             </div>
 
@@ -36,20 +62,22 @@
 
                <div class="align-content-around">
                    <button class="btn btn-primary col-auto collapsed mt-2 h3" title="Search for offers" onclick="setM(true)">
-                       <i class="bi bi-search-heart"></i>
+                       Offres <i class="bi bi-search-heart"></i>
                    </button>
                    @if(!$nexist)
                        <button   class="col-auto btn btn-success h3 mt-2" title="add to favorite" onclick="setM(true,'add-to-favorite')">
-                           <i class="bi bi-heart-fill"></i>
+                           Favorite <i class="bi bi-heart-fill"></i>
                        </button>
                    @endif
                </div>
 
+            <button class=" h1 {{(!$errors->has('amount') && $amount) ? 'text-success' : 'text-danger'}} mt-2" @if(!$errors->has('amount') && $amount) wire:click="save" @endif title="Send">
                 @if(!$errors->has('amount') && $amount)
-                <button class=" h1 text-success mt-2" wire:click="save" title="Send">
                     <i class="bi bi-check-circle "></i>
-                </button>
+                @else
+                    <i class="bi bi-check-circle "></i>
                 @endif
+            </button>
 
 
             <div  class="modal fade " id="offers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -179,13 +207,21 @@
     });
 
     function setV(){
-        let phone = @this.get('phone_number');
-        if(@this.get('code')==='info' && phone?.length>1) {
-            $('#number-col').val('0');
+        setTimeout(function (){
+            let phone = @this.get('phone_number');
+            if(@this.get('code')==='info' && phone?.length>1) {
+                $('#number-col').val('0');
             @this.set('phone_number',null);
-        }
-        else
-        @this.set('phone_number',$('#number-col').val());
+            }
+            else
+            @this.set('phone_number',$('#number-col').val());
+        },500);
+    }
+
+    function setA(event){
+        setTimeout(function (){
+            @this.set('amount',$('#amoun-col').val());
+        },500);
     }
 
     window.addEventListener('btnClick', (e) => {
@@ -211,7 +247,7 @@
         }
 
         if(f==='amount'){
-
+            // setA();
         }
         else
         if($('#number-col').val().length===10){

@@ -126,6 +126,7 @@ class FlexyDetail extends Component
            $this->cicon = $this->codeIcons['info'];
            $this->clients = auth()->user()->clients;
            $this->records = $this->clients;
+
     }
 
     public function saveClient(){
