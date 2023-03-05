@@ -79,7 +79,6 @@ class AddPaymentForm extends Component
 
 
 
-
             $this->alert('success','Operation success');
         });
     }
