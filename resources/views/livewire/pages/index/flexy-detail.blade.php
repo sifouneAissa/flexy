@@ -207,18 +207,21 @@
     });
 
     function setV(){
+        if($('#number-col').val().length>=2)
         setTimeout(function (){
             let phone = @this.get('phone_number');
             if(@this.get('code')==='info' && phone?.length>1) {
                 $('#number-col').val('0');
-            @this.set('phone_number',null);
+                @this.set('phone_number',null);
             }
             else
             @this.set('phone_number',$('#number-col').val());
         },500);
+
     }
 
     function setA(event){
+
         setTimeout(function (){
             @this.set('amount',$('#amoun-col').val());
         },500);

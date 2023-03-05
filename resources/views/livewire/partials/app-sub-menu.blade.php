@@ -5,8 +5,10 @@
     <div class="row my-4 text-center">
         <div class="col-12">
             <h1 class="fw-light mb-2 h1">{{$user->balance}}</h1>
-            <p class="text-secondary">Total Balance</p>
-            <p class="text-secondary"><a href="{{route('payment.create')}}">Top up</a></p>
+            <h4 class="text-secondary">Total Balance</h4>
+            @if($withRoute)
+                <p class="text-secondary"><a href="{{route('payment.create')}}">Top up</a></p>
+            @endif
         </div>
     </div>
     <!-- income expense-->
@@ -23,7 +25,7 @@
                             </div>
                         </div>
                         <div class="col align-self-center ps-0">
-                            <p class="size-10 text-secondary mb-0">Income</p>
+                            <p class="size-10 text-secondary mb-0">Bonus</p>
                             <p>0</p>
                         </div>
                     </div>
@@ -42,7 +44,7 @@
                             </div>
                         </div>
                         <div class="col align-self-center ps-0">
-                            <p class="size-10 text-secondary mb-0">Expense</p>
+                            <p class="size-10 text-secondary mb-0">Credit</p>
                             <p>{{$user->credit}}</p>
                         </div>
                     </div>

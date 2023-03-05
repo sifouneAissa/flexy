@@ -7,6 +7,7 @@ use Livewire\Component;
 class AppSubMenu extends Component
 {
     public $user;
+    public $withRoute =true;
 
     public function mount(){
         $this->user = auth()->user();
