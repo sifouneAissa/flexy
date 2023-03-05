@@ -36,13 +36,12 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
 
-
+    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
     <!-- style css for this template -->
     <link href="/assets/css/style.css" rel="stylesheet" id="style">
     <!-- Scripts -->
 
 
-    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
     @vite(['resources/js/app.js'])
     @livewireStyles
 </head>

@@ -4,7 +4,7 @@
     <!-- balance -->
     <div class="row my-4 text-center">
         <div class="col-12">
-            <h1 class="fw-light mb-2">{{$user->balance}}</h1>
+            <h1 class="fw-light mb-2 h1">{{$user->balance}}</h1>
             <p class="text-secondary">Total Balance</p>
             <p class="text-secondary"><a href="{{route('payment.create')}}">Top up</a></p>
         </div>

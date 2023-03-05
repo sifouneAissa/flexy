@@ -2,27 +2,6 @@
 Welcome
 @endsection
 <div>
-    <style>
-        .input-icons i {
-            position: absolute;
-        }
-
-        .input-icons {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .icon {
-            padding: 10px;
-            min-width: 40px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
 <!-- balance -->
 <div class="row my-4 text-center">
     <div class="col-12">
