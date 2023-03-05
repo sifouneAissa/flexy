@@ -60,10 +60,10 @@ class AddPaymentForm extends Component
         }
 
         // start db
-        startTransaction(function () use ($mselected,$user){
+        startTransaction(function () use ($selected_users,$mselected,$user){
             $ms = array_shift($mselected);
-//            $tamount = 0;
-            foreach($this->amounts as $amount){
+
+            foreach($selected_users as $amount){
                 Payment::query()->create([
                     'buyer_id' => $amount['user_id'],
                     'seller_id' => $user->id,
