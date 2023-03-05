@@ -49,7 +49,7 @@
 
 
 <!-- loader section -->
-<div class="container-fluid loader-wrap">
+<div wire:key="container" class="container-fluid loader-wrap">
     <div class="row h-100">
         <div class="col-10 col-md-6 col-lg-5 col-xl-3 mx-auto text-center align-self-center">
             <div class="logo-wallet">
@@ -65,7 +65,7 @@
     </div>
 </div>
 <!-- loader section ends -->
-<livewire:partials.sidebar  />
+<livewire:partials.sidebar />
 
         <main class="h-100">
 
@@ -77,11 +77,11 @@
         </main>
 
 <!-- Footer -->
-<footer class="footer">
+<footer class="footer" >
     <livewire:partials.b-navbar />
 </footer>
 <!-- Menu Modal -->
-<div class="modal fade" id="menumodal" tabindex="-1" aria-hidden="true">
+<div  class="modal fade" id="menumodal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content shadow">
             <div class="modal-body">

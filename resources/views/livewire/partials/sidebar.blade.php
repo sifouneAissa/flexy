@@ -1,13 +1,20 @@
-<!-- Sidebar main menu -->
-@php
-    $items = \App\Models\SNavitem::where('parent_id',null)->orderBy('order')->where('is_active',true)->get();
-@endphp
-<div class="sidebar-wrap  sidebar-overlay z-index-99">
-    <!-- Add pushcontent or fullmenu instead overlay -->
+<div class="sidebar-wrap  sidebar-overlay z-index-99"  >
+    <!-- Sidebar main menu -->
+
     <div class="closemenu text-muted">Close Menu</div>
-    <div class="sidebar ">
-        <!-- user information -->
-        <div class="row my-3">
+    <div class="sidebar " >
+
+        <div class="row align-content-center">
+                <select wire:model="lang"  class="form-select form-control text-center bg-transparent text-white" id="select" >
+                    <option class="bg-primary text-white"  disabled>Language</option>
+                    @foreach($locales as $key =>  $value)
+                        <option class="bg-primary text-white" value="{{$value}}"><div class="row">
+                                {{__('lang.'.$value)}}
+                            </div></option>
+                    @endforeach
+                </select>
+        </div>
+        <div class="row my-3"  >
             <div class="col-12 profile-sidebar">
                 <div class="clearfix"></div>
                 <div class="circle small one"></div>
@@ -36,9 +43,14 @@
                         <h5 class="mb-2">{{auth()->user()->name}}</h5>
                         <p class="text-muted size-12">{{auth()->user()->email}},<br />{{auth()->user()->roles->first()?->name}}</p>
                     </div>
+
+
+
                 </div>
+
             </div>
         </div>
+
 
         <!-- user emnu navigation -->
         <div class="row">
@@ -54,10 +66,10 @@
                     @foreach($items as $item)
                         @if($item->need_login && auth()->user())
                             @can($item->permission)
-                                <livewire:partials.sidebar.nav-item :item="$item" />
+                                <livewire:partials.sidebar.nav-item wire:key="{{$item->id}}-item" :item="$item" />
                             @endcan
                         @elseif(!$item->need_login)
-                            <livewire:partials.sidebar.nav-item :item="$item" />
+                            <livewire:partials.sidebar.nav-item wire:key="{{$item->id}}-item" :item="$item" />
                         @endif
                     @endforeach
 
@@ -80,3 +92,43 @@
         </div>
     </div>
 </div>
+<script>
+
+    function select() {
+        let langs = {
+            'ar' : 'rtl',
+            'en' : 'ltr',
+            'fr': 'ltr'
+        };
+        console.log("check");
+        let storageKey = 'fwadirectionmode';
+
+        let value = document.getElementById('select').value;
+
+        let cookie = langs[value];
+        var body = $('body');
+
+        body.removeClass(cookie === 'rtl' ? 'ltr' : 'rtl');
+        setCookie(storageKey, cookie, 1);
+        body.addClass(cookie);
+        if(cookie==='rtl'){
+
+            $('.bi-chevron-right').addClass('bi-chevron-left').removeClass('bi-chevron-right')
+            $('.bi-arrow-right').addClass('bi-arrow-left').removeClass('bi-arrow-right')
+            $('.bi-arrow-left').addClass('bi-arrow-right').removeClass('bi-arrow-left')
+
+        }
+
+    }
+
+    document.addEventListener('livewire:load', function () {
+        // Your JS here.
+        select();
+    })
+
+
+    window.addEventListener('setLang', (e) => {
+        select();
+    });
+
+</script>

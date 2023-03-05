@@ -13,6 +13,9 @@ class Applogo extends Component
     public $isBase = true;
     public $showP = true;
     public $link = null;
+    public $listeners = [
+        'setLang' => 'setLang'
+    ];
 
     public function updatedLang(){
         Session::put('lang' , $this->lang);
@@ -45,24 +48,26 @@ class Applogo extends Component
     public function loginParms(){
 
         if($user = auth()->user()){
-            $ulang = $this->lang!==$user->lang;
+//            $ulang = $this->lang!==$user->lang;
             $umode = $this->mode!==$user->mode;
 
-            if($ulang)
-            $user->lang = $this->lang;
+//            if($ulang)
+//            $user->lang = $this->lang;
             if($umode)
             $user->mode = $this->mode;
 
-            if($ulang || $umode)
+            if(
+//                $ulang ||
+                $umode)
             $user->save();
         }
     }
     public function mount($isBase=true){
 
-        $this->lang = Session::has('lang') ? Session::get('lang') : \app()->getLocale();
+//        $this->lang = Session::has('lang') ? Session::get('lang') : \app()->getLocale();
         $this->mode = Session::has('mode') ? Session::get('mode') : config("app.mode");
         $this->isBase = $isBase;
-        $this->setLang();
+//        $this->setLang();
         $this->setMode(true);
         $this->showP = auth()->user() && !(\Illuminate\Support\Facades\Route::getCurrentRoute()->getName()==='profile.show');
 
