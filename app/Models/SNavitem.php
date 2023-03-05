@@ -22,7 +22,8 @@ class SNavitem extends Model
     ];
 
     protected $casts = [
-        'need_login' => 'boolean'
+        'need_login' => 'boolean',
+        'order' => 'integer'
     ];
 
     public function children() {

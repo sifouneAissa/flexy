@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('s_navitems', function (Blueprint $table) {
-            //
+        Schema::create('provider_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('icon')->default('bi-info-circle');
             $table->bigInteger('order')->nullable();
-            $table->string('is_active')->default(true);
+            $table->boolean('active')->default(false);
+            $table->timestamps();
         });
     }
 
@@ -27,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('s_navitems', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('provider_types');
     }
 };

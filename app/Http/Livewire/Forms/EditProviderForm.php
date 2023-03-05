@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Provider;
+use App\Models\ProviderType;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -25,6 +26,8 @@ class EditProviderForm extends Component
 
     public $unit= 'dz';
     public $price_per_unit = 1;
+    public $type;
+    public $types;
 
 
 
@@ -55,6 +58,9 @@ class EditProviderForm extends Component
         $this->percentage_fix = $this->item->percentage_fix;
         $this->unit = $this->item->unit;
         $this->price_per_unit = $this->item->price_per_unit;
+
+        $this->types = ProviderType::query()->where('active',true)->get();
+        $this->type = $this->item->type ? $this->item->type :  $this->types->first()->id;
 
         if($url = $this->item->getWebP()) {
             $this->d_url = $url;

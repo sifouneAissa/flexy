@@ -20,6 +20,7 @@ class PaymentTable extends LivewireDatatable
     public $permission = 'add provider pack';
     public $providers;
     public $users;
+    public $isSeller = true;
 
     public function mount($model = false, $include = [], $exclude = [], $hide = [], $dates = [], $times = [], $searchable = [], $sort = null, $hideHeader = null, $hidePagination = null, $perPage = null, $exportable = false, $hideable = false, $beforeTableSlot = false, $buttonsSlot = false, $afterTableSlot = false, $params = [])
     {
@@ -37,9 +38,15 @@ class PaymentTable extends LivewireDatatable
     public function builder()
     {
         //
-        return Payment::query()
+        $builder = Payment::query();
+        if($this->isSeller)
+            $builder = $builder->where('seller_id',auth()->user()->id);
+        else
+            $builder = $builder->where('buyer_id',auth()->user()->id);
+
+        return $builder
             ->leftJoin('users', 'users.id', 'payments.buyer_id')
-            ->select('users.name as buyer_name')
+            ->select('users.name as buyer_name','users.id as bid')
             ->groupBy('payments.id');
     }
 
@@ -49,7 +56,7 @@ class PaymentTable extends LivewireDatatable
         $columns = [
             Column::checkbox(),
             NumberColumn::name('Id')->label('ID')->filterable(),
-            Column::name('users.name')->searchable()->filterable($this->users->pluck("name")->toArray())->filterOn('users.name'),
+            Column::name('users.name')->link('/partners/edit/{{bid}}', '{{users.name}}')->searchable()->filterable($this->users->pluck("name")->toArray())->filterOn('users.name'),
             Column::name('method_payment_id')->label('Payment Method'),
             Column::name('amount')->searchable(),
             Column::name('Status')->filterable(config('default.payment_status')),
@@ -59,6 +66,13 @@ class PaymentTable extends LivewireDatatable
 //                return view('livewire.table-actions.provider-pack-table-actions', ['id' => $id,'item' => ProviderPack::find($id)]);
 //            })->unsortable()
         ];
+
+
+        if(!$this->isSeller){
+            $columns = array_filter($columns,function ($item){
+                return $item->name !=='users.name';
+            });
+        }
 
         return $columns;
 

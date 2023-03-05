@@ -8,7 +8,6 @@
     <meta name="author" content="">
     <meta name="generator" content="">
     <title>finwallapp V2.0 - Mobile HTML template</title>
-
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json" />

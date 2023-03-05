@@ -10,11 +10,10 @@
             </div>
             <div class="col text-center">
                 <div class="logo-small">
-                    <img src="/assets/imgwebp/logo.webp" alt="" />
-                    <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
+                    <img src="/assets/img/logo.png" alt="" />
                 </div>
+                <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
             </div>
-
             <div class="form-check form-switch col-auto h2" >
                 <input title="Switch theme"  wire:click="setMode"  class="form-check-input" type="checkbox" id="switch-mode" >
             </div>
@@ -67,8 +66,9 @@
         <div class="col text-center">
             <div class="logo-small">
                 <img src="/assets/img/logo.png" alt="" />
-                <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
             </div>
+
+            <h5><span class="text-secondary fw-light">Finance</span><br />Wallet</h5>
         </div>
 
         <div class="form-check form-switch col-auto h2" >
@@ -107,7 +107,7 @@
 <script>
     document.addEventListener('livewire:load', function () {
         // Your JS here.
-        select();
+        // select();
         mode(@this.get('mode'));
     })
 

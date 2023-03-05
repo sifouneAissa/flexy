@@ -23,7 +23,8 @@ class Provider extends Model implements HasMedia
         'percentage_fix',
         'is_service_provider',
         'unit',
-        'price_per_unit'
+        'price_per_unit',
+        'type'
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -40,4 +41,7 @@ class Provider extends Model implements HasMedia
         return $this->hasMany(ProviderMembership::class,'provider_id');
     }
 
+    public function providerType(){
+        return $this->belongsTo(ProviderType::class,'type_id');
+    }
 }

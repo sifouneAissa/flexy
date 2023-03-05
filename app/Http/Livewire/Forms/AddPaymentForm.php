@@ -2,10 +2,16 @@
 
 namespace App\Http\Livewire\Forms;
 
+use App\Models\Payment;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class AddPaymentForm extends Component
 {
+    use LivewireAlert;
+
     public $seller_id;
     public $buyer_id;
     public $method_payment_id = 1;
@@ -13,17 +19,75 @@ class AddPaymentForm extends Component
     public $status;
     public $sendMoney = false;
     public $isAdmin = false;
+    public $methods;
+    public $users;
+    public $records;
+    public $amounts;
+    public $totalAmount = 0;
 
     public function rules(){
         return [
-            'amount' => 'required|numeric|min:1'
+            'amount' => 'required|numeric|min:1',
         ];
     }
 
     public function save(){
         $this->validate();
-        $this->emitTo('pages.payments.payment-add','save',$this->all());
 
+        $callback = function ($item){
+            return $item['selected'] === true;
+        };
+
+        // check if one user is selected
+        $selected_users = array_filter($this->amounts,$callback);
+        $mselected = array_filter($this->methods,$callback);
+
+        $user = auth()->user();
+        if(empty($selected_users) ||empty($mselected) || !$user->checkBalance($this->totalAmount)){
+            if(empty($selected_users)){
+                $this->addError('selected_users','Please selected one user');
+            }
+
+            if(empty($mselected)){
+                $this->addError('selected_method_payment','Please selected one method the payment');
+            }
+
+            if(!$user->checkBalance($this->totalAmount)){
+                $this->addError('total_amount','Amount is greater then your\'s');
+            }
+
+            return;
+        }
+
+        // start db
+        startTransaction(function () use ($mselected,$user){
+            $ms = array_shift($mselected);
+//            $tamount = 0;
+            foreach($this->amounts as $amount){
+                Payment::query()->create([
+                    'buyer_id' => $amount['user_id'],
+                    'seller_id' => $user->id,
+                    'method_payment_id' => $ms['id'],
+                    'amount' => $amount['amount']
+                ]);
+                // user
+                User::find($amount['user_id'])->updateCash((double)$amount['amount']);
+                // buyer
+
+                $user->updateCash(-((double)$amount['amount']),false);
+            }
+
+
+
+
+            $this->alert('success','Operation success');
+        });
+    }
+
+    public function updatedAmount(){
+        foreach ($this->amounts as &$amount){
+                $amount['amount'] = $this->amount;
+        }
     }
 
     public function updatedSendMoney(){
@@ -47,18 +111,83 @@ class AddPaymentForm extends Component
 
 
 
-    public function updatedAmount(){
-
-        $this->emitTo('pages.payments.payment-add','setAmount',$this->amount);
-    }
-
     public function mount(){
         $user = auth()->user();
         $this->seller_id = $user->id;
         $this->buyer_id = null;
         $this->isAdmin = $user->hasRole('admin');
         $this->sendMoney = $this->isAdmin;
+        $this->methods = [
+            [
+                'name' => 'CCP',
+                'description' => 'Use your ccp account',
+                'provider' => 'Bank',
+                'id' => 1,
+                'selected' => false,
+            ],
+            [
+                'name' => 'Cash on hand',
+                'description' => 'Cash on hand',
+                'provider' => 'Hand by hand',
+                'id' => 2,
+                'selected' => false
+            ],
+            [
+                'name' => 'By Check',
+                'description' => 'Cash by check',
+                'provider' => 'Bank',
+                'id' => 3,
+                'selected' => false,
+            ]
+        ];
+
+        $this->users = getChildren();
+        $this->records = $this->users;
+
+        // set up the amounts
+        $this->users->map(function ($item){
+            $this->amounts[$item->id] = [
+                'amount' => 0,
+                'selected' => false,
+                'user_id' => $item->id,
+                'name' => $item->name,
+                'profile_photo_url' => $item->profile_photo_url,
+                'id' => $item->id
+            ];
+        });
+
     }
+
+    public function selectUser($id){
+        $this->totalAmount = 0;
+
+        $this->amounts = array_map(function ($item) use ($id){
+            if($item['user_id']===$id) {
+                $item['selected'] = !$item['selected'];
+
+            }
+
+            if($item['selected'])
+                $this->totalAmount = (double)$item['amount'] + $this->totalAmount;
+
+            return $item;
+        },$this->amounts);
+    }
+
+    public function selectMethod($id){
+
+        $this->methods = array_map(function ($item) use ($id){
+            if($item['id']===$id) $item['selected'] = !$item['selected'];
+            else $item['selected'] = false;
+            return $item;
+        },$this->methods);
+
+    }
+
+    public function setSendMoney($value){
+        $this->sendMoney = $value;
+    }
+
 
 
     public function render()

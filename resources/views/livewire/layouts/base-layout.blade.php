@@ -12,7 +12,6 @@
     <title>@yield('page-title')  - {{ config('app.name', 'Laravel') }}</title>
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
     <link rel="manifest" href="manifest.json" />
 
     <!-- Favicons -->
@@ -42,9 +41,8 @@
     <link href="/assets/css/style.css" rel="stylesheet" id="style">
     <!-- Scripts -->
 
-{{--    <script src="https://cdn.tailwindcss.com"></script>--}}
-{{--    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">--}}
 
+    <link href="/assets/tailwind/tailwind.min.css" rel="stylesheet">
     @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
@@ -155,7 +153,7 @@
 </div>
 <!-- Footer ends-->
 
-<!--add here pwa -->
+<!--<livewire:partials.pwabtn />-->
 
 @livewireScripts
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

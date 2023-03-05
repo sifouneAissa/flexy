@@ -127,4 +127,29 @@ class User extends Authenticatable
     public function clients(){
         return $this->hasMany(Client::class,'user_id');
     }
+
+    public function updateCash($amount,$withC=true){
+
+        if(!$this->hasRole('admin'))
+        startTransaction(function () use ($amount,$withC){
+            $balance = (double) $this->balance;
+            $newB  = $balance + $amount;
+            $this->balance = $newB;
+
+            if($withC)
+            {
+                $credit = (double) $this->credit;
+                $newC = $credit + $amount;
+                $this->credit = $newC;
+            }
+
+            $this->save();
+        });
+
+    }
+
+    public function checkBalance($amount){
+        if($this->hasRole('admin')) return true;
+        return (double)$this->balance >= (double) $amount;
+    }
 }

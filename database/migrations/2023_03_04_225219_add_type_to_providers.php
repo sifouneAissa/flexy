@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('s_navitems', function (Blueprint $table) {
+        Schema::table('providers', function (Blueprint $table) {
             //
-            $table->bigInteger('order')->nullable();
-            $table->string('is_active')->default(true);
+            $table->unsignedBigInteger('type')->nullable();
         });
     }
 
@@ -27,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('s_navitems', function (Blueprint $table) {
+        Schema::table('providers', function (Blueprint $table) {
             //
         });
     }

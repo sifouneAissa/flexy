@@ -60,7 +60,18 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
+        <div class="form-group form-floating mb-3 {{$errors->has('role') ? 'is-invalid' : 'is-valid'}}" >
+            <select wire:model="type" style="width: 100%"   class="form-control form-select" >
+                @foreach($types as $p)
+                    <option  value="{{ $p->id }}">{{ $p->name }}</option>
+                @endforeach
+            </select>
 
+            <label class="form-control-label h3" for="selectAdd">Type</label>
+            @error('type')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
         @if($is_service_provider)
             <div class="form-floating mb-3 {{$errors->has('unit') ? 'is-invalid' : 'is-valid'}}">
                 <input wire:model="unit" type="text" class="form-control"  placeholder="Name"

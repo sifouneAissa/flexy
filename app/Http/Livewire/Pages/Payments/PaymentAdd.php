@@ -86,7 +86,7 @@ class PaymentAdd extends Component
     public function render()
     {
         return view('livewire.pages.payments.payment-add')->layout("livewire.layouts.crud-layout",[
-            'link' => 'pack.index'
+            'link' => 'index'
         ]);
     }
 }
