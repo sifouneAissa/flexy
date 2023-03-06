@@ -37,28 +37,38 @@
             @endif
             <div class="col">
                 <div class="input-group">
-                    <input onfocus="setV(event)" oninput="setV(event)"   id="number-col" onkeypress="return isNumber(event)"   maxlength="10" type="text" inputmode="numeric"  wire:keyup="search" class="trasparent-input text-center" placeholder="Enter Phone Number">
+                    <input onfocus="setF()"  wire:model.debounce.500ms="phone_number" id="number-col" onkeypress="return isNumber(event)"   maxlength="10" type="text" inputmode="numeric"  wire:keyup="search" class="trasparent-input text-center" placeholder="Enter Phone Number">
 
                 </div>
             </div>
         </div>
         @error('phone_number_code')
-            <p class="text-danger float-start">{{$message}}</p>
+            <p class="text-danger float-center h5">{{$message}}</p>
         @enderror
 
         @if((!$errors->has('phone_number') && $code!=='info' && $phone_number))
-            <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18 card-transparent" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
-                <input  oninput="setA(event)"   onkeypress="return isNumber(event,'amount')" id="amoun-col"  type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">
-                @error('amount')
-                <p class="text-danger float-start">{{$message}}</p>
-                @enderror
-            </div>
+{{--            <div class="row justify-content-between gx-0 mx-0 collapse mt-2 rounded-18 card-transparent" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>--}}
+{{--                <input  oninput="setA(event)"   onkeypress="return isNumber(event,'amount')" id="amoun-col"  type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">--}}
+{{--                @error('amount')--}}
+{{--                <p class="text-danger float-start">{{$message}}</p>--}}
+{{--                @enderror--}}
+{{--            </div>--}}
 
-            <button id="btn-collapse" class="btn btn-link mt-0 py-1 w-100 bar-more collapsed mt-2" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#flexy-extra" aria-expanded="false"
-                    aria-controls="flexy-extra">
-                <span class="text-dark"></span>
-            </button>
+                        <div class="row justify-content-between gx-0 mx-0  mt-2 rounded-18 card-transparent" id="flexy-extra" style="border: solid;border-color: #99dfaa" wire:ignore.self>
+                            <input  wire:model.debounce.500ms="amount"  onkeypress="return isNumber(event,'amount')" id="amoun-col"  type="text" inputmode="numeric" class="trasparent-input text-center"  placeholder="Amount">
+                            @error('amount')
+                            <p class="text-danger float-center h5">{{$message}}</p>
+                            @enderror
+
+                        </div>
+
+
+
+{{--            <button id="btn-collapse" class="btn btn-link mt-0 py-1 w-100 bar-more collapsed mt-2" type="button"--}}
+{{--                    data-bs-toggle="collapse" data-bs-target="#flexy-extra" aria-expanded="false"--}}
+{{--                    aria-controls="flexy-extra">--}}
+{{--                <span class="text-dark"></span>--}}
+{{--            </button>--}}
 
                <div class="align-content-around">
                    <button class="btn btn-primary col-auto collapsed mt-2 h3" title="Search for offers" onclick="setM(true)">
@@ -205,9 +215,11 @@
 
     window.addEventListener('livewire:load', function () {
     });
-
-    function setV(){
+    function setF(){
         if($('#number-col').val().length>=2)
+            setV();
+    }
+    function setV(){
         setTimeout(function (){
             let phone = @this.get('phone_number');
             if(@this.get('code')==='info' && phone?.length>1) {
@@ -216,15 +228,19 @@
             }
             else
             @this.set('phone_number',$('#number-col').val());
-        },500);
+        },50);
 
     }
 
-    function setA(event){
+    function setA(){
 
         setTimeout(function (){
             @this.set('amount',$('#amoun-col').val());
-        },500);
+        },50);
+    }
+
+    function test(){
+        console.log("kedown")
     }
 
     window.addEventListener('btnClick', (e) => {
@@ -249,14 +265,13 @@
             return false;
         }
 
-        if(f==='amount'){
-            // setA();
-        }
-        else
-        if($('#number-col').val().length===10){
-            // $('#number-col').val($('#number-col').val());
-            setV();
-        }
+        // if(f==='amount'){
+        //     setA();
+        // }
+        // else
+        // if($('#number-col').val().length>=10){
+        //     setV();
+        // }
 
         return true;
     }

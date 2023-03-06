@@ -30,6 +30,12 @@ class FlexyDetail extends Component
     public $client_phone;
     public $nexist = false;
     public $client = null;
+    public $vphone= false;
+
+
+    public function test($event){
+        dump($event);
+    }
 
 
     public function rules(){
@@ -81,6 +87,7 @@ class FlexyDetail extends Component
 
     public function updated($propertyName)
     {
+
         $this->code = substr($this->phone_number, 0, 2);
 
         if($propertyName==='phone_number')

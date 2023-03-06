@@ -177,6 +177,7 @@ return [
         'permissions' => 'الصلاحيات',
         'code' => 'الرمز',
         'percentage' => 'النسبة مئوية',
-        'photo' => 'الصورة'
+        'photo' => 'الصورة',
+        'amount' => 'الرصيد'
     ],
 ];

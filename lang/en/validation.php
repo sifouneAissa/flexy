@@ -183,7 +183,8 @@ return [
 
     'attributes' => [
         'name' => 'Name',
-        'permissions' => 'Permissions'
+        'permissions' => 'Permissions',
+        'amount' => 'Amount'
     ],
 
 ];

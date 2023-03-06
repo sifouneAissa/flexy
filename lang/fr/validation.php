@@ -174,7 +174,8 @@ return [
         'available'             => 'disponible',
         'size'                  => 'taille',
         'telephone'             => 'Téléphone',
-        'postal_code' => 'Code postal'
+        'postal_code' => 'Code postal',
+        'amount' => 'Solde'
     ],
 
 
