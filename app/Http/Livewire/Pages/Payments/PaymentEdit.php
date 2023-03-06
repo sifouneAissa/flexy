@@ -23,6 +23,7 @@ class PaymentEdit extends Component
         $this->buyer = $this->item->buyer;
         $this->methods = PaymentMethod::query()->get()->map(function ($item){
             $item['selected'] = $this->item->method_payment_id === $item->id;
+            $item['webp'] = $item?->getWebp();
             return $item;
         })->toArray();
         $this->statuses = config('default.payment_status');

@@ -2,7 +2,7 @@
     <!-- service provider -->
     <div class="row mb-3">
         <div class="col">
-            <h6 class="title">Selected Method the payment</h6>
+            <h6 class="title">Method the payment selected</h6>
         </div>
     </div>
 
@@ -12,14 +12,14 @@
             <div class="swiper-container cardswiper">
                 <div class="swiper-wrapper">
                     @foreach($methods as $method)
-                        <div class="swiper-slide">
-                            <div  class="card shadow-sm shadow-purple mb-3 {{$method['selected'] ? 'bg-success' : 'theme-bg'}}">
-                                <img src="/assets/img/card-bg.png" alt="" class="cardimg" />
+                        <div class="swiper-slide p-1 {{$method['selected'] ? 'bg-success' : ''}} rounded-18">
+                            <div  class="card mb-3 theme-bg">
+                                <img src="{{!$method['webp'] ? '/assets/img/card-bg.png' : $method['webp'] }}" alt="" class="cardimg" style="width: 100%;height: 100%" />
                                 <div class="card-body">
                                     <div class="row mb-4">
-                                        <div class="col-auto align-self-center">
-                                            <img src="/assets/img/maestro.png" alt="">
-                                        </div>
+{{--                                        <div class="col-auto align-self-center">--}}
+{{--                                            <img src="/assets/img/maestro.png" alt="">--}}
+{{--                                        </div>--}}
                                         <div class="col align-self-center text-end">
                                             <p class="small">
                                                 <span class="text-muted size-10">{{$method['provider']}}</span><br>
