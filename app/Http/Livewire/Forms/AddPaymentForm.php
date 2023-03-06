@@ -119,6 +119,7 @@ class AddPaymentForm extends Component
         $this->sendMoney = $this->isAdmin;
         $this->methods = PaymentMethod::query()->get()->map(function ($item){
             $item['selected'] = false;
+            $item['webp'] = $item?->getWebp();
             return $item;
         })->toArray();
 

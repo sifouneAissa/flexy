@@ -178,6 +178,16 @@ class SNavitemSeeder extends Seeder
                     'order' => 4,
                 ],
 
+                [
+                    'name' => 'Method the payments',
+                    'parent_id' => null,
+                    'icon' => 'bi-cash-stack',
+                    'isNew' => true,
+                    'route' => 'mpayment.index',
+                    'permission' => 'view payment method',
+                    'need_login' => true,
+                    'order' => 5,
+                ],
             ]
         ]
     ];

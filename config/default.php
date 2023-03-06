@@ -19,7 +19,8 @@ return [
             crudPermissions('bonus',['view']),
             crudPermissions('membership'),
             crudPermissions('setting general',['view','update']),
-            crudPermissions('provider pack')
+            crudPermissions('provider pack'),
+            crudPermissions('payment method')
         ),
 //        'publisher' => array_merge([
 //        ]

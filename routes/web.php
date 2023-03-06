@@ -89,6 +89,13 @@ Route::middleware([
     // clients
     Route::get('/clients',\App\Http\Livewire\Pages\ClientPage::class)->name('client.index');
 
+
+    // method the payments
+    Route::get('/mpayments',\App\Http\Livewire\Pages\MPaymentPage::class)->name('mpayment.index')->middleware(['permission:view payment method']);
+    Route::get('/mpayments/create',\App\Http\Livewire\Pages\MPayment\MPaymentAdd::class)->name('mpayment.create')->middleware(['permission:add payment method']);
+    Route::get('/mpayments/edit/{mpayment}',\App\Http\Livewire\Pages\MPayment\MPaymentEdit::class)->name('mpayment.edit')->middleware(['permission:update payment method']);
+
+
 });
 
 Route::get('/{name}', function ($name) {
