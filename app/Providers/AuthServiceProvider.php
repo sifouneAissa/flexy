@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\UserNumber;
 use Illuminate\Support\Facades\Gate;
@@ -52,6 +53,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-number', function (User $user,$number) {
             $number = UserNumber::query()->findOrFail($number);
             return $user->id === $number?->user_id;
+        });
+
+        // for payments
+        Gate::define('update-payment', function (User $user,$payment) {
+            $payment = Payment::query()->findOrFail($payment);
+            return $user->id === $payment?->seller_id;
         });
 
     }

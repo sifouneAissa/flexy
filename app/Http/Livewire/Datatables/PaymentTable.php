@@ -62,9 +62,9 @@ class PaymentTable extends LivewireDatatable
             Column::name('Status')->filterable(config('default.payment_status')),
 //            Column::name('providers.name')->label('Provider')->filterable($this->providers->pluck('name')->toArray())->filterOn('providers.name'),
             DateColumn::name('created_at')->filterable(),
-//            Column::callback(['id','name'], function ($id,$name) {
-//                return view('livewire.table-actions.provider-pack-table-actions', ['id' => $id,'item' => ProviderPack::find($id)]);
-//            })->unsortable()
+            Column::callback(['id'], function ($id) {
+                return view('livewire.table-actions.payment-table-actions', ['id' => $id,'item' => Payment::find($id)]);
+            })->unsortable()
         ];
 
 

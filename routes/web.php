@@ -83,6 +83,7 @@ Route::middleware([
 
     Route::get('/payments',\App\Http\Livewire\Pages\PaymentPage::class)->name('payment.index');
     Route::get('/payments/create',\App\Http\Livewire\Pages\Payments\PaymentAdd::class)->name('payment.create');
+    Route::get('/payments/edit/{payment}',\App\Http\Livewire\Pages\Payments\PaymentEdit::class)->name('payment.edit')->can('update-payment','payment');
 
 
     // clients

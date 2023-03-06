@@ -128,16 +128,18 @@ class User extends Authenticatable
         return $this->hasMany(Client::class,'user_id');
     }
 
-    public function updateCash($amount,$withC=true){
+    public function updateCash($amount,$withC=true,$creditA=0){
 
         if(!$this->hasRole('admin'))
-        startTransaction(function () use ($amount,$withC){
+        startTransaction(function () use ($amount,$withC,$creditA){
             $balance = (double) $this->balance;
             $newB  = $balance + $amount;
             $this->balance = $newB;
 
             if($withC)
             {
+                $amount = $creditA ? $creditA : $amount;
+
                 $credit = (double) $this->credit;
                 $newC = $credit + $amount;
                 $this->credit = $newC;

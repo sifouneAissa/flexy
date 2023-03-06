@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Payment;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -116,29 +117,10 @@ class AddPaymentForm extends Component
         $this->buyer_id = null;
         $this->isAdmin = $user->hasRole('admin');
         $this->sendMoney = $this->isAdmin;
-        $this->methods = [
-            [
-                'name' => 'CCP',
-                'description' => 'Use your ccp account',
-                'provider' => 'Bank',
-                'id' => 1,
-                'selected' => false,
-            ],
-            [
-                'name' => 'Cash on hand',
-                'description' => 'Cash on hand',
-                'provider' => 'Hand by hand',
-                'id' => 2,
-                'selected' => false
-            ],
-            [
-                'name' => 'By Check',
-                'description' => 'Cash by check',
-                'provider' => 'Bank',
-                'id' => 3,
-                'selected' => false,
-            ]
-        ];
+        $this->methods = PaymentMethod::query()->get()->map(function ($item){
+            $item['selected'] = false;
+            return $item;
+        })->toArray();
 
         $this->users = getChildren();
         $this->records = $this->users;
